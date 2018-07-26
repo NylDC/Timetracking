@@ -31,6 +31,11 @@ namespace timetracker
         public TrayApplicationContext()
         {
             contextMenu = new ContextMenu(new MenuItem[] {
+
+                new MenuItem("Start Screenshotting", ScreenshotingStart_Click),
+
+                new MenuItem("STOP Screenshotting", ScreenshotingStop_Click),
+
                 new MenuItem("About", About_Click),
                 new MenuItem("Exit", Exit_Click),
             });
@@ -41,6 +46,18 @@ namespace timetracker
                 ContextMenu = contextMenu,
                 Visible = true
             };
+        }
+
+        void ScreenshotingStart_Click(object sender, EventArgs e)
+        {
+            // Testing screenshot start
+            Services.Screenshots.Instance.Start();
+        }
+
+        void ScreenshotingStop_Click(object sender, EventArgs e)
+        {
+            // Testing screenshot start
+            Services.Screenshots.Instance.Stop();
         }
 
         void Exit_Click(object sender, EventArgs e)
