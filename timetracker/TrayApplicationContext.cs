@@ -16,6 +16,10 @@ namespace timetracker
 
         private AboutForm aboutForm;
 
+		private AdminDashboardForm adminDashboardForm;
+
+
+
         public static TrayApplicationContext Instance
         {
             get
@@ -37,7 +41,13 @@ namespace timetracker
                 new MenuItem("STOP Screenshotting", ScreenshotingStop_Click),
 
                 new MenuItem("About", About_Click),
-                new MenuItem("Exit", Exit_Click),
+
+
+				new MenuItem("Preferences", Preferences_Click),
+				
+				new MenuItem("Exit", Exit_Click),
+
+
             });
             // Initialize Tray Icon
             trayIcon = new NotifyIcon()
@@ -79,5 +89,17 @@ namespace timetracker
             }
             else { aboutForm.Activate(); }
         }
-    }
+
+		void Preferences_Click(object sender, EventArgs e)
+		{
+			// Open admin Dashboard window
+
+			if (adminDashboardForm == null)
+			{
+				adminDashboardForm = new AdminDashboardForm();
+				adminDashboardForm.Show();
+			}
+			else { adminDashboardForm.Activate(); }
+		}
+	}
 }

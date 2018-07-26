@@ -15,11 +15,12 @@ namespace timetracker
 		public AdminDashboardForm()
 		{
 			InitializeComponent();
+			tbFreq.Text = Configuration.ScreenshottingFrequency.ToString();
 		}
 
 		private void btOK_Click(object sender, EventArgs e)
 		{
-
+			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
 		}
 	}
 }

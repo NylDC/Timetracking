@@ -41,7 +41,7 @@ namespace timetracker.Services
         public static Point ScreenSize => new Point(
                     (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
 
-        public static int WaitTime => 3 * 1000;
+        public static int WaitTime => Configuration.ScreenshottingFrequency * 1000;
 
         public void Start()
         {
