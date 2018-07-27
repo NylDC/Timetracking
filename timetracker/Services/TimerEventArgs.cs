@@ -9,7 +9,7 @@ namespace timetracker.Services
     /// <summary>
     /// Contains number of seconds counted and provides calculation helpers for conversion. 
     /// </summary>
-    class TimerEventArgs: EventArgs
+    public class TimerEventArgs: EventArgs
     {
         /// <summary>
         /// Private field with the number of seconds counted
@@ -29,12 +29,12 @@ namespace timetracker.Services
         /// <summary>
         /// Contains minutes-only part of the total time counted.
         /// </summary>
-        public int Minutes => _seconds / 60;
+        public int Minutes => (_seconds / 60) % 60;
 
         /// <summary>
         /// Contains hours-only part of the total time counted.
         /// </summary>
-        public int Hours => _seconds / 3600;
+        public int Hours => (_seconds / 3600) % 24;
 
         /// <summary>
         /// Contains days-only part of the total time counted.

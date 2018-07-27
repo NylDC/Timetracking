@@ -15,6 +15,7 @@ namespace timetracker
         private static TrayApplicationContext _instance = null;
 
         private AboutForm aboutForm;
+        private TimerDisplay timerDisplay;
 
 		private AdminDashboardForm adminDashboardForm;
 
@@ -56,6 +57,8 @@ namespace timetracker
                 ContextMenu = contextMenu,
                 Visible = true
             };
+
+            trayIcon.Click += Icon_Click;
         }
 
         void ScreenshotingStart_Click(object sender, EventArgs e)
@@ -68,6 +71,16 @@ namespace timetracker
         {
             // Testing screenshot start
             Services.Screenshots.Instance.Stop();
+        }
+
+        void Icon_Click(object sender, EventArgs e)
+        {
+            if (timerDisplay == null)
+            {
+                timerDisplay = new TimerDisplay();
+                timerDisplay.Show();
+            }else
+                timerDisplay.Visible = !timerDisplay.Visible;
         }
 
         void Exit_Click(object sender, EventArgs e)
