@@ -139,8 +139,8 @@ namespace timetracker.Services
         {
             while (true)
             {
-                TryAdvanceCounter();
                 Thread.Sleep(1000);
+                TryAdvanceCounter();
             }
         }
 
