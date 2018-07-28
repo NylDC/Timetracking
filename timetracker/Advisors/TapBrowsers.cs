@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using timetracker.Services;
 
-namespace timetracker.Services
+namespace timetracker.Advisors
 {
-    class TapProcesses : ITimerAdvisor
+    class TapBrowsers : ITimerAdvisor
     {
         public bool AdviseIfCanCount()
         {

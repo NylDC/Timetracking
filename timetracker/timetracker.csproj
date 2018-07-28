@@ -63,10 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ITimerAdvisor.cs" />
     <Compile Include="Services\Screenshots.cs" />
-    <Compile Include="Services\TapBrowsers.cs" />
-    <Compile Include="Services\TapKeyboard.cs" />
-    <Compile Include="Services\TapMouse.cs" />
-    <Compile Include="Services\TapProcesses.cs" />
+    <Compile Include="Advisors\TapBrowsers.cs" />
+    <Compile Include="Advisors\TapKeyboard.cs" />
+    <Compile Include="Advisors\TapMouse.cs" />
+    <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Services\Timer.cs" />
     <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
