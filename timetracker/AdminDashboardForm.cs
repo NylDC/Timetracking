@@ -22,5 +22,12 @@ namespace timetracker
 		{
 			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
 		}
-	}
+
+        private void AdminDashboardForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'databaseDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.databaseDataSet.Users);
+
+        }
+    }
 }
