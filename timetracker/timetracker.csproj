@@ -61,9 +61,20 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ITimerAdvisor.cs" />
     <Compile Include="Services\Screenshots.cs" />
+    <Compile Include="Services\TapBrowsers.cs" />
+    <Compile Include="Services\TapKeyboard.cs" />
+    <Compile Include="Services\TapMouse.cs" />
+    <Compile Include="Services\TapProcesses.cs" />
     <Compile Include="Services\Timer.cs" />
+    <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
+    <Compile Include="Services\TimerManager.cs" />
+    <Compile Include="Structs\Project.cs" />
+    <Compile Include="Structs\User.cs" />
+    <Compile Include="Structs\Work.cs" />
+    <Compile Include="Structs\WorkType.cs" />
     <Compile Include="TimerDisplay.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -27,10 +27,15 @@ namespace timetracker.Services
         private Thread childThread;
 
         /// <summary>
+        /// List if ITimerAdvisors that must be populated before timer starts 
+        /// according to current application settings.
+        /// </summary>
+        public TimerAdvisors TimerAdvisorsList;
+        /// <summary>
         /// Indicates if we timer should advance every second.
         /// Must be manipulated externally by different checkers.
         /// </summary>
-        private bool DoCount = true;
+        private bool DoCount => TimerAdvisorsList.QueryDelegates();
 
         /// <summary>
         /// Provides Singleton interface for the Timer class.
@@ -50,6 +55,7 @@ namespace timetracker.Services
         public Timer()
         {
             threadStart = new ThreadStart(Loop);
+            TimerAdvisorsList = new TimerAdvisors();
         }
 
         ~Timer()
@@ -109,7 +115,7 @@ namespace timetracker.Services
         /// Getter returns internal counter.
         /// Setter Triggers OnCount() event.
         /// </summary>
-        private int Value {
+        public int Value {
             get {
                 return _value;
             }
@@ -118,17 +124,6 @@ namespace timetracker.Services
                 _value = value;
                 OnCount(new TimerEventArgs(_value));
             }
-        }
-
-        /// <summary>
-        /// Return currently calculated time in seconds.
-        /// </summary>
-        /// <returns>
-        /// The number of pure seconds
-        /// </returns>
-        public int GetValue()
-        {
-            return Value;
         }
 
         /// <summary>
