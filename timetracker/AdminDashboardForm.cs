@@ -35,23 +35,26 @@ namespace timetracker
 
         private void tsbAddUser_Click(object sender, EventArgs e)
         {
-            this.usersTableAdapter1.Insert("New User", "", "", 0, 0,"","","");
+            dbDataSet.Users.AddUsersRow("New User", "123", "New User", 0, 0, "000", "Auckland", "000");
+            dbDataSet.AcceptChanges();
         }
 
         private void tsbAddProject_Click(object sender, EventArgs e)
         {
-            this.projectsTableAdapter1.Insert("New Project", 1, 1, 1, 1, 1, 0);
+            dbDataSet.Projects.AddProjectsRow("New Project", 1, 1, 1, 1, 1, 0);
+            dbDataSet.AcceptChanges();
         }
 
         dbDataSet.UsersRow editedUser = null;
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = listboxUsers.SelectedIndex;
-            if (id < 1)
+            object _id = listboxUsers.SelectedValue;
+            if (_id == null)
             {
                 gbUser.Enabled = false;
                 editedUser = null;
             } else {
+                int id = (int)_id;
                 try
                 {
                     editedUser = dbDataSet.Users.FindById(id);
