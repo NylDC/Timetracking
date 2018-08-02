@@ -97,7 +97,7 @@ namespace timetracker.Services
         /// </summary>
         public void Stop()
         {
-            if (childThread != null || childThread.IsAlive)
+            if (childThread != null && childThread.IsAlive)
             {
                 childThread.Abort();
                 OnStop(new TimerEventArgs(Value));

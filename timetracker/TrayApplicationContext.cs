@@ -58,7 +58,7 @@ namespace timetracker
                 Visible = true
             };
 
-            trayIcon.Click += Icon_Click;
+            trayIcon.DoubleClick += Icon_Click;
         }
 
         void ScreenshotingStart_Click(object sender, EventArgs e)
@@ -75,6 +75,7 @@ namespace timetracker
 
         void Icon_Click(object sender, EventArgs e)
         {
+            
             if (timerDisplay == null)
             {
                 timerDisplay = new TimerDisplay();

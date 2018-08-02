@@ -25,33 +25,47 @@ namespace timetracker
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet1.Projects' table. You can move, or remove it, as needed.
-            this.projectsTableAdapter.Fill(this.databaseDataSet1.Projects);
-            // TODO: This line of code loads data into the 'databaseDataSet1.WorkTypes' table. You can move, or remove it, as needed.
-            this.workTypesTableAdapter.Fill(this.databaseDataSet1.WorkTypes);
-            // TODO: This line of code loads data into the 'databaseDataSet.Users' table. You can move, or remove it, as needed.
-            this.usersTableAdapter.Fill(this.databaseDataSet.Users);
-
+            // TODO: This line of code loads data into the 'dbDataSet.Projects' table. You can move, or remove it, as needed.
+            this.projectsTableAdapter1.Fill(this.dbDataSet.Projects);
+            // TODO: This line of code loads data into the 'dbDataSet.WorkTypes' table. You can move, or remove it, as needed.
+            this.workTypesTableAdapter1.Fill(this.dbDataSet.WorkTypes);
+            // TODO: This line of code loads data into the 'dbDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter1.Fill(this.dbDataSet.Users);
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)
         {
-            this.usersTableAdapter.Insert("New User", "", "", 0, 0);
+            this.usersTableAdapter1.Insert("New User", "", "", 0, 0,"","","");
         }
 
         private void tsbAddProject_Click(object sender, EventArgs e)
         {
-            this.projectsTableAdapter.Insert("New Project", 1, 1, 1, 1, 1, 0);
+            this.projectsTableAdapter1.Insert("New Project", 1, 1, 1, 1, 1, 0);
         }
 
+        dbDataSet.UsersRow editedUser = null;
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int id = listboxUsers.SelectedIndex;
+            if (id < 1)
+            {
+                gbUser.Enabled = false;
+                editedUser = null;
+            } else {
+                try
+                {
+                    editedUser = dbDataSet.Users.FindById(id);
+                    if (editedUser == null) return;
+                    gbUser.Enabled = true;
+                    tbUserLogin.Text = editedUser.Login;
+                    tbUserFullName.Text = editedUser.FullName;
+                    cbUserEnabled.Checked = editedUser.Enabled == 1;
+                    cbUserIsAdmin.Checked = editedUser.IsAdmin == 1;
+                } catch(System.IndexOutOfRangeException ex)
+                {
 
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
+                }  
+            }
         }
     }
 }
