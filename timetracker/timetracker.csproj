@@ -89,8 +89,7 @@
     <Compile Include="Services\ITimerAdvisor.cs" />
     <Compile Include="Services\Screenshots.cs" />
     <Compile Include="Advisors\TapBrowsers.cs" />
-    <Compile Include="Advisors\TapKeyboard.cs" />
-    <Compile Include="Advisors\TapMouse.cs" />
+    <Compile Include="Advisors\TapUserInput.cs" />
     <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Services\Timer.cs" />
     <Compile Include="Services\TimerAdvisors.cs" />

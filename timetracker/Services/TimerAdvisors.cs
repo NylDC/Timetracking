@@ -30,7 +30,7 @@ namespace timetracker.Services
             return retValue;
         }
 
-        internal void StopDelegates()
+        public void StopDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)
             {
@@ -38,7 +38,7 @@ namespace timetracker.Services
             });
         }
 
-        internal void StartDelegates()
+        public void StartDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)
             {

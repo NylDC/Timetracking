@@ -50,12 +50,17 @@ namespace timetracker.Services
             StartEverything();
         }
 
+        public void Resume()
+        {
+            if(currentProject != null)
+                StartEverything();
+        }
+
         public void Stop() => StopEverything();
 
         private void StartEverything()
         {
             Timer.Instance.Value = currentWork.Time; // Allow resuming of the task
-            Timer.Instance.Resume();
 
             if (currentProject.MakeScreenshots)
             {
@@ -63,16 +68,20 @@ namespace timetracker.Services
             }
             if (currentProject.CheckKeyboard || currentProject.CheckMouse)
             {
+                Console.WriteLine("Adding TapUserInput");
                 Timer.Advisors.Add(new TapUserInput(currentProject.CheckKeyboard, currentProject.CheckMouse));
             }
             if (currentProject.CheckWebsites)
             {
+                Console.WriteLine("Adding TapBrowsers");
                 Timer.Advisors.Add(new TapBrowsers());
             }
             if (currentProject.CheckApps)
             {
+                Console.WriteLine("Adding TapProcesses");
                 Timer.Advisors.Add(new TapProcesses());
             }
+            Timer.Instance.Resume();
         }
 
         private void StopEverything()

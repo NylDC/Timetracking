@@ -54,17 +54,21 @@ namespace timetracker
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            Services.Timer.Instance.Start();
+            // TODO: Take this from a real DB
+            Structs.Project project = new Structs.Project();
+            Structs.WorkType workType = new Structs.WorkType();
+            Structs.Work work = new Structs.Work();
+            TimerManager.Instance.Start(project, workType, work);
         }
 
         private void btPause_Click(object sender, EventArgs e)
         {
-            Services.Timer.Instance.Resume();
+            TimerManager.Instance.Resume();
         }
 
         private void btStop_Click(object sender, EventArgs e)
         {
-            Services.Timer.Instance.Stop();
+            TimerManager.Instance.Stop();
         }
     }
 }

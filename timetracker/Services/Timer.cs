@@ -92,7 +92,7 @@ namespace timetracker.Services
                 childThread = new Thread(threadStart);
                 childThread.Start();
                 OnResume(new TimerEventArgs(Value));
-                TimerAdvisorsList.StopDelegates();
+                TimerAdvisorsList.StartDelegates();
             }
         }
 
@@ -106,6 +106,7 @@ namespace timetracker.Services
                 childThread.Abort();
                 OnStop(new TimerEventArgs(Value));
                 // TODO: Commit result.
+                TimerAdvisorsList.StopDelegates();
             }
         }
 
