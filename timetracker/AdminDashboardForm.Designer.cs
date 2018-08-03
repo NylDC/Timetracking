@@ -509,6 +509,7 @@
             this.tsbAddWorktype.Name = "tsbAddWorktype";
             this.tsbAddWorktype.Size = new System.Drawing.Size(23, 22);
             this.tsbAddWorktype.Text = "toolStripButton1";
+            this.tsbAddWorktype.Click += new System.EventHandler(this.tsbAddWorktype_Click);
             // 
             // tsbRemoveWorktype
             // 
@@ -572,6 +573,7 @@
             // 
             // tbFreq
             // 
+            this.tbFreq.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.tbFreq.Location = new System.Drawing.Point(161, 12);
             this.tbFreq.Name = "tbFreq";
             this.tbFreq.Size = new System.Drawing.Size(100, 20);

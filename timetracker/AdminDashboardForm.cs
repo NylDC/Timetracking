@@ -44,6 +44,12 @@ namespace timetracker
             dbDataSet.Projects.AddProjectsRow("New Project", 1, 1, 1, 1, 1, 0);
             dbDataSet.AcceptChanges();
         }
+        
+        private void tsbAddWorktype_Click(object sender, EventArgs e)
+        {
+            dbDataSet.WorkTypes.AddWorkTypesRow("New Work Type");
+            dbDataSet.AcceptChanges();
+        }
 
         dbDataSet.UsersRow editedUser = null;
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,9 +77,5 @@ namespace timetracker
             }
         }
 
-		private void btCancel_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-	}
+    }
 }
