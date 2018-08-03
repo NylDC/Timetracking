@@ -9,6 +9,8 @@ namespace timetracker.Advisors
 {
     class TapProcesses : ITimerAdvisor
     {
+
+
         public bool AdviseIfCanCount()
         {
             return true;

@@ -35,6 +35,11 @@ namespace timetracker
 
         public TrayApplicationContext()
         {
+            
+            Processes.Instance.Start();
+            
+
+
             contextMenu = new ContextMenu(new MenuItem[] {
 
                 new MenuItem("Start Screenshotting", ScreenshotingStart_Click),
