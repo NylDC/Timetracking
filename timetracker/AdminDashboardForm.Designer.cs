@@ -71,6 +71,10 @@
 			this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.tbMouseInterval = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.tbKBInterval = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.panBottomStrip = new System.Windows.Forms.Panel();
 			this.btCancel = new System.Windows.Forms.Button();
 			this.btOK = new System.Windows.Forms.Button();
@@ -80,8 +84,6 @@
 			this.workTypesTableAdapter1 = new timetracker.dbDataSetTableAdapters.WorkTypesTableAdapter();
 			this.projectsTableAdapter1 = new timetracker.dbDataSetTableAdapters.ProjectsTableAdapter();
 			this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.tbKBInterval = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
 			this.tabs.SuspendLayout();
 			this.tabUsers.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -534,6 +536,8 @@
 			// 
 			// tabPage3
 			// 
+			this.tabPage3.Controls.Add(this.tbMouseInterval);
+			this.tabPage3.Controls.Add(this.label6);
 			this.tabPage3.Controls.Add(this.tbKBInterval);
 			this.tabPage3.Controls.Add(this.label5);
 			this.tabPage3.Controls.Add(this.panBottomStrip);
@@ -546,6 +550,40 @@
 			this.tabPage3.TabIndex = 3;
 			this.tabPage3.Text = "Settings";
 			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// tbMouseInterval
+			// 
+			this.tbMouseInterval.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+			this.tbMouseInterval.Location = new System.Drawing.Point(161, 82);
+			this.tbMouseInterval.Name = "tbMouseInterval";
+			this.tbMouseInterval.Size = new System.Drawing.Size(100, 20);
+			this.tbMouseInterval.TabIndex = 8;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(8, 85);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(114, 13);
+			this.label6.TabIndex = 7;
+			this.label6.Text = "Max Mouse Interval (s)";
+			// 
+			// tbKBInterval
+			// 
+			this.tbKBInterval.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+			this.tbKBInterval.Location = new System.Drawing.Point(161, 45);
+			this.tbKBInterval.Name = "tbKBInterval";
+			this.tbKBInterval.Size = new System.Drawing.Size(100, 20);
+			this.tbKBInterval.TabIndex = 6;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(8, 48);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(127, 13);
+			this.label5.TabIndex = 5;
+			this.label5.Text = "Max Keyboard Interval (s)";
 			// 
 			// panBottomStrip
 			// 
@@ -608,23 +646,6 @@
 			// userBindingSource
 			// 
 			this.userBindingSource.DataSource = typeof(timetracker.Structs.User);
-			// 
-			// tbKBInterval
-			// 
-			this.tbKBInterval.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-			this.tbKBInterval.Location = new System.Drawing.Point(161, 45);
-			this.tbKBInterval.Name = "tbKBInterval";
-			this.tbKBInterval.Size = new System.Drawing.Size(100, 20);
-			this.tbKBInterval.TabIndex = 6;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(8, 48);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(142, 13);
-			this.label5.TabIndex = 5;
-			this.label5.Text = "Screenshoting Frequency (s)";
 			// 
 			// AdminDashboardForm
 			// 
@@ -729,5 +750,7 @@
         private System.Windows.Forms.BindingSource userBindingSource;
 		private System.Windows.Forms.TextBox tbKBInterval;
 		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox tbMouseInterval;
+		private System.Windows.Forms.Label label6;
 	}
 }

@@ -11,9 +11,11 @@ namespace timetracker
 	{
 		private static int _screenshottingFrequency = -1;
 		private static int _maxKeyboardIdleInterval = -1;
+		private static int _maxMouseIdleInterval = -1;
 		private const string REG_SECTION = "TimeTracker";
 		private const string REG_SCRNSHOT = "ScreenshottingFrequency";
 		private const string REG_MAXKII = "MaxKeyboardIdleInterval";
+		private const string REG_MAXMII = "MaxMouseIdleInterval";
 		public static int ScreenshottingFrequency 
 		{
 			get
@@ -43,6 +45,22 @@ namespace timetracker
 			{
 				if (value < 1) value = 1;
 				_maxKeyboardIdleInterval = (Int32)SaveRegistryValue(REG_MAXKII, value);
+			}
+		}
+
+		public static int MaxMouseIdleInterval
+		{
+			get
+			{
+				if (_maxMouseIdleInterval < 1)
+					_maxMouseIdleInterval = (Int32)ReadRegistryValue(REG_MAXMII, 5);
+
+				return _maxMouseIdleInterval;
+			}
+			set
+			{
+				if (value < 1) value = 1;
+				_maxMouseIdleInterval = (Int32)SaveRegistryValue(REG_MAXMII, value);
 			}
 		}
 
