@@ -54,7 +54,7 @@ namespace timetracker.Services
 
         public void Stop()
         {
-            if (childThread.IsAlive)
+            if (childThread != null &&  childThread.IsAlive)
             {
                 childThread.Abort();
             }
@@ -89,7 +89,7 @@ namespace timetracker.Services
             string targetFile = getNewFileName();
 
             // Save it!
-            Console.WriteLine(string.Format("Saving the image to %s...", targetFile));
+            Console.WriteLine(string.Format("Saving the image to {0}...", targetFile));
             memoryImage.Save(targetFile);
         }
 

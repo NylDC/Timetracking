@@ -50,39 +50,44 @@ namespace timetracker.Services
             StartEverything();
         }
 
+        public void Resume()
+        {
+            if(currentProject != null)
+                StartEverything();
+        }
+
         public void Stop() => StopEverything();
 
         private void StartEverything()
         {
             Timer.Instance.Value = currentWork.Time; // Allow resuming of the task
-            Timer.Instance.Resume();
 
             if (currentProject.MakeScreenshots)
             {
-                Screenshots.Instance.Stop();
+                Screenshots.Instance.Start();
             }
-            if (currentProject.CheckKeyboard) // add Keyboard checker if needed
+            if (currentProject.CheckKeyboard || currentProject.CheckMouse)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapKeyboard());
-            }
-            if (currentProject.CheckMouse)
-            {
-                Timer.Instance.TimerAdvisorsList.Add(new TapMouse());
+                Console.WriteLine("Adding TapUserInput");
+                Timer.Advisors.Add(new TapUserInput(currentProject.CheckKeyboard, currentProject.CheckMouse));
             }
             if (currentProject.CheckWebsites)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapBrowsers());
+                Console.WriteLine("Adding TapBrowsers");
+                Timer.Advisors.Add(new TapBrowsers());
             }
             if (currentProject.CheckApps)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapProcesses());
+                Console.WriteLine("Adding TapProcesses");
+                Timer.Advisors.Add(new TapProcesses());
             }
+            Timer.Instance.Resume();
         }
 
         private void StopEverything()
         {
             Timer.Instance.Stop();
-            Timer.Instance.TimerAdvisorsList.Clear(); // Delete all checkers
+            Timer.Advisors.Clear(); // Delete all checkers
             Screenshots.Instance.Stop();
         }
         

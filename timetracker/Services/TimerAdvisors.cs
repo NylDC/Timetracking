@@ -29,5 +29,21 @@ namespace timetracker.Services
             });
             return retValue;
         }
+
+        public void StopDelegates()
+        {
+            ForEach(delegate (ITimerAdvisor advisor)
+            {
+                advisor.OnTimerStop();
+            });
+        }
+
+        public void StartDelegates()
+        {
+            ForEach(delegate (ITimerAdvisor advisor)
+            {
+                advisor.OnTimerStart();
+            });
+        }
     }
 }

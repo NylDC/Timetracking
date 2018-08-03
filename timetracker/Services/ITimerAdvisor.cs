@@ -18,5 +18,16 @@ namespace timetracker.Services
         /// </summary>
         /// <returns>To count last second or not.</returns>
         bool AdviseIfCanCount();
+
+        /// <summary>
+        /// Called when timer is started.
+        /// </summary>
+        void OnTimerStart();
+
+        /// <summary>
+        /// Called when timer is stopped. Must free all own resources.
+        /// After this method's call ITimerAdvisor object will not be used any more and is a subject to destruction.
+        /// </summary>
+        void OnTimerStop();
     }
 }

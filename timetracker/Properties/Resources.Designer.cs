@@ -61,12 +61,32 @@ namespace timetracker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Add_grey_16x {
+            get {
+                object obj = ResourceManager.GetObject("Add_grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon AppIcon {
             get {
                 object obj = ResourceManager.GetObject("AppIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Remove_16x {
+            get {
+                object obj = ResourceManager.GetObject("Remove_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -31,6 +31,8 @@ namespace timetracker.Services
         /// according to current application settings.
         /// </summary>
         public TimerAdvisors TimerAdvisorsList;
+
+        public static TimerAdvisors Advisors => Instance.TimerAdvisorsList;
         /// <summary>
         /// Indicates if we timer should advance every second.
         /// Must be manipulated externally by different checkers.
@@ -75,6 +77,7 @@ namespace timetracker.Services
                 childThread = new Thread(threadStart);
                 childThread.Start();
                 OnStart(new TimerEventArgs(Value));
+                TimerAdvisorsList.StartDelegates();
             }
         }
 
@@ -89,6 +92,7 @@ namespace timetracker.Services
                 childThread = new Thread(threadStart);
                 childThread.Start();
                 OnResume(new TimerEventArgs(Value));
+                TimerAdvisorsList.StartDelegates();
             }
         }
 
@@ -97,11 +101,12 @@ namespace timetracker.Services
         /// </summary>
         public void Stop()
         {
-            if (childThread != null || childThread.IsAlive)
+            if (childThread != null && childThread.IsAlive)
             {
                 childThread.Abort();
                 OnStop(new TimerEventArgs(Value));
                 // TODO: Commit result.
+                TimerAdvisorsList.StopDelegates();
             }
         }
 

@@ -13,5 +13,13 @@ namespace timetracker.Advisors
         {
             return true;
         }
+
+        public void OnTimerStart()
+        {
+        }
+
+        public void OnTimerStop()
+        {
+        }
     }
 }
