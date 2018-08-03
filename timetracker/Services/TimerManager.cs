@@ -59,30 +59,26 @@ namespace timetracker.Services
 
             if (currentProject.MakeScreenshots)
             {
-                Screenshots.Instance.Stop();
+                Screenshots.Instance.Start();
             }
-            if (currentProject.CheckKeyboard) // add Keyboard checker if needed
+            if (currentProject.CheckKeyboard || currentProject.CheckMouse)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapKeyboard());
-            }
-            if (currentProject.CheckMouse)
-            {
-                Timer.Instance.TimerAdvisorsList.Add(new TapMouse());
+                Timer.Advisors.Add(new TapUserInput(currentProject.CheckKeyboard, currentProject.CheckMouse));
             }
             if (currentProject.CheckWebsites)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapBrowsers());
+                Timer.Advisors.Add(new TapBrowsers());
             }
             if (currentProject.CheckApps)
             {
-                Timer.Instance.TimerAdvisorsList.Add(new TapProcesses());
+                Timer.Advisors.Add(new TapProcesses());
             }
         }
 
         private void StopEverything()
         {
             Timer.Instance.Stop();
-            Timer.Instance.TimerAdvisorsList.Clear(); // Delete all checkers
+            Timer.Advisors.Clear(); // Delete all checkers
             Screenshots.Instance.Stop();
         }
         

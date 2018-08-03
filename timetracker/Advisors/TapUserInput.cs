@@ -7,8 +7,17 @@ using timetracker.Services;
 
 namespace timetracker.Advisors
 {
-    class TapBrowsers : ITimerAdvisor
+    class TapUserInput : ITimerAdvisor
     {
+
+        private bool TapMouse = false;
+        private bool TapKeyboard = false;
+        public TapUserInput(bool tapKeyboard, bool tapMouse)
+        {
+            TapMouse = tapMouse;
+            TapKeyboard = tapKeyboard;
+        }
+
         public bool AdviseIfCanCount()
         {
             return true;
