@@ -23,7 +23,7 @@ namespace timetracker.Advisors
         private bool TapMouse = false;
         private bool TapKeyboard = false;
 
-        private int MaxKeyboardIdleInterval = 5;
+        private int MaxKeyboardIdleInterval => Configuration.MaxKeyboardIdleInterval;
         private int MaxMouseIdleInterval = 5;
 
         public TapUserInput(bool tapKeyboard, bool tapMouse)

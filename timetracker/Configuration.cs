@@ -10,61 +10,67 @@ namespace timetracker
 	class Configuration
 	{
 		private static int _screenshottingFrequency = -1;
+		private static int _maxKeyboardIdleInterval = -1;
 		private const string REG_SECTION = "TimeTracker";
 		private const string REG_SCRNSHOT = "ScreenshottingFrequency";
+		private const string REG_MAXKII = "MaxKeyboardIdleInterval";
 		public static int ScreenshottingFrequency 
 		{
 			get
 			{
 				if (_screenshottingFrequency < 1)
-				{
-					// TODO: Fetch from registry
-					Microsoft.Win32.RegistryKey key;
-
-					key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REG_SECTION);
-					try
-					{
-						object o = key.GetValue(REG_SCRNSHOT, 5);
-						_screenshottingFrequency = (Int32)o;
-					}
-#pragma warning disable CS0168 // Variable is declared but never used
-					catch (Exception ex)
-#pragma warning restore CS0168 // Variable is declared but never used
-					{
-						_screenshottingFrequency = 5;
-					}
-					key.Close();
-
-
-				}
+					_screenshottingFrequency = (Int32)ReadRegistryValue(REG_SCRNSHOT, 5);
+				
 				return _screenshottingFrequency;
 			}
 			set
 			{
-				// TODO: save to registry
-				Microsoft.Win32.RegistryKey key;
-
 				if (value < 1) value = 1;
-
-				Microsoft.Win32.Registry.CurrentUser.OpenSubKey(REG_SECTION, true);
-				key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(REG_SECTION);
-				key.SetValue(REG_SCRNSHOT, value);
-				key.Close();
-
-
-
-
-
-				{
-					{
-						System.Windows.MessageBox.Show("Screenshotting every 30sec");
-
-
-
-						_screenshottingFrequency = value;
-					}
-				}
+				_screenshottingFrequency = (Int32)SaveRegistryValue(REG_SCRNSHOT, value);
 			}
 		}
+
+		public static int MaxKeyboardIdleInterval
+		{
+			get
+			{
+				if (_maxKeyboardIdleInterval < 1)
+					_maxKeyboardIdleInterval = (Int32)ReadRegistryValue(REG_MAXKII, 5);
+
+				return _maxKeyboardIdleInterval;
+			}
+			set
+			{
+				if (value < 1) value = 1;
+				_maxKeyboardIdleInterval = (Int32)SaveRegistryValue(REG_MAXKII, value);
+			}
+		}
+
+		private static object ReadRegistryValue(string keyName, object defaultValue)
+		{
+			object o = defaultValue;
+			try
+			{
+				RegistryKey key = Registry.CurrentUser.CreateSubKey(REG_SECTION);
+				o = key.GetValue(keyName, defaultValue);
+				key.Close();
+			}
+#pragma warning disable CS0168 // Variable is declared but never used
+			catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
+			{
+			}
+			
+			return o;
+		}
+		private static object SaveRegistryValue(string keyName, object theValue)
+		{
+			RegistryKey key = Registry.CurrentUser.CreateSubKey(REG_SECTION);
+			key.SetValue(keyName, theValue);
+			key.Close();
+			return theValue;
+		}
 	}
+	
+	
 }

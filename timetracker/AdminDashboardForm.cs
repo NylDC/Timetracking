@@ -16,11 +16,13 @@ namespace timetracker
 		{
 			InitializeComponent();
 			tbFreq.Text = Configuration.ScreenshottingFrequency.ToString();
+			tbKBInterval.Text = Configuration.MaxKeyboardIdleInterval.ToString();
 		}
 
 		private void btOK_Click(object sender, EventArgs e)
 		{
 			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
+			Configuration.MaxKeyboardIdleInterval = Int32.Parse(tbKBInterval.Text);
 		}
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)
@@ -76,6 +78,5 @@ namespace timetracker
                 }  
             }
         }
-
-    }
+	}
 }
