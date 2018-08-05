@@ -71,16 +71,12 @@ namespace timetracker.Services
                 Console.WriteLine("Adding TapUserInput");
                 Timer.Advisors.Add(new TapUserInput(currentProject.CheckKeyboard, currentProject.CheckMouse));
             }
-            if (currentProject.CheckWebsites)
-            {
-                Console.WriteLine("Adding TapBrowsers");
-                Timer.Advisors.Add(new TapBrowsers());
-            }
-            if (currentProject.CheckApps)
+            if (currentProject.CheckProcesses)
             {
                 Console.WriteLine("Adding TapProcesses");
-                Timer.Advisors.Add(new TapProcesses());
+                Timer.Advisors.Add(new TapProcesses(currentProject.CheckProcesses));
             }
+            
             Timer.Instance.Resume();
         }
 

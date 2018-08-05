@@ -14,7 +14,7 @@ namespace timetracker.Structs
         public bool CheckKeyboard = true;
         public bool MakeScreenshots = true;
         public bool CheckMouse = true;
-        public bool CheckWebsites = true;
+        public bool CheckProcesses = true;
         public bool CheckApps = true;
         
     }

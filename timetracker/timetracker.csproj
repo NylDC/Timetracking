@@ -75,7 +75,7 @@
     <Compile Include="AdminDashboardForm.Designer.cs">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processes.cs" />
+    <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="databaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -91,9 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ITimerAdvisor.cs" />
     <Compile Include="Services\Screenshots.cs" />
-    <Compile Include="Advisors\TapBrowsers.cs" />
     <Compile Include="Advisors\TapUserInput.cs" />
-    <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Services\Timer.cs" />
     <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
