@@ -133,7 +133,7 @@ namespace timetracker.Advisors
                 {
                     mainWindowElement = AutomationElement.FromHandle(activeProcess.MainWindowHandle);
 
-                    if (mainWindowElement == null) return false;
+                    if (mainWindowElement == null) return inWhiteList= false;
 
                     AutomationElement elmUrlBar = mainWindowElement.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.NameProperty, browser.Value));
 
@@ -146,7 +146,7 @@ namespace timetracker.Advisors
 
                         //return true;
                     }
-                    else return false;
+                    else return inWhiteList=false;
                     
                 }
             }
@@ -174,7 +174,7 @@ namespace timetracker.Advisors
             Url = Url.Remove(found);
 
             Console.WriteLine("NEW URL = " + Url);
-            if (Url == "facebook.com") return false;
+            if (Url == "facebook.com") return inWhiteList= false;
             return true;
         }
         
@@ -186,7 +186,7 @@ namespace timetracker.Advisors
 
             // GetProcessURL(activeProcess);
 
-            if (activeProcess.ProcessName == "firefox") return false;
+            if (activeProcess.ProcessName == "firefox") return inWhiteList = false;
 /*
             //getting active window handle
             if (GetWindowText(activeProcess.MainWindowHandle, Buff, nChars) > 0)
