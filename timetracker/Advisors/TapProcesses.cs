@@ -30,11 +30,12 @@ namespace timetracker.Advisors
         [DllImport("kernel32.dll")]
         static extern int GetProcessId(IntPtr handle);
 
-        private string processName = "";
+        private Process activeProcess = null;
+        private Process CurProcess = null;
 
         private bool inWhiteList = true;
-        private bool inBlackList = true;
-
+        private bool inBlackList = false;
+        private bool allovdedProcess = true;
 
 
         private static TapProcesses _instance = null;
@@ -57,8 +58,9 @@ namespace timetracker.Advisors
 
         public TapProcesses(bool allovdedProcess)
         {
-            allovdedProcess = inWhiteList;
+            
             threadStart = new ThreadStart(Loop);
+            
         }
 
         ~TapProcesses()
@@ -68,11 +70,14 @@ namespace timetracker.Advisors
 
         public void Start()
         {
-            if (childThread == null || !childThread.IsAlive)
+            
+              if (childThread == null || !childThread.IsAlive)
             {
                 childThread = new Thread(threadStart);
                 childThread.Start();
             }
+            
+            
         }
 
         public void Stop()
@@ -86,16 +91,13 @@ namespace timetracker.Advisors
 
         private void Loop()
         {
-            while (true)
+            activeProcess = GetActiveProcess();
+            if (activeProcess != null && CurProcess != activeProcess)
             {
-                Process activeProcess = GetActiveProcess();
-                if (activeProcess != null)
+                while (true)
                 {
                     GetActiveBrowser(activeProcess);
-                   // Console.WriteLine(GetActiveBrowser(activeProcess));
-                    //if 
                 }
-                // GetActiveWindow();
             }
         }
 
@@ -104,13 +106,14 @@ namespace timetracker.Advisors
             int pid = 0;
             IntPtr handle = GetForegroundWindow();
             GetWindowThreadProcessId(handle, ref pid);
-            Process activeProcess = Process.GetProcessById(pid);
-            if (activeProcess != null) return activeProcess;
-            return null;
+            activeProcess = Process.GetProcessById(pid);
+            return activeProcess;
+            
         }
 
-        private bool GetActiveBrowser(Process activeProcess)
+        private void GetActiveBrowser(Process activeProcess)
         {
+            CurProcess = GetActiveProcess();
             Dictionary<string, string> BrowserUrlFieldPropertyNames = new Dictionary<string, string>();
             BrowserUrlFieldPropertyNames.Add("chrome", "Address and search bar"); //chrome
             //BrowserUrlFieldPropertyNames.Add("firefox", "Search or enter address"); //FireFox
@@ -131,33 +134,32 @@ namespace timetracker.Advisors
                 if (browser.Key != activeProcess.ProcessName) continue;
                 else
                 {
+                    
                     mainWindowElement = AutomationElement.FromHandle(activeProcess.MainWindowHandle);
 
-                    if (mainWindowElement == null) return inWhiteList= false;
+                    if (mainWindowElement == null) allovdedProcess = false;
 
-                    AutomationElement elmUrlBar = mainWindowElement.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.NameProperty, browser.Value));
+                    AutomationElement elmUrlBar = mainWindowElement.FindFirst(TreeScope.Descendants, 
+                        new PropertyCondition(AutomationElement.NameProperty, browser.Value));
 
                     if (elmUrlBar != null)
                     {
-                        // Console.WriteLine(elmUrlBar.Current.Name);
-
-                        return CheckUrl(((ValuePattern)elmUrlBar.GetCurrentPattern(ValuePattern.Pattern)).Current.Value);// as string;
-                        // was return
-
-                        //return true;
+                       
+                        CheckUrl(((ValuePattern)elmUrlBar.GetCurrentPattern(ValuePattern.Pattern)).Current.Value);// as string;
+                     
                     }
-                    else return inWhiteList=false;
-                    
+                   
                 }
             }
 
             
-            return GetActiveWindow(activeProcess);
+            GetActiveWindow(CurProcess);
         }
 
-        private bool CheckUrl(string Url)
+        private void CheckUrl(string Url)
         {
-            if (Url == "" || Url == null || Url.Length < 3) return true;
+            CurProcess = activeProcess;
+            if (Url == "" || Url == null || Url.Length < 3) allovdedProcess = true;
 
             string protocolPattern = @"\w*:\/\/";
             // var protocolPattern = new Regex(@"/\w *:\/\//gi");
@@ -166,46 +168,53 @@ namespace timetracker.Advisors
             Match m = r.Match(Url);
 
             int found = Url.IndexOf("//");
-            if (found < 1) return true;
-            Url = Url.Substring(found + 2);
+            if (found < 1) allovdedProcess = true;
+            else
+            {
+                Url = Url.Substring(found + 2);
 
-            found = Url.IndexOf("/");
-            if (found < 1) return true;
-            Url = Url.Remove(found);
-
-            Console.WriteLine("NEW URL = " + Url);
-            if (Url == "facebook.com") return inWhiteList= false;
-            return true;
+                found = Url.IndexOf("/");
+                if (found < 1) allovdedProcess = true;
+                else Url = Url.Remove(found);
+            }
+            //Console.WriteLine("NEW URL = " + Url);
+            if (Url == "facebook.com" || Url == "www.facebook.com") allovdedProcess = false;
+            else allovdedProcess = true;
         }
         
 
-        private bool GetActiveWindow(Process activeProcess)
+        private void GetActiveWindow(Process activeProcess)
         {
             const int nChars = 256;
             StringBuilder Buff = new StringBuilder(nChars);
 
-            // GetProcessURL(activeProcess);
+            
+           // CurProcess = activeProcess;
+           // Console.WriteLine(activeProcess.ProcessName);
+           // Console.WriteLine(CurProcess.ProcessName);
 
-            if (activeProcess.ProcessName == "firefox") return inWhiteList = false;
-/*
-            //getting active window handle
-            if (GetWindowText(activeProcess.MainWindowHandle, Buff, nChars) > 0)
-            {
-                if (Buff.ToString() == "firefox") { return false; }
-                else {
-                    // name = Buff.ToString();
+            if (activeProcess.ProcessName == "firefox") allovdedProcess = false;
 
-                  //  Console.WriteLine(Buff.ToString());
-                    return true;
-                }
-            }*/
-            return true;
+            /*
+                        //getting active window handle
+                        if (GetWindowText(activeProcess.MainWindowHandle, Buff, nChars) > 0)
+                        {
+                            if (Buff.ToString() == "firefox") { return false; }
+                            else {
+                                // name = Buff.ToString();
+
+                              //  Console.WriteLine(Buff.ToString());
+                                return true;
+                            }
+                        }*/
+           
         }
         
     
         public bool AdviseIfCanCount()
         {
-            return true;
+            
+            return allovdedProcess ;
         }
     
 
