@@ -51,8 +51,8 @@ namespace timetracker.Advisors
             DateTime Now = DateTime.Now;
             bool _mouseYes = (!TapMouse || TapMouse && LastMouseAction != null && Now.Subtract(LastMouseAction).TotalSeconds < MaxMouseIdleInterval);
             bool _kbYes = (!TapKeyboard || TapKeyboard && LastKeyboardAction != null && Now.Subtract(LastKeyboardAction).TotalSeconds < MaxKeyboardIdleInterval);
-            Console.WriteLine("Keyboard " + (_kbYes ? "YES" : "NO"));
-            Console.WriteLine("Mouse    " + (_mouseYes ? "YES" : "NO"));
+           // Console.WriteLine("Keyboard " + (_kbYes ? "YES" : "NO"));
+           // Console.WriteLine("Mouse    " + (_mouseYes ? "YES" : "NO"));
             return _mouseYes || _kbYes;
         }
 
@@ -106,7 +106,7 @@ namespace timetracker.Advisors
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                Console.WriteLine((Keys)vkCode);
+               // Console.WriteLine((Keys)vkCode);
                 LastKeyboardAction = DateTime.Now;
             }
 
@@ -149,7 +149,7 @@ namespace timetracker.Advisors
                 MouseMessages.WM_LBUTTONDOWN == (MouseMessages)wParam || MouseMessages.WM_MOUSEMOVE == (MouseMessages)wParam)
             {
                 MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
-                Console.WriteLine(hookStruct.pt.x + ", " + hookStruct.pt.y);
+               // Console.WriteLine(hookStruct.pt.x + ", " + hookStruct.pt.y);
                 LastMouseAction = DateTime.Now;
             }
 
