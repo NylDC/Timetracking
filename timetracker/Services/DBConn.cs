@@ -85,7 +85,7 @@ namespace timetracker.Services
                 if (k != pkname)
                 {
                     if (setters.Length > 0) setters += ", ";
-                    setters += k + "=@" + k;
+                    setters += "[" + k + "]" + "=@" + k;
                 }
                 cmd.Parameters.AddWithValue("@"+k, dict[k]);
             }
@@ -107,7 +107,7 @@ namespace timetracker.Services
                     keyList += ", ";
                     valList += ", ";
                 }
-                keyList += k;
+                keyList += "["+k+"]"; //make names safe
                 valList += "@" + k;
                 cmd.Parameters.AddWithValue("@" + k, dict[k]);
             }

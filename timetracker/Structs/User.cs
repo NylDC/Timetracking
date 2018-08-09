@@ -9,9 +9,11 @@ namespace timetracker.Structs
         public override string PK() => "Id";
 
         public string Login { get; set; } = "login";
-        public string FullName { get; set; } = "";
+        public string FullName { get; set; } = "full name";
 
-        private string Password = null;
+        private string Password = "";
+        public void SetPassword(string pw) => Password = pw;
+
         public bool IsAdmin { get; set; } = false;
         public bool Enabled { get; set; } = false;
         public string GSTNumber { get; set; } = "";

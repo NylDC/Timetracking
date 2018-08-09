@@ -15,11 +15,11 @@ namespace timetracker.Structs
         public bool CheckMouse = true;
         public bool CheckApps = true;
         public bool CheckBrowsers = true;
-        public bool Enabled = false;
+        public bool Active = false;
 
         public Project() { }
 
-        public Project(string name, bool mkScrshots, bool chkKeyboard, bool chkMouse, bool chkApps, bool chkBrowsers, bool enabled)
+        public Project(string name, bool mkScrshots, bool chkKeyboard, bool chkMouse, bool chkApps, bool chkBrowsers, bool active)
         {
             Name = name;
             MakeScreenshots = mkScrshots;
@@ -27,7 +27,7 @@ namespace timetracker.Structs
             CheckMouse = chkMouse;
             CheckApps = chkApps;
             CheckBrowsers = chkBrowsers;
-            Enabled = enabled;
+            Active = active;
         }
 
         // Implement DB-related routines
@@ -38,7 +38,7 @@ namespace timetracker.Structs
             CheckBrowsers       = row["CheckBrowsers"].ToString() == "1";
             CheckKeyboard       = row["CheckKeyboard"].ToString() == "1";
             CheckMouse          = row["CheckMouse"].ToString() == "1";
-            Enabled             = row["Enabled"].ToString() == "1";
+            Active              = row["Active"].ToString() == "1";
         }
 
         protected override void OnSave(Dictionary<string, object> dict)
@@ -48,7 +48,7 @@ namespace timetracker.Structs
             dict["CheckBrowsers"]   = CheckBrowsers ? 1 : 0;
             dict["CheckKeyboard"]   = CheckKeyboard ? 1 : 0;
             dict["CheckMouse"]      = CheckMouse ? 1 : 0;
-            dict["Enabled"]         = Enabled ? 1 : 0;
+            dict["Active"]          = Active ? 1 : 0;
         }
     }
 }

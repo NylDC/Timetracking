@@ -18,16 +18,16 @@ namespace timetracker.Structs
         public WorkType WorkType => WorkTypeModel.Find(WorkTypeId);
         public User User => UserModel.Find(UserId);
 
-        public string Comments = "";
+        public string Comment = "";
 
         public Work() { }
 
-        public Work(int projectId, int userId, int workTypeId, string comments, int time)
+        public Work(int projectId, int userId, int workTypeId, string comment, int time)
         {
             ProjectId = projectId;
             UserId = userId;
             WorkTypeId = workTypeId;
-            Comments = comments;
+            Comment = comment;
             _time = time;
         }
 
@@ -46,7 +46,7 @@ namespace timetracker.Structs
 
         protected override void OnApply(DataRow row)
         {
-            Comments = row["Comments"].ToString();
+            Comment = row["Comment"].ToString();
             WorkTypeId = Int32.Parse(row["WorkTypeId"].ToString());
             ProjectId = Int32.Parse(row["ProjectId"].ToString());
             UserId = Int32.Parse(row["UserId"].ToString());
@@ -55,7 +55,7 @@ namespace timetracker.Structs
 
         protected override void OnSave(Dictionary<string, object> dict)
         {
-            dict["Comments"] = Comments;
+            dict["Comment"] = Comment;
             dict["WorkTypeId"] = WorkTypeId;
             dict["ProjectId"] = ProjectId;
             dict["UserId"] = UserId;

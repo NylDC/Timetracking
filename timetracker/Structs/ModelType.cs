@@ -13,8 +13,9 @@ namespace timetracker.Structs
         {
             var dict = new Dictionary<string, object>();
             OnSave(dict);
-            if(Id!=0)
+            if(Id != 0)
             {
+                dict["Id"] = Id;
                 DoUpdate(dict);
             } else
             {

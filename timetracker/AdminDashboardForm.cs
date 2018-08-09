@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using timetracker.Models;
+using timetracker.Structs;
 
 namespace timetracker
 {
@@ -29,56 +31,102 @@ namespace timetracker
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dbDataSet.Projects' table. You can move, or remove it, as needed.
-            this.projectsTableAdapter1.Fill(this.dbDataSet.Projects);
-            // TODO: This line of code loads data into the 'dbDataSet.WorkTypes' table. You can move, or remove it, as needed.
-            this.workTypesTableAdapter1.Fill(this.dbDataSet.WorkTypes);
-            // TODO: This line of code loads data into the 'dbDataSet.Users' table. You can move, or remove it, as needed.
-            this.usersTableAdapter1.Fill(this.dbDataSet.Users);
+            gbUser.Enabled = false;
+            
+            UpdateLists();
+        }
+
+        private void UpdateLists()
+        {
+            listboxProjects.DataSource = ProjectModel.List();
+            listboxUsers.DataSource = UserModel.List();
+            listboxWorktypes.DataSource = WorkTypeModel.List();
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)
         {
-            dbDataSet.Users.AddUsersRow("New User", "123", "New User", 0, 0, "000", "Auckland", "000");
-            dbDataSet.AcceptChanges();
+            new User().Save();
+            UpdateLists();
         }
 
         private void tsbAddProject_Click(object sender, EventArgs e)
         {
-            dbDataSet.Projects.AddProjectsRow("New Project", 1, 1, 1, 1, 1, 0);
-            dbDataSet.AcceptChanges();
+            new Project().Save();
+            UpdateLists();
         }
         
         private void tsbAddWorktype_Click(object sender, EventArgs e)
         {
-            dbDataSet.WorkTypes.AddWorkTypesRow("New Work Type");
-            dbDataSet.AcceptChanges();
+            new WorkType().Save();
+            UpdateLists();
         }
 
-        dbDataSet.UsersRow editedUser = null;
+        User editedUser = null;
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            object _id = listboxUsers.SelectedValue;
-            if (_id == null)
+            gbUser.Enabled = false;
+            tsbRemoveUser.Enabled = false;
+            editedUser = null;
+            if (listboxUsers.SelectedItem != null)
             {
-                gbUser.Enabled = false;
-                editedUser = null;
-            } else {
-                int id = (int)_id;
                 try
                 {
-                    editedUser = dbDataSet.Users.FindById(id);
-                    if (editedUser == null) return;
+                    editedUser = (User)listboxUsers.SelectedItem;
                     gbUser.Enabled = true;
-                    tbUserLogin.Text = editedUser.Login;
-                    tbUserFullName.Text = editedUser.FullName;
-                    cbUserEnabled.Checked = editedUser.Enabled == 1;
-                    cbUserIsAdmin.Checked = editedUser.IsAdmin == 1;
-                } catch(System.IndexOutOfRangeException ex)
+                    tsbRemoveUser.Enabled = true;
+                    showEditedUserData();
+                } catch(Exception ex)
                 {
 
                 }  
             }
         }
-	}
+
+        private void showEditedUserData()
+        {
+            if (editedUser == null) return;
+            tbUserLogin.Text = editedUser.Login;
+            tbUserFullName.Text = editedUser.FullName;
+            tbUserAddress.Text = editedUser.Address;
+            tbUserGSTNumber.Text = editedUser.GSTNumber;
+            tbUserIRDNumber.Text = editedUser.IRDNumber;
+            cbUserEnabled.Checked = editedUser.Enabled;
+            cbUserIsAdmin.Checked = editedUser.IsAdmin;
+        }
+        private void btUserSave_Click(object sender, EventArgs e)
+        {
+            editedUser.Login        = tbUserLogin.Text;
+            editedUser.FullName     = tbUserFullName.Text;
+            editedUser.Address      = tbUserAddress.Text;
+            editedUser.GSTNumber    = tbUserGSTNumber.Text;
+            editedUser.IRDNumber    = tbUserIRDNumber.Text;
+            if(tbUserPassword.Text != "")
+            {
+                editedUser.SetPassword(tbUserPassword.Text);
+            }
+
+            editedUser.Enabled      = cbUserEnabled.Checked;
+            editedUser.IsAdmin      = cbUserIsAdmin.Checked;
+
+            editedUser.Save();
+            UpdateLists();
+            MessageBox.Show("User saved");
+        }
+
+        private void btUserCancel_Click(object sender, EventArgs e)
+        {
+            showEditedUserData(); //reset
+        }
+
+        private void tsbRemoveUser_Click(object sender, EventArgs e)
+        {
+            if(editedUser!= null)
+            {
+                editedUser.Delete();
+                editedUser = null;
+                tsbRemoveUser.Enabled = false;
+                UpdateLists();
+            }
+        }
+    }
 }
