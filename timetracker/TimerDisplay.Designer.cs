@@ -35,7 +35,6 @@
             this.btStop = new System.Windows.Forms.Button();
             this.btResume = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
-            this.tableAdapterManager1 = new timetracker.databaseDataSetTableAdapters.TableAdapterManager();
             this.label1 = new System.Windows.Forms.Label();
             this.cbProjects = new System.Windows.Forms.ComboBox();
             this.cbWorkTypes = new System.Windows.Forms.ComboBox();
@@ -135,16 +134,7 @@
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.ProjectsTableAdapter = null;
-            this.tableAdapterManager1.UpdateOrder = timetracker.databaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager1.UsersTableAdapter = null;
-            this.tableAdapterManager1.WorksTableAdapter = null;
-            this.tableAdapterManager1.WorkTypesTableAdapter = null;
+            
             // 
             // label1
             // 
@@ -270,7 +260,6 @@
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btResume;
         private System.Windows.Forms.Button btStart;
-        private databaseDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbProjects;
         private System.Windows.Forms.ComboBox cbWorkTypes;

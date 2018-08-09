@@ -28,14 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listboxUsers = new System.Windows.Forms.ListBox();
-            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dbDataSet = new timetracker.dbDataSet();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbAddUser = new System.Windows.Forms.ToolStripButton();
             this.tsbRemoveUser = new System.Windows.Forms.ToolStripButton();
@@ -64,7 +61,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listboxWorktypes = new System.Windows.Forms.ListBox();
-            this.workTypesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.tsbAddWorktype = new System.Windows.Forms.ToolStripButton();
             this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
@@ -79,23 +75,16 @@
             this.btOK = new System.Windows.Forms.Button();
             this.tbFreq = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.projectsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter1 = new timetracker.dbDataSetTableAdapters.UsersTableAdapter();
-            this.workTypesTableAdapter1 = new timetracker.dbDataSetTableAdapters.WorkTypesTableAdapter();
-            this.projectsTableAdapter1 = new timetracker.dbDataSetTableAdapters.ProjectsTableAdapter();
             this.tbUserAddress = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.gbUser.SuspendLayout();
@@ -107,12 +96,9 @@
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.workTypesBindingSource1)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panBottomStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -176,16 +162,6 @@
             this.listboxUsers.TabIndex = 1;
             this.listboxUsers.ValueMember = "Id";
             this.listboxUsers.SelectedIndexChanged += new System.EventHandler(this.listboxUsers_SelectedIndexChanged);
-            // 
-            // usersBindingSource1
-            // 
-            this.usersBindingSource1.DataMember = "Users";
-            this.usersBindingSource1.DataSource = this.dbDataSet;
-            // 
-            // dbDataSet
-            // 
-            this.dbDataSet.DataSetName = "dbDataSet";
-            this.dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // toolStrip1
             // 
@@ -496,11 +472,6 @@
             this.listboxWorktypes.TabIndex = 1;
             this.listboxWorktypes.ValueMember = "Id";
             // 
-            // workTypesBindingSource1
-            // 
-            this.workTypesBindingSource1.DataMember = "WorkTypes";
-            this.workTypesBindingSource1.DataSource = this.dbDataSet;
-            // 
             // toolStrip3
             // 
             this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -639,23 +610,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshoting Frequency (s)";
             // 
-            // projectsBindingSource1
-            // 
-            this.projectsBindingSource1.DataMember = "Projects";
-            this.projectsBindingSource1.DataSource = this.dbDataSet;
-            // 
-            // usersTableAdapter1
-            // 
-            this.usersTableAdapter1.ClearBeforeFill = true;
-            // 
-            // workTypesTableAdapter1
-            // 
-            this.workTypesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // projectsTableAdapter1
-            // 
-            this.projectsTableAdapter1.ClearBeforeFill = true;
-            // 
             // tbUserAddress
             // 
             this.tbUserAddress.Location = new System.Drawing.Point(92, 124);
@@ -705,10 +659,6 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "IRD Number";
             // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(timetracker.Structs.User);
-            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -727,8 +677,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -745,14 +693,11 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.workTypesBindingSource1)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panBottomStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -802,14 +747,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btUserSave;
         private System.Windows.Forms.Button btUserCancel;
-        private dbDataSet dbDataSet;
-        private System.Windows.Forms.BindingSource usersBindingSource1;
-        private dbDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
-        private System.Windows.Forms.BindingSource workTypesBindingSource1;
-        private dbDataSetTableAdapters.WorkTypesTableAdapter workTypesTableAdapter1;
-        private System.Windows.Forms.BindingSource projectsBindingSource1;
-        private dbDataSetTableAdapters.ProjectsTableAdapter projectsTableAdapter1;
-        private System.Windows.Forms.BindingSource userBindingSource;
 		private System.Windows.Forms.TextBox tbKBInterval;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox tbMouseInterval;
