@@ -50,5 +50,9 @@ namespace timetracker.Structs
             dict["CheckMouse"]      = CheckMouse ? 1 : 0;
             dict["Active"]          = Active ? 1 : 0;
         }
+        public override void SetName(string name)
+        {
+            Name = name;
+        }
     }
 }

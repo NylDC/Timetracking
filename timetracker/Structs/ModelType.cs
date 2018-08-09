@@ -7,8 +7,8 @@ namespace timetracker.Structs
 {
     abstract class ModelType
     {
-        protected int Id = 0;
-        
+        public int Id { get; private set; } = 0;
+
         public int Save()
         {
             var dict = new Dictionary<string, object>();
@@ -51,5 +51,7 @@ namespace timetracker.Structs
         abstract public string PK();
 
         abstract public string Table();
+
+        abstract public void SetName(string name);
     }
 }

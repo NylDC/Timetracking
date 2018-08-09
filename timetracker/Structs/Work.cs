@@ -14,11 +14,28 @@ namespace timetracker.Structs
         public int UserId = 0;
         public int WorkTypeId = 0;
 
-        public Project Project => ProjectModel.Find(ProjectId);
-        public WorkType WorkType => WorkTypeModel.Find(WorkTypeId);
+        public Project Project
+        {
+            get { return ProjectModel.Find(ProjectId); }
+            set { ProjectId = value == null ? 0 : value.Id; }
+        }
+        public WorkType WorkType
+        {
+            get { return WorkTypeModel.Find(WorkTypeId); }
+            set { WorkTypeId = value == null ? 0 : value.Id; }
+        }
         public User User => UserModel.Find(UserId);
 
         public string Comment = "";
+
+        public string VisibleTitle {
+            get
+            {
+                string projectName = ProjectId != 0 ? Project.Name : "---";
+                string workTypeName = WorkTypeId != 0 ? WorkType.Name : "---";
+                return Id == 0 ? Comment : "[" + projectName + "/" + workTypeName + "] " + Comment + "(" + Time.ToString() + "s)";
+            }
+        }
 
         public Work() { }
 
@@ -29,6 +46,14 @@ namespace timetracker.Structs
             WorkTypeId = workTypeId;
             Comment = comment;
             _time = time;
+        }
+
+        public Work(int projectId, int userId, int workTypeId, string comment)
+        {
+            ProjectId = projectId;
+            UserId = userId;
+            WorkTypeId = workTypeId;
+            Comment = comment;
         }
 
         int _time = 0;
@@ -60,6 +85,10 @@ namespace timetracker.Structs
             dict["ProjectId"] = ProjectId;
             dict["UserId"] = UserId;
             dict["Time"] = Time;
+        }
+        public override void SetName(string name)
+        {
+            Comment = name;
         }
     }
 }

@@ -7,12 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using timetracker.Models;
 using timetracker.Services;
+using timetracker.Structs;
 
 namespace timetracker
 {
     public partial class TimerDisplay : Form
     {
+        Project selectedProject = null;
+        WorkType selectedWorkType = null;
+        Work selectedWork = null;
+
         public TimerDisplay()
         {
             InitializeComponent();
@@ -55,20 +61,86 @@ namespace timetracker
         private void btStart_Click(object sender, EventArgs e)
         {
             // TODO: Take this from a real DB
-            Structs.Project project = new Structs.Project();
-            Structs.WorkType workType = new Structs.WorkType();
-            Structs.Work work = new Structs.Work();
-            TimerManager.Instance.Start(project, workType, work);
+            if(selectedWork.Id == 0)
+            {
+                selectedWork.UserId = Auth.CurrentUser.Id;
+                selectedWork.Project = selectedProject;
+                selectedWork.WorkType = selectedWorkType;
+                selectedWork.Comment = Prompt.ShowDialog("Specify new work name", "New work");
+                selectedWork.Save();
+            }
+            TimerManager.Instance.Start(selectedWork);
+            SetEditControlsEnabled(false);
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private void btResume_Click(object sender, EventArgs e)
         {
-            TimerManager.Instance.Resume();
+            TimerManager.Instance.Resume(selectedWork);
+            SetEditControlsEnabled(false);
         }
 
         private void btStop_Click(object sender, EventArgs e)
         {
             TimerManager.Instance.Stop();
+            SetEditControlsEnabled(true);
+            RefreshWorks();
+        }
+
+        private void RefreshWorks() {
+            cbWorks.DataSource = WorkModel.ListWithBlank("--- New work ---");
+            if (selectedWork != null)
+            {
+                int selectedId = selectedWork.Id;
+                int pos = 0;
+                foreach (Work work in cbWorks.Items)
+                {
+                    if (work.Id == selectedId) break;
+                    pos++;
+                }
+                cbWorks.SelectedIndex = pos;
+            }
+        }
+
+        private void SetEditControlsEnabled(bool enabled)
+        {
+            cbProjects.Enabled = enabled;
+            cbWorkTypes.Enabled = enabled;
+            cbUser.Enabled = enabled;
+            cbWorks.Enabled = enabled;
+        }
+
+        private void TimerDisplay_Load(object sender, EventArgs e)
+        {
+            UpdateLists();
+        }
+
+        private void UpdateLists() {
+            cbProjects.DataSource = ProjectModel.List();
+            cbWorkTypes.DataSource = WorkTypeModel.List();
+            cbUser.DataSource = UserModel.List();
+            RefreshWorks();
+        }
+
+        private void cbProjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedProject = (Project)cbProjects.SelectedItem;
+        }
+
+        private void cbWorkTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedWorkType = (WorkType)cbWorkTypes.SelectedItem;
+        }
+
+        private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Auth.CurrentUser = (User)cbUser.SelectedItem;
+        }
+
+        private void cbWorks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedWork = (Work)cbWorks.SelectedItem;
+            btStart.Enabled = selectedWork.Id == 0;
+            btResume.Enabled = selectedWork.Id != 0;
         }
     }
 }

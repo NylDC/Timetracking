@@ -64,5 +64,11 @@ namespace timetracker.Structs
             dict["IRDNumber"] = IRDNumber;
             dict["Enabled"] = Enabled ? 1 : 0;
         }
+
+        public override void SetName(string name)
+        {
+            Login = name;
+            FullName = name;
+        }
     }
 }

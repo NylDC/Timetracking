@@ -39,21 +39,25 @@ namespace timetracker.Services
             Timer.Instance.CounterChange += OnCounterChange;
         }
 
-        public void Start(Project project, WorkType workType, Work work)
+        public void Start(Work work)
         {
             StopEverything();
-
-            currentProject = project;
-            currentWorkType = workType;
-            currentWork = work;
-
+            SetWork(work);
             StartEverything();
         }
 
-        public void Resume()
+        public void Resume(Work work)
         {
-            if(currentProject != null)
-                StartEverything();
+            SetWork(work);
+            StartEverything();
+        }
+
+        public void SetWork(Work work)
+        {
+            currentProject = work.Project;
+            currentWorkType = work.WorkType;
+            currentWork = work;
+            Timer.Instance.Value = work.Time;
         }
 
         public void Stop() => StopEverything();

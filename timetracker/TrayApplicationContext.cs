@@ -75,12 +75,14 @@ namespace timetracker
 
         void Icon_Click(object sender, EventArgs e)
         {
-            
             if (timerDisplay == null)
             {
                 timerDisplay = new TimerDisplay();
+                timerDisplay.Left = Screen.PrimaryScreen.WorkingArea.Width - timerDisplay.Size.Width;
+                timerDisplay.Top = Screen.PrimaryScreen.WorkingArea.Height - timerDisplay.Size.Height;
                 timerDisplay.Show();
-            }else
+            }
+            else
                 timerDisplay.Visible = !timerDisplay.Visible;
         }
 
@@ -107,13 +109,13 @@ namespace timetracker
 		void Preferences_Click(object sender, EventArgs e)
 		{
 			// Open admin Dashboard window
-
 			if (adminDashboardForm == null)
 			{
 				adminDashboardForm = new AdminDashboardForm();
-				adminDashboardForm.Show();
-			}
-			else { adminDashboardForm.Activate(); }
+            }
+            adminDashboardForm.Show();
+            adminDashboardForm.Activate();
+            
 		}
 	}
 }

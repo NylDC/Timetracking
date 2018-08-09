@@ -26,5 +26,10 @@ namespace timetracker.Structs
         {
             dict["Name"] = Name;
         }
+
+        public override void SetName(string name)
+        {
+            Name = name;
+        }
     }
 }

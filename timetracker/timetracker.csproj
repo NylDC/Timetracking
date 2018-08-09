@@ -93,8 +93,10 @@
     <Compile Include="Models\WorkTypeModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Auth.cs" />
     <Compile Include="Services\DBConn.cs" />
     <Compile Include="Services\ITimerAdvisor.cs" />
+    <Compile Include="Services\Prompt.cs" />
     <Compile Include="Services\Screenshots.cs" />
     <Compile Include="Advisors\TapUserInput.cs" />
     <Compile Include="Services\Timer.cs" />

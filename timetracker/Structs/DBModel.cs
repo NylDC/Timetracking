@@ -46,6 +46,15 @@ namespace timetracker.Structs
             return result;
         }
 
+        public static List<T> ListWithBlank(string blankName)
+        {
+            List<T> list = List();
+            T blank = new T();
+            blank.SetName(blankName);
+            list.Insert(0, blank);
+            return list;
+        }
+
         public static List<string> List(string field)
         {
             var result = new List<string>();
