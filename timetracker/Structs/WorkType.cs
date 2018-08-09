@@ -1,14 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data;
 
 namespace timetracker.Structs
 {
-    class WorkType
+    class WorkType : ModelType
     {
-        public int Id = 1;
+        public override string Table() => "WorkTypes";
+        public override string PK() => "Id";
+
         public string Name = "Test Work Type";
+
+        public WorkType() { }
+
+        public WorkType(string name)
+        {
+            Name = name;
+        }
+
+        protected override void OnApply(DataRow row)
+        {
+            Name = row["Name"].ToString();
+        }
+
+        protected override void OnSave(Dictionary<string, object> dict)
+        {
+            dict["Name"] = Name;
+        }
     }
 }
