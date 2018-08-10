@@ -63,10 +63,12 @@ namespace timetracker
             // TODO: Take this from a real DB
             if(selectedWork.Id == 0)
             {
+                string comment = Prompt.ShowDialog("Specify new work name", "New work");
+                if (comment == null) return;
                 selectedWork.UserId = Auth.CurrentUser.Id;
                 selectedWork.Project = selectedProject;
                 selectedWork.WorkType = selectedWorkType;
-                selectedWork.Comment = Prompt.ShowDialog("Specify new work name", "New work");
+                selectedWork.Comment = comment;
                 selectedWork.Save();
             }
             TimerManager.Instance.Start(selectedWork);
