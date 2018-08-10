@@ -89,7 +89,7 @@ namespace timetracker
         }
 
         private void RefreshWorks() {
-            cbWorks.DataSource = WorkModel.ListWithBlank("--- New work ---");
+            cbWorks.DataSource = WorkModel.ListWithBlank("--- New work ---", Auth.CurrentUser);
             if (selectedWork != null)
             {
                 int selectedId = selectedWork.Id;
@@ -136,6 +136,7 @@ namespace timetracker
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             Auth.CurrentUser = (User)cbUser.SelectedItem;
+            RefreshWorks();
         }
 
         private void cbWorks_SelectedIndexChanged(object sender, EventArgs e)

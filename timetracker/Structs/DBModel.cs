@@ -33,10 +33,12 @@ namespace timetracker.Structs
             return result;
         }
 
-        public static List<T> List()
+        public static List<T> List() => List(null);
+
+        public static List<T> List(WhereGroup whereConditions)
         {
             var result = new List<T>();
-            DataTable dt = DBConn.Instance.GetAllFromTable((new T()).Table());
+            DataTable dt = DBConn.Instance.GetAllFromTable((new T()).Table(), whereConditions);
             foreach (DataRow row in dt.Rows)
             {
                 T obj = new T();
@@ -46,16 +48,18 @@ namespace timetracker.Structs
             return result;
         }
 
-        public static List<T> ListWithBlank(string blankName)
+        public static List<T> ListWithBlank(string blankName) => ListWithBlank(blankName, null);
+
+        public static List<T> ListWithBlank(string blankName, WhereGroup whereConditions)
         {
-            List<T> list = List();
+            List<T> list = List(whereConditions);
             T blank = new T();
             blank.SetName(blankName);
             list.Insert(0, blank);
             return list;
         }
 
-        public static List<string> List(string field)
+        public static List<string> ListField(string field)
         {
             var result = new List<string>();
             DataTable dt = DBConn.Instance.GetAllFromTable((new T()).Table());

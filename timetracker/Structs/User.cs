@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using timetracker.Models;
 
 namespace timetracker.Structs
 {
@@ -70,5 +71,7 @@ namespace timetracker.Structs
             Login = name;
             FullName = name;
         }
+
+        public List<Work> Works() => WorkModel.List(this);
     }
 }
