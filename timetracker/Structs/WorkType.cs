@@ -8,7 +8,7 @@ namespace timetracker.Structs
         public override string Table() => "WorkTypes";
         public override string PK() => "Id";
 
-        public string Name = "Test Work Type";
+        public string Name { get; set; } = "Test Work Type";
 
         public WorkType() { }
 

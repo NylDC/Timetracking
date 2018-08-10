@@ -26,7 +26,7 @@ namespace timetracker.Structs
         }
         public User User => UserModel.Find(UserId);
 
-        public string Comment = "";
+        public string Comment { get; set; } = "";
 
         public string VisibleTitle {
             get
