@@ -14,17 +14,25 @@ namespace timetracker.Structs
         public int UserId = 0;
         public int WorkTypeId = 0;
 
+        private Project _Project = null;
         public Project Project
         {
-            get { return ProjectModel.Find(ProjectId); }
-            set { ProjectId = value == null ? 0 : value.Id; }
+            get { return _Project ?? (_Project = ProjectModel.Find(ProjectId)); }
+            set { ProjectId = (_Project = value) == null ? 0 : value.Id; }
         }
+
+        private WorkType _WorkType = null;
         public WorkType WorkType
         {
-            get { return WorkTypeModel.Find(WorkTypeId); }
-            set { WorkTypeId = value == null ? 0 : value.Id; }
+            get { return _WorkType ?? (_WorkType = WorkTypeModel.Find(WorkTypeId)); }
+            set { WorkTypeId = (_WorkType = value) == null ? 0 : value.Id; }
         }
-        public User User => UserModel.Find(UserId);
+
+        private User _User = null;
+        public User User {
+            get { return _User ?? (_User = UserModel.Find(UserId)); }
+            set { UserId = (_User = value) == null ? 0 : value.Id; }
+        }
 
         public string Comment { get; set; } = "";
 
