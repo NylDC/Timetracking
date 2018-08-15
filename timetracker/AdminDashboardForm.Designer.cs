@@ -38,6 +38,12 @@
             this.tsbRemoveUser = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.gbUser = new System.Windows.Forms.GroupBox();
+            this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbUserAddress = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tbUserFullName = new System.Windows.Forms.TextBox();
             this.tbUserPassword = new System.Windows.Forms.TextBox();
             this.tbUserLogin = new System.Windows.Forms.TextBox();
@@ -66,6 +72,9 @@
             this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
             this.gbWorkType = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chkLBoxProcesses = new System.Windows.Forms.CheckedListBox();
+            this.lblUrls = new System.Windows.Forms.Label();
+            this.lblProcesses = new System.Windows.Forms.Label();
             this.tbMouseInterval = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbKBInterval = new System.Windows.Forms.TextBox();
@@ -75,12 +84,7 @@
             this.btOK = new System.Windows.Forms.Button();
             this.tbFreq = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbUserAddress = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.chkLBoxUrls = new System.Windows.Forms.CheckedListBox();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -234,6 +238,55 @@
             this.gbUser.TabIndex = 2;
             this.gbUser.TabStop = false;
             this.gbUser.Text = "User Properties";
+            // 
+            // tbUserIRDNumber
+            // 
+            this.tbUserIRDNumber.Location = new System.Drawing.Point(92, 183);
+            this.tbUserIRDNumber.Name = "tbUserIRDNumber";
+            this.tbUserIRDNumber.Size = new System.Drawing.Size(252, 20);
+            this.tbUserIRDNumber.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 186);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "IRD Number";
+            // 
+            // tbUserGSTNumber
+            // 
+            this.tbUserGSTNumber.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
+            this.tbUserGSTNumber.Location = new System.Drawing.Point(92, 153);
+            this.tbUserGSTNumber.Name = "tbUserGSTNumber";
+            this.tbUserGSTNumber.Size = new System.Drawing.Size(252, 20);
+            this.tbUserGSTNumber.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "GST Number";
+            // 
+            // tbUserAddress
+            // 
+            this.tbUserAddress.Location = new System.Drawing.Point(92, 124);
+            this.tbUserAddress.Name = "tbUserAddress";
+            this.tbUserAddress.Size = new System.Drawing.Size(252, 20);
+            this.tbUserAddress.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Address";
             // 
             // tbUserFullName
             // 
@@ -515,6 +568,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.chkLBoxUrls);
+            this.tabPage3.Controls.Add(this.chkLBoxProcesses);
+            this.tabPage3.Controls.Add(this.lblUrls);
+            this.tabPage3.Controls.Add(this.lblProcesses);
             this.tabPage3.Controls.Add(this.tbMouseInterval);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.tbKBInterval);
@@ -529,6 +586,32 @@
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chkLBoxProcesses
+            // 
+            this.chkLBoxProcesses.FormattingEnabled = true;
+            this.chkLBoxProcesses.Location = new System.Drawing.Point(277, 29);
+            this.chkLBoxProcesses.Name = "chkLBoxProcesses";
+            this.chkLBoxProcesses.Size = new System.Drawing.Size(157, 229);
+            this.chkLBoxProcesses.TabIndex = 11;
+            // 
+            // lblUrls
+            // 
+            this.lblUrls.AutoSize = true;
+            this.lblUrls.Location = new System.Drawing.Point(447, 12);
+            this.lblUrls.Name = "lblUrls";
+            this.lblUrls.Size = new System.Drawing.Size(25, 13);
+            this.lblUrls.TabIndex = 10;
+            this.lblUrls.Text = "Urls";
+            // 
+            // lblProcesses
+            // 
+            this.lblProcesses.AutoSize = true;
+            this.lblProcesses.Location = new System.Drawing.Point(282, 12);
+            this.lblProcesses.Name = "lblProcesses";
+            this.lblProcesses.Size = new System.Drawing.Size(56, 13);
+            this.lblProcesses.TabIndex = 9;
+            this.lblProcesses.Text = "Processes";
             // 
             // tbMouseInterval
             // 
@@ -576,7 +659,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(373, 25);
+            this.btCancel.Location = new System.Drawing.Point(416, 25);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 1;
@@ -610,54 +693,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshoting Frequency (s)";
             // 
-            // tbUserAddress
+            // chkLBoxUrls
             // 
-            this.tbUserAddress.Location = new System.Drawing.Point(92, 124);
-            this.tbUserAddress.Name = "tbUserAddress";
-            this.tbUserAddress.Size = new System.Drawing.Size(252, 20);
-            this.tbUserAddress.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 127);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Address";
-            // 
-            // tbUserGSTNumber
-            // 
-            this.tbUserGSTNumber.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.tbUserGSTNumber.Location = new System.Drawing.Point(92, 153);
-            this.tbUserGSTNumber.Name = "tbUserGSTNumber";
-            this.tbUserGSTNumber.Size = new System.Drawing.Size(252, 20);
-            this.tbUserGSTNumber.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "GST Number";
-            // 
-            // tbUserIRDNumber
-            // 
-            this.tbUserIRDNumber.Location = new System.Drawing.Point(92, 183);
-            this.tbUserIRDNumber.Name = "tbUserIRDNumber";
-            this.tbUserIRDNumber.Size = new System.Drawing.Size(252, 20);
-            this.tbUserIRDNumber.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 186);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "IRD Number";
+            this.chkLBoxUrls.FormattingEnabled = true;
+            this.chkLBoxUrls.Location = new System.Drawing.Point(440, 29);
+            this.chkLBoxUrls.Name = "chkLBoxUrls";
+            this.chkLBoxUrls.Size = new System.Drawing.Size(157, 229);
+            this.chkLBoxUrls.TabIndex = 12;
             // 
             // AdminDashboardForm
             // 
@@ -757,5 +799,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbUserAddress;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckedListBox chkLBoxProcesses;
+        private System.Windows.Forms.Label lblUrls;
+        private System.Windows.Forms.Label lblProcesses;
+        private System.Windows.Forms.CheckedListBox chkLBoxUrls;
     }
 }

@@ -41,6 +41,8 @@ namespace timetracker
             listboxProjects.DataSource = ProjectModel.List();
             listboxUsers.DataSource = UserModel.List();
             listboxWorktypes.DataSource = WorkTypeModel.List();
+            chkLBoxProcesses.DataSource = ProcessesAndUrlsModel.List(false);
+            chkLBoxUrls.DataSource = ProcessesAndUrlsModel.List(true);
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)
