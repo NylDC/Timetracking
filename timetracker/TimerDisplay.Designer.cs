@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTime = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,21 +38,12 @@
             this.cbProjects = new System.Windows.Forms.ComboBox();
             this.cbWorkTypes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbUser = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbWorks = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.lbGreeting = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -62,7 +52,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lbTime, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 205);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 181);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.41222F));
@@ -134,12 +124,11 @@
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
-            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Location = new System.Drawing.Point(9, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 6;
@@ -150,7 +139,7 @@
             this.cbProjects.DisplayMember = "Name";
             this.cbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProjects.FormattingEnabled = true;
-            this.cbProjects.Location = new System.Drawing.Point(12, 25);
+            this.cbProjects.Location = new System.Drawing.Point(12, 55);
             this.cbProjects.Name = "cbProjects";
             this.cbProjects.Size = new System.Drawing.Size(209, 21);
             this.cbProjects.TabIndex = 7;
@@ -161,7 +150,7 @@
             this.cbWorkTypes.DisplayMember = "Name";
             this.cbWorkTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkTypes.FormattingEnabled = true;
-            this.cbWorkTypes.Location = new System.Drawing.Point(12, 71);
+            this.cbWorkTypes.Location = new System.Drawing.Point(12, 101);
             this.cbWorkTypes.Name = "cbWorkTypes";
             this.cbWorkTypes.Size = new System.Drawing.Size(209, 21);
             this.cbWorkTypes.TabIndex = 9;
@@ -170,31 +159,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 55);
+            this.label3.Location = new System.Drawing.Point(9, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Work Type";
-            // 
-            // cbUser
-            // 
-            this.cbUser.DisplayMember = "FullName";
-            this.cbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(12, 116);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(209, 21);
-            this.cbUser.TabIndex = 11;
-            this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 100);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "User";
             // 
             // cbWorks
             // 
@@ -202,7 +171,7 @@
             this.cbWorks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorks.FormattingEnabled = true;
             this.cbWorks.ItemHeight = 13;
-            this.cbWorks.Location = new System.Drawing.Point(13, 162);
+            this.cbWorks.Location = new System.Drawing.Point(13, 146);
             this.cbWorks.Name = "cbWorks";
             this.cbWorks.Size = new System.Drawing.Size(208, 21);
             this.cbWorks.TabIndex = 12;
@@ -211,28 +180,36 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 146);
+            this.label5.Location = new System.Drawing.Point(8, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Work";
             // 
+            // lbGreeting
+            // 
+            this.lbGreeting.AutoSize = true;
+            this.lbGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGreeting.Location = new System.Drawing.Point(12, 12);
+            this.lbGreeting.Name = "lbGreeting";
+            this.lbGreeting.Size = new System.Drawing.Size(52, 17);
+            this.lbGreeting.TabIndex = 14;
+            this.lbGreeting.Text = "label2";
+            // 
             // TimerDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 314);
+            this.ClientSize = new System.Drawing.Size(233, 290);
             this.ControlBox = false;
+            this.Controls.Add(this.lbGreeting);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbWorks);
-            this.Controls.Add(this.cbUser);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.cbWorkTypes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbProjects);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -253,7 +230,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -264,9 +240,8 @@
         private System.Windows.Forms.ComboBox cbProjects;
         private System.Windows.Forms.ComboBox cbWorkTypes;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbUser;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbWorks;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbGreeting;
     }
 }

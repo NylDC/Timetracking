@@ -265,5 +265,14 @@ namespace timetracker.Services
                 (CountEventHandler)listEventDelegates[DelegateType];
             eventDelegate(this, e);
         }
+
+        public static string FormatTime(int _seconds)
+        {
+            int Seconds = _seconds % 60;
+            int Minutes = (_seconds / 60) % 60;
+            int Hours = (_seconds / 3600) % 24;
+            
+            return String.Format("{0:00}:{1:00}:{2:00}", Hours, Minutes, Seconds);
+        }
     }
 }
