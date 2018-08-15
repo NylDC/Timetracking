@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using timetracker.Properties;
+using timetracker.Services;
 
 namespace timetracker
 {
@@ -17,24 +18,10 @@ namespace timetracker
         private AboutForm aboutForm;
 		private EmployeeLogin employeeLogin;
 
-
-		// Open the employee login to the about form
-		
-			
-			
-				
-		
-
-
-
-
-
 		private TimerDisplay timerDisplay;
 
 		private AdminDashboardForm adminDashboardForm;
         private MyStatsForm myStatsForm;
-
-
 
         public static TrayApplicationContext Instance
         {
@@ -50,22 +37,71 @@ namespace timetracker
 
         public TrayApplicationContext()
         {
-            contextMenu = new ContextMenu(new MenuItem[] {
+            Auth.CounterChange += OnAuthChange;
+            TraySetNoAuth();
+        }
 
-                new MenuItem("Start Screenshotting", ScreenshotingStart_Click),
+        void OnAuthChange(AuthEventArgs e)
+        {
+            if(e.User != null)
+            {
+                if(e.User.IsAdmin)
+                {
+                    TraySetForAdmin();
+                }
+                else
+                {
+                    TraySetForUser();
+                }
+            }
+            else
+            {
+                TraySetNoAuth();
+            }
+        }
 
-                new MenuItem("STOP Screenshotting", ScreenshotingStop_Click),
-
-                new MenuItem("About", About_Click),
-				new MenuItem("Login", Login_Click),
-
-				new MenuItem("Preferences", Preferences_Click),
-				
-				new MenuItem("Exit", Exit_Click),
-                new MenuItem("Stats", Stats_Click),
-
-
+        void TraySetForAdmin()
+        {
+            InitTrayIcon(new List<MenuItem> {
+                new MenuItem("Preferences", Preferences_Click),
             });
+        }
+
+        void TraySetForUser()
+        {
+            MenuItem defaultItem;
+            InitTrayIcon(new List<MenuItem> {
+                (defaultItem = new MenuItem("Toggle Timer", Icon_Click)),
+                new MenuItem("Stats", Stats_Click),
+            });
+            defaultItem.DefaultItem = true;
+            trayIcon.DoubleClick += Icon_Click;
+        }
+
+        void TraySetNoAuth()
+        {
+            MenuItem defaultItem;
+            InitTrayIcon(new List<MenuItem> {
+                (defaultItem = new MenuItem("Login", Login_Click)),
+            });
+            defaultItem.DefaultItem = true;
+            trayIcon.DoubleClick += Login_Click;
+        }
+
+        NotifyIcon InitTrayIcon(List<MenuItem> menuItems) {
+            if (trayIcon != null)
+            {
+                trayIcon.Dispose();
+            }
+            if(Auth.CurrentUser != null)
+            {
+                menuItems.Add(new MenuItem("-"));
+                menuItems.Add(new MenuItem("Logout", Logout_Click));
+            }
+            menuItems.Add(new MenuItem("-"));
+            menuItems.Add(new MenuItem("About", About_Click));
+            menuItems.Add(new MenuItem("Exit", Exit_Click));
+            contextMenu = new ContextMenu(menuItems.ToArray());
             // Initialize Tray Icon
             trayIcon = new NotifyIcon()
             {
@@ -73,20 +109,7 @@ namespace timetracker
                 ContextMenu = contextMenu,
                 Visible = true
             };
-
-            trayIcon.DoubleClick += Icon_Click;
-        }
-
-        void ScreenshotingStart_Click(object sender, EventArgs e)
-        {
-            // Testing screenshot start
-            Services.Screenshots.Instance.Start();
-        }
-
-        void ScreenshotingStop_Click(object sender, EventArgs e)
-        {
-            // Testing screenshot start
-            Services.Screenshots.Instance.Stop();
+            return trayIcon;
         }
 
         void Icon_Click(object sender, EventArgs e)
@@ -100,6 +123,11 @@ namespace timetracker
             }
             else
                 timerDisplay.Visible = !timerDisplay.Visible;
+        }
+
+        void Logout_Click(object sender, EventArgs e)
+        {
+            Auth.Logout();
         }
 
         void Exit_Click(object sender, EventArgs e)

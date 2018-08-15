@@ -31,13 +31,13 @@ namespace timetracker.Services
                     new WhereCondition("Login",login),
                     new WhereCondition("Password",password)
                 });
+                CurrentUser = tmpUser;
                 OnChange(new AuthEventArgs(tmpUser));
             }
             catch (Exception ex)
             {
             }
-
-            return CurrentUser = tmpUser;
+            return CurrentUser;
         }
 
         public static void Logout()
