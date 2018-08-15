@@ -91,7 +91,7 @@ namespace timetracker
 
         void Icon_Click(object sender, EventArgs e)
         {
-            if (timerDisplay == null)
+            if (timerDisplay == null || timerDisplay.IsDisposed)
             {
                 timerDisplay = new TimerDisplay();
                 timerDisplay.Left = Screen.PrimaryScreen.WorkingArea.Width - timerDisplay.Size.Width;
@@ -114,36 +114,35 @@ namespace timetracker
 		{
 			// Open About window
 
-			if (employeeLogin == null)
+			if (employeeLogin == null || employeeLogin.IsDisposed)
 			{
 				employeeLogin = new EmployeeLogin();
-				employeeLogin.Show();
 			}
-			else { employeeLogin.Activate(); }
+            employeeLogin.Show();
+            employeeLogin.Activate();
 		}
 
 		void About_Click(object sender, EventArgs e)
         {
             // Open About window
 
-            if (aboutForm == null)
+            if (aboutForm == null || aboutForm.IsDisposed)
             {
                 aboutForm = new AboutForm();
-                aboutForm.Show();
             }
-            else { aboutForm.Activate(); }
+            aboutForm.Show();
+            aboutForm.Activate();
         }
 
 		void Preferences_Click(object sender, EventArgs e)
 		{
 			// Open admin Dashboard window
-			if (adminDashboardForm == null)
+			if (adminDashboardForm == null || adminDashboardForm.IsDisposed)
 			{
 				adminDashboardForm = new AdminDashboardForm();
             }
             adminDashboardForm.Show();
             adminDashboardForm.Activate();
-            
 		}
 
         void Stats_Click(object sender, EventArgs e)
