@@ -181,6 +181,18 @@ namespace timetracker.Services
             return DumpFirstRow(cmd);
         }
 
+        public DataRow GetOneFromTable(string table, WhereGroup whereConditions)
+        {
+            string sql = "SELECT * FROM [" + table + "]";
+            if (whereConditions != null)
+            {
+                sql += " WHERE " + whereConditions.Build();
+            }
+            cmd = MkSqlCommand(sql);
+
+            return DumpFirstRow(cmd);
+        }
+
         private void Connect()
         {
             conn = new SqlConnection(connstr);
