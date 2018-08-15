@@ -30,21 +30,28 @@ namespace timetracker
             Dictionary<int, ListViewGroup> listGroups = new Dictionary<int, ListViewGroup>();
             foreach(var work in WorkModel.List(Auth.CurrentUser))
             {
-                if (listGroups[work.ProjectId] == null)
+                if (!listGroups.Keys.Contains(work.ProjectId))
                 {
                     listGroups[work.ProjectId] = new ListViewGroup()
                     {
-                        Name = work.Project.Name
+                        Header = work.Project.Name
                     };
                 }
                 var newitem = new ListViewItem();
-                newitem.Name = work.Comment;
+                newitem.Text = work.Comment;
                 newitem.SubItems.Add(work.WorkType.Name);
                 newitem.SubItems.Add(work.Time.ToString());
 
                 listGroups[work.ProjectId].Items.Add(newitem);
             }
-
+            foreach(ListViewGroup lg in listGroups.Values)
+            {
+                lvStats.Groups.Add(lg);
+                foreach(ListViewItem lvm in lg.Items)
+                {
+                    lvStats.Items.Add(lvm);
+                }
+            }
         }
     }
 }
