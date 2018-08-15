@@ -28,41 +28,41 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.tbLogin = new System.Windows.Forms.TextBox();
+			this.tbPassword = new System.Windows.Forms.TextBox();
+			this.btLogin = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.button3 = new System.Windows.Forms.Button();
+			this.btExit = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// tbLogin
 			// 
-			this.textBox1.Location = new System.Drawing.Point(325, 40);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(133, 20);
-			this.textBox1.TabIndex = 0;
+			this.tbLogin.Location = new System.Drawing.Point(325, 40);
+			this.tbLogin.Name = "tbLogin";
+			this.tbLogin.Size = new System.Drawing.Size(133, 20);
+			this.tbLogin.TabIndex = 0;
 			// 
-			// textBox2
+			// tbPassword
 			// 
-			this.textBox2.Location = new System.Drawing.Point(325, 115);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.PasswordChar = '*';
-			this.textBox2.Size = new System.Drawing.Size(133, 20);
-			this.textBox2.TabIndex = 1;
+			this.tbPassword.Location = new System.Drawing.Point(325, 115);
+			this.tbPassword.Name = "tbPassword";
+			this.tbPassword.PasswordChar = '*';
+			this.tbPassword.Size = new System.Drawing.Size(133, 20);
+			this.tbPassword.TabIndex = 1;
 			// 
-			// button1
+			// btLogin
 			// 
-			this.button1.Location = new System.Drawing.Point(217, 172);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 40);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "Login";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.btLogin.Location = new System.Drawing.Point(217, 172);
+			this.btLogin.Name = "btLogin";
+			this.btLogin.Size = new System.Drawing.Size(75, 40);
+			this.btLogin.TabIndex = 2;
+			this.btLogin.Text = "Login";
+			this.btLogin.UseVisualStyleBackColor = true;
+			this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
 			// 
 			// label1
 			// 
@@ -92,19 +92,19 @@
 			this.label3.Text = "Login";
 			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
-			// button3
+			// btExit
 			// 
-			this.button3.Location = new System.Drawing.Point(371, 172);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 40);
-			this.button3.TabIndex = 7;
-			this.button3.Text = "Exit";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.btExit.Location = new System.Drawing.Point(371, 172);
+			this.btExit.Name = "btExit";
+			this.btExit.Size = new System.Drawing.Size(75, 40);
+			this.btExit.TabIndex = 7;
+			this.btExit.Text = "Exit";
+			this.btExit.UseVisualStyleBackColor = true;
+			this.btExit.Click += new System.EventHandler(this.btExit_Click);
 			// 
 			// panel1
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Aqua;
+			this.panel1.BackColor = System.Drawing.Color.MintCream;
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Location = new System.Drawing.Point(12, 12);
 			this.panel1.Name = "panel1";
@@ -115,15 +115,15 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+			this.BackColor = System.Drawing.SystemColors.HighlightText;
 			this.ClientSize = new System.Drawing.Size(503, 244);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.button3);
+			this.Controls.Add(this.btExit);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.btLogin);
+			this.Controls.Add(this.tbPassword);
+			this.Controls.Add(this.tbLogin);
 			this.Name = "EmployeeLogin";
 			this.Text = "EmployeeLogin";
 			this.panel1.ResumeLayout(false);
@@ -135,13 +135,13 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox tbLogin;
+		private System.Windows.Forms.TextBox tbPassword;
+		private System.Windows.Forms.Button btLogin;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button btExit;
 		private System.Windows.Forms.Panel panel1;
 	}
 }

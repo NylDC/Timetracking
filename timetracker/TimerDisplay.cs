@@ -135,7 +135,7 @@ namespace timetracker
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Auth.CurrentUser = (User)cbUser.SelectedItem;
+            //Auth.CurrentUser = (User)cbUser.SelectedItem;
             RefreshWorks();
         }
 

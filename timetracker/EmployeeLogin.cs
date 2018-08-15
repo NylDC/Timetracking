@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
-
+using timetracker.Services;
 
 namespace timetracker
 {
@@ -25,22 +24,19 @@ namespace timetracker
 
 		}
 
-		private void button3_Click(object sender, EventArgs e)
+		private void btExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void btLogin_Click(object sender, EventArgs e)
 		{
-			SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nyl\Documents\Authentication.mdf;Integrated Security=True;Connect Timeout=30");
-			SqlDataAdapter sda = new SqlDataAdapter("select count(*) from login where username = '" + textBox1.Text + "' and password = '" + textBox2.Text + "'", connection);
-			DataTable dt = new DataTable();
-			sda.Fill(dt);
-			if (dt.Rows[0][0].ToString() == "1")
+
+			if (Auth.Authenticate(tbLogin.Text, tbPassword.Text) != null)
 			{
 				this.Hide();
-				Main login = new Main();
-				login.Show();
+				btLogin.Show();
+				MessageBox.Show("Hi "+ Auth.CurrentUser.FullName, "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else
 			{

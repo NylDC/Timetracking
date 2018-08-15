@@ -15,7 +15,21 @@ namespace timetracker
         private static TrayApplicationContext _instance = null;
 
         private AboutForm aboutForm;
-        private TimerDisplay timerDisplay;
+		private EmployeeLogin employeeLogin;
+
+
+		// Open the employee login to the about form
+		
+			
+			
+				
+		
+
+
+
+
+
+		private TimerDisplay timerDisplay;
 
 		private AdminDashboardForm adminDashboardForm;
 
@@ -42,7 +56,7 @@ namespace timetracker
                 new MenuItem("STOP Screenshotting", ScreenshotingStop_Click),
 
                 new MenuItem("About", About_Click),
-
+				new MenuItem("Login", Login_Click),
 
 				new MenuItem("Preferences", Preferences_Click),
 				
@@ -94,7 +108,19 @@ namespace timetracker
             Application.Exit();
         }
 
-        void About_Click(object sender, EventArgs e)
+		void Login_Click(object sender, EventArgs e)
+		{
+			// Open About window
+
+			if (employeeLogin == null)
+			{
+				employeeLogin = new EmployeeLogin();
+				employeeLogin.Show();
+			}
+			else { employeeLogin.Activate(); }
+		}
+
+		void About_Click(object sender, EventArgs e)
         {
             // Open About window
 
