@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using timetracker.Models;
 using timetracker.Services;
@@ -33,7 +32,7 @@ namespace timetracker
         {
             Invoke(new Action(() =>
             {
-                lbTime.Text = String.Format("{0:00}:{1:00}:{2:00}", e.Hours, e.Minutes, e.Seconds);
+                lbTime.Text = Services.Timer.FormatTime(e.Count);
             }));
         }
 
@@ -107,19 +106,18 @@ namespace timetracker
         {
             cbProjects.Enabled = enabled;
             cbWorkTypes.Enabled = enabled;
-            cbUser.Enabled = enabled;
             cbWorks.Enabled = enabled;
         }
 
         private void TimerDisplay_Load(object sender, EventArgs e)
         {
             UpdateLists();
+            lbGreeting.Text = "Hi " + Auth.CurrentUser.FullName;
         }
 
         private void UpdateLists() {
             cbProjects.DataSource = ProjectModel.List();
             cbWorkTypes.DataSource = WorkTypeModel.List();
-            cbUser.DataSource = UserModel.List();
             RefreshWorks();
         }
 
@@ -133,17 +131,48 @@ namespace timetracker
             selectedWorkType = (WorkType)cbWorkTypes.SelectedItem;
         }
 
-        private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Auth.CurrentUser = (User)cbUser.SelectedItem;
-            RefreshWorks();
-        }
-
         private void cbWorks_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedWork = (Work)cbWorks.SelectedItem;
+            lbTime.Text = Services.Timer.FormatTime(selectedWork.Time);
+
+            if (selectedWork.Id == 0)
+            {
+                // enable work properties if this is a new work
+                cbProjects.Enabled = true;
+                cbWorkTypes.Enabled = true;
+            } else
+            {
+                // if existing work - disable comboboxes and set appropriate values there 
+                // to reflect current work's settings
+                cbProjects.Enabled = false;
+                for(int i =0; i< cbProjects.Items.Count; i++)
+                {
+                    if(((Project)cbProjects.Items[i]).Id == selectedWork.ProjectId)
+                    {
+                        cbProjects.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                cbWorkTypes.Enabled = false;
+                for (int i = 0; i < cbWorkTypes.Items.Count; i++)
+                {
+                    if (((WorkType)cbWorkTypes.Items[i]).Id == selectedWork.WorkTypeId)
+                    {
+                        cbWorkTypes.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
             btStart.Enabled = selectedWork.Id == 0;
             btResume.Enabled = selectedWork.Id != 0;
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
         }
     }
 }
