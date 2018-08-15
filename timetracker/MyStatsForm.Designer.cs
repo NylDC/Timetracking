@@ -38,19 +38,17 @@
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("343434");
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("343434");
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("34343");
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.chProject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvStats = new System.Windows.Forms.ListView();
             this.chWorkType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chWorkNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chWorkedTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chWorkName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // listView1
+            // lvStats
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chProject,
+            this.lvStats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chWorkName,
             this.chWorkType,
-            this.chWorkNum,
             this.chWorkedTime});
             listViewGroup1.Header = "2018/01/01";
             listViewGroup1.Name = "listViewGroup1";
@@ -58,7 +56,7 @@
             listViewGroup2.Header = "2018/01/04";
             listViewGroup2.Name = "listViewGroup2";
             listViewGroup2.Tag = "jhjhj";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            this.lvStats.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2});
             listViewItem1.Group = listViewGroup1;
@@ -67,59 +65,54 @@
             listViewItem4.Group = listViewGroup1;
             listViewItem5.Group = listViewGroup1;
             listViewItem6.Group = listViewGroup2;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lvStats.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3,
             listViewItem4,
             listViewItem5,
             listViewItem6});
-            this.listView1.Location = new System.Drawing.Point(12, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(708, 243);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // chProject
-            // 
-            this.chProject.Text = "Project";
-            this.chProject.Width = 438;
+            this.lvStats.Location = new System.Drawing.Point(12, 12);
+            this.lvStats.Name = "lvStats";
+            this.lvStats.Size = new System.Drawing.Size(573, 286);
+            this.lvStats.TabIndex = 1;
+            this.lvStats.UseCompatibleStateImageBehavior = false;
+            this.lvStats.View = System.Windows.Forms.View.Details;
+            this.lvStats.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // chWorkType
             // 
             this.chWorkType.Text = "Work Type";
-            this.chWorkType.Width = 122;
-            // 
-            // chWorkNum
-            // 
-            this.chWorkNum.Text = "# of works";
-            this.chWorkNum.Width = 64;
+            this.chWorkType.Width = 147;
             // 
             // chWorkedTime
             // 
             this.chWorkedTime.Text = "Time Worked";
             this.chWorkedTime.Width = 80;
             // 
+            // chWorkName
+            // 
+            this.chWorkName.Text = "Work done";
+            this.chWorkName.Width = 335;
+            // 
             // MyStatsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 397);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(597, 310);
+            this.Controls.Add(this.lvStats);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MyStatsForm";
             this.Text = "MyStatsForm";
+            this.Load += new System.EventHandler(this.MyStatsForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader chProject;
+        private System.Windows.Forms.ListView lvStats;
         private System.Windows.Forms.ColumnHeader chWorkType;
-        private System.Windows.Forms.ColumnHeader chWorkNum;
         private System.Windows.Forms.ColumnHeader chWorkedTime;
+        private System.Windows.Forms.ColumnHeader chWorkName;
     }
 }

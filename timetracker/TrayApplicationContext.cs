@@ -18,6 +18,7 @@ namespace timetracker
         private TimerDisplay timerDisplay;
 
 		private AdminDashboardForm adminDashboardForm;
+        private MyStatsForm myStatsForm;
 
 
 
@@ -47,6 +48,7 @@ namespace timetracker
 				new MenuItem("Preferences", Preferences_Click),
 				
 				new MenuItem("Exit", Exit_Click),
+                new MenuItem("Stats", Stats_Click),
 
 
             });
@@ -117,5 +119,16 @@ namespace timetracker
             adminDashboardForm.Activate();
             
 		}
-	}
+
+        void Stats_Click(object sender, EventArgs e)
+        {
+            // Open admin Dashboard window
+            if (myStatsForm == null || myStatsForm.IsDisposed)
+            {
+                myStatsForm = new MyStatsForm();
+            }
+            myStatsForm.Show();
+            myStatsForm.Activate();
+        }
+    }
 }
