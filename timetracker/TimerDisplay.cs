@@ -169,5 +169,10 @@ namespace timetracker
             btStart.Enabled = selectedWork.Id == 0;
             btResume.Enabled = selectedWork.Id != 0;
         }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerDisplay));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbTime = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -41,6 +42,7 @@
             this.cbWorks = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lbGreeting = new System.Windows.Forms.Label();
+            this.btClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -139,9 +141,9 @@
             this.cbProjects.DisplayMember = "Name";
             this.cbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProjects.FormattingEnabled = true;
-            this.cbProjects.Location = new System.Drawing.Point(12, 55);
+            this.cbProjects.Location = new System.Drawing.Point(6, 55);
             this.cbProjects.Name = "cbProjects";
-            this.cbProjects.Size = new System.Drawing.Size(209, 21);
+            this.cbProjects.Size = new System.Drawing.Size(221, 21);
             this.cbProjects.TabIndex = 7;
             this.cbProjects.SelectedIndexChanged += new System.EventHandler(this.cbProjects_SelectedIndexChanged);
             // 
@@ -150,9 +152,9 @@
             this.cbWorkTypes.DisplayMember = "Name";
             this.cbWorkTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkTypes.FormattingEnabled = true;
-            this.cbWorkTypes.Location = new System.Drawing.Point(12, 101);
+            this.cbWorkTypes.Location = new System.Drawing.Point(6, 101);
             this.cbWorkTypes.Name = "cbWorkTypes";
-            this.cbWorkTypes.Size = new System.Drawing.Size(209, 21);
+            this.cbWorkTypes.Size = new System.Drawing.Size(221, 21);
             this.cbWorkTypes.TabIndex = 9;
             this.cbWorkTypes.SelectedIndexChanged += new System.EventHandler(this.cbWorkTypes_SelectedIndexChanged);
             // 
@@ -171,9 +173,9 @@
             this.cbWorks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorks.FormattingEnabled = true;
             this.cbWorks.ItemHeight = 13;
-            this.cbWorks.Location = new System.Drawing.Point(13, 146);
+            this.cbWorks.Location = new System.Drawing.Point(6, 146);
             this.cbWorks.Name = "cbWorks";
-            this.cbWorks.Size = new System.Drawing.Size(208, 21);
+            this.cbWorks.Size = new System.Drawing.Size(221, 21);
             this.cbWorks.TabIndex = 12;
             this.cbWorks.SelectedIndexChanged += new System.EventHandler(this.cbWorks_SelectedIndexChanged);
             // 
@@ -190,11 +192,22 @@
             // 
             this.lbGreeting.AutoSize = true;
             this.lbGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGreeting.Location = new System.Drawing.Point(12, 12);
+            this.lbGreeting.Location = new System.Drawing.Point(8, 10);
             this.lbGreeting.Name = "lbGreeting";
             this.lbGreeting.Size = new System.Drawing.Size(52, 17);
             this.lbGreeting.TabIndex = 14;
             this.lbGreeting.Text = "label2";
+            // 
+            // btClose
+            // 
+            this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
+            this.btClose.Location = new System.Drawing.Point(203, 6);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(24, 23);
+            this.btClose.TabIndex = 15;
+            this.btClose.TabStop = false;
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // TimerDisplay
             // 
@@ -202,6 +215,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(233, 290);
             this.ControlBox = false;
+            this.Controls.Add(this.btClose);
             this.Controls.Add(this.lbGreeting);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbWorks);
@@ -243,5 +257,6 @@
         private System.Windows.Forms.ComboBox cbWorks;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbGreeting;
+        private System.Windows.Forms.Button btClose;
     }
 }
