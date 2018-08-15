@@ -77,6 +77,12 @@
     </Compile>
     <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="EmployeeLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeLogin.designer.cs">
+      <DependentUpon>EmployeeLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WorkModel.cs" />
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyStatsForm.resx">
       <DependentUpon>MyStatsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeLogin.resx">
+      <DependentUpon>EmployeeLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
