@@ -95,9 +95,11 @@ namespace timetracker.Services
 
         private string getNewFileName()
         {
-            string time = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-            string filename = @"\Screenshot-" + time + ".png";
-            return string.Format(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + filename);
+            string time = DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+            string filename = @"\" + time + ".png";
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\timetracker\\"+ Auth.CurrentUser.Login;
+            Directory.CreateDirectory(dir);
+            return dir + string.Format(filename);
         }
     }
 }
