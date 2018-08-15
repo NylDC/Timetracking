@@ -95,6 +95,7 @@
     <Compile Include="Services\TimerManager.cs" />
     <Compile Include="Structs\DBModel.cs" />
     <Compile Include="Structs\ModelType.cs" />
+    <Compile Include="Structs\ProcessesAndUrls.cs" />
     <Compile Include="Structs\Project.cs" />
     <Compile Include="Structs\User.cs" />
     <Compile Include="Structs\Work.cs" />
