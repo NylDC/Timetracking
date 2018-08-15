@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.Windows.Forms;
+using timetracker.Models;
+using timetracker.Structs;
 namespace timetracker
 {
 	class Configuration
@@ -88,7 +90,33 @@ namespace timetracker
 			key.Close();
 			return theValue;
 		}
-	}
+
+
+        public static string[] ForbiddenUrls
+        {
+            get {
+                List<string> lst = new List<string>();
+                foreach (ProcessesAndUrls u in ProcessesAndUrlsModel.List(true, false))
+                {
+                    lst.Add(u.Address);
+                }
+                return lst.ToArray();
+            }
+        }
+
+        public static string[] ForbiddenProcesses
+        {
+            get
+            {
+                List<string> lst = new List<string>();
+                foreach (ProcessesAndUrls p in ProcessesAndUrlsModel.List(false, false))
+                {
+                    lst.Add(p.Address);
+                }
+                return lst.ToArray();
+            }
+        }
+    }
 	
 	
 }

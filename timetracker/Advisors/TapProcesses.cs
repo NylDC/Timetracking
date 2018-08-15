@@ -33,8 +33,8 @@ namespace timetracker.Advisors
         private Process activeProcess = null;
         private Process CurProcess = null;
 
-        private bool inWhiteList = true;
-        private bool inBlackList = false;
+        //private bool inWhiteList = true;
+        //private bool inBlackList = false;
         private bool allovdedProcess = true;
 
 
@@ -177,9 +177,20 @@ namespace timetracker.Advisors
                 if (found < 1) allovdedProcess = true;
                 else Url = Url.Remove(found);
             }
-            //Console.WriteLine("NEW URL = " + Url);
-            if (Url == "facebook.com" || Url == "www.facebook.com") allovdedProcess = false;
-            else allovdedProcess = true;
+
+            allovdedProcess = true;
+
+            foreach (string proc in Configuration.ForbiddenUrls)
+            {
+                if (Url == proc || Url == "www." + proc)
+                {
+                    allovdedProcess = false;
+                    break;
+                }
+            }
+
+            
+
         }
         
 
@@ -188,12 +199,21 @@ namespace timetracker.Advisors
             const int nChars = 256;
             StringBuilder Buff = new StringBuilder(nChars);
 
-            
-           // CurProcess = activeProcess;
-           // Console.WriteLine(activeProcess.ProcessName);
-           // Console.WriteLine(CurProcess.ProcessName);
 
-            if (activeProcess.ProcessName == "firefox") allovdedProcess = false;
+            // CurProcess = activeProcess;
+            // Console.WriteLine(activeProcess.ProcessName);
+            // Console.WriteLine(CurProcess.ProcessName);
+            allovdedProcess = true;
+
+            foreach (string proc in Configuration.ForbiddenProcesses)
+            {
+                if (activeProcess.ProcessName == proc)
+                {
+                    allovdedProcess = false;
+                    break;
+                }
+            }
+            //if (activeProcess.ProcessName == "firefox") allovdedProcess = false;
 
             /*
                         //getting active window handle

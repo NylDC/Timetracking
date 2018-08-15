@@ -72,6 +72,7 @@
             this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
             this.gbWorkType = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chkLBoxUrls = new System.Windows.Forms.CheckedListBox();
             this.chkLBoxProcesses = new System.Windows.Forms.CheckedListBox();
             this.lblUrls = new System.Windows.Forms.Label();
             this.lblProcesses = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@
             this.btOK = new System.Windows.Forms.Button();
             this.tbFreq = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkLBoxUrls = new System.Windows.Forms.CheckedListBox();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -587,6 +587,14 @@
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // chkLBoxUrls
+            // 
+            this.chkLBoxUrls.FormattingEnabled = true;
+            this.chkLBoxUrls.Location = new System.Drawing.Point(440, 29);
+            this.chkLBoxUrls.Name = "chkLBoxUrls";
+            this.chkLBoxUrls.Size = new System.Drawing.Size(157, 229);
+            this.chkLBoxUrls.TabIndex = 12;
+            // 
             // chkLBoxProcesses
             // 
             this.chkLBoxProcesses.FormattingEnabled = true;
@@ -692,14 +700,6 @@
             this.label1.Size = new System.Drawing.Size(142, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshoting Frequency (s)";
-            // 
-            // chkLBoxUrls
-            // 
-            this.chkLBoxUrls.FormattingEnabled = true;
-            this.chkLBoxUrls.Location = new System.Drawing.Point(440, 29);
-            this.chkLBoxUrls.Name = "chkLBoxUrls";
-            this.chkLBoxUrls.Size = new System.Drawing.Size(157, 229);
-            this.chkLBoxUrls.TabIndex = 12;
             // 
             // AdminDashboardForm
             // 

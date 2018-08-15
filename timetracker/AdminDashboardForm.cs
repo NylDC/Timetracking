@@ -41,8 +41,25 @@ namespace timetracker
             listboxProjects.DataSource = ProjectModel.List();
             listboxUsers.DataSource = UserModel.List();
             listboxWorktypes.DataSource = WorkTypeModel.List();
+
+            
+            /* Checked Boxes Lists of Processes and Urls  START*/
             chkLBoxProcesses.DataSource = ProcessesAndUrlsModel.List(false);
             chkLBoxUrls.DataSource = ProcessesAndUrlsModel.List(true);
+
+            for (int i = 0; i < chkLBoxProcesses.Items.Count; i++)
+            {
+                ProcessesAndUrls a = (ProcessesAndUrls)chkLBoxProcesses.Items[i];
+                chkLBoxProcesses.SetItemChecked(i, a.IsAllowed);
+            }
+
+           
+            for (int i = 0; i<  chkLBoxUrls.Items.Count; i++)
+            {
+                ProcessesAndUrls a = (ProcessesAndUrls)chkLBoxUrls.Items[i];
+                chkLBoxUrls.SetItemChecked(i, a.IsAllowed);
+            }
+            /* Checked Boxes Lists of Processes and Urls  END*/
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)

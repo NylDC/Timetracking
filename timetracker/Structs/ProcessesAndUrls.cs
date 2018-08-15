@@ -13,7 +13,7 @@ namespace timetracker.Structs
         public bool IsUrl { get; set; } = false;
         public bool IsAllowed { get; set; } = true;
 
-
+        public override string ToString() => Alias;
 
         public ProcessesAndUrls() { }
 
@@ -29,8 +29,8 @@ namespace timetracker.Structs
         {
             Address = row["address"].ToString();
             Alias = row["alias"].ToString();
-            IsUrl = row["isUrl"].ToString() == "1";
-            IsAllowed = row["isAllowed"].ToString() == "1";
+            IsUrl = row["isUrl"].ToString() == "True";
+            IsAllowed = row["isAllowed"].ToString() == "True";
         }
 
         protected override void OnSave(Dictionary<string, object> dict)
@@ -44,8 +44,10 @@ namespace timetracker.Structs
 
         public override void SetName(string alias)
         {
-            Alias = alias;
+           // Alias = alias;
         }
+
+
 
 
     }
