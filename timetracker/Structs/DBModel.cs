@@ -19,6 +19,17 @@ namespace timetracker.Structs
             return obj;
         }
 
+        public static T FindOne(WhereGroup whereConditions)
+        {
+            T obj = new T();
+            DataRow row = DBConn.Instance.GetOneFromTable(obj.Table(), whereConditions);
+            if (row == null)
+                throw new KeyNotFoundException();
+
+            obj.Apply(row);
+            return obj;
+        }
+
         public static T Find(string pk) => Find(Int32.Parse(pk));
 
         public static Dictionary<int, T> All(){
