@@ -160,9 +160,16 @@ namespace timetracker.Services
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
-        public DataTable GetAllFromTable(string table)
+        public DataTable GetAllFromTable(string table) => GetAllFromTable(table, null);
+
+        public DataTable GetAllFromTable(string table, WhereGroup whereConditions)
         {
-            cmd = MkSqlCommand("SELECT * FROM " + table);
+            string sql = "SELECT * FROM " + table;
+            if (whereConditions != null)
+            {
+                sql += " WHERE " + whereConditions.Build();
+            }
+            cmd = MkSqlCommand(sql);
 
             return DumpCommandData(cmd);
         }
