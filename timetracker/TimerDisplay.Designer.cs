@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerDisplay));
             this.panTimeControl = new System.Windows.Forms.TableLayoutPanel();
             this.lbTime = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panTimeControls = new System.Windows.Forms.TableLayoutPanel();
             this.btStop = new System.Windows.Forms.Button();
             this.btResume = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.btEditWorkSave = new System.Windows.Forms.Button();
             this.btWorkNoSave = new System.Windows.Forms.Button();
             this.panTimeControl.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.panTimeControls.SuspendLayout();
             this.panEditName.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             this.panTimeControl.ColumnCount = 1;
             this.panTimeControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panTimeControl.Controls.Add(this.lbTime, 0, 0);
-            this.panTimeControl.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.panTimeControl.Controls.Add(this.panTimeControls, 0, 1);
             this.panTimeControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panTimeControl.Location = new System.Drawing.Point(0, 181);
             this.panTimeControl.Name = "panTimeControl";
@@ -81,22 +81,22 @@
             this.lbTime.Text = "00:00:00";
             this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel2
+            // panTimeControls
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.btStop, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btResume, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btStart, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 75);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(227, 31);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.panTimeControls.ColumnCount = 3;
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.Controls.Add(this.btStop, 0, 0);
+            this.panTimeControls.Controls.Add(this.btResume, 0, 0);
+            this.panTimeControls.Controls.Add(this.btStart, 0, 0);
+            this.panTimeControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panTimeControls.Location = new System.Drawing.Point(3, 75);
+            this.panTimeControls.Name = "panTimeControls";
+            this.panTimeControls.RowCount = 1;
+            this.panTimeControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panTimeControls.Size = new System.Drawing.Size(227, 31);
+            this.panTimeControls.TabIndex = 0;
             // 
             // btStop
             // 
@@ -255,7 +255,6 @@
             this.btEditWorkSave.Name = "btEditWorkSave";
             this.btEditWorkSave.Size = new System.Drawing.Size(24, 23);
             this.btEditWorkSave.TabIndex = 19;
-            this.btEditWorkSave.TabStop = false;
             this.btEditWorkSave.UseVisualStyleBackColor = true;
             this.btEditWorkSave.Click += new System.EventHandler(this.btEditWorkSave_Click);
             // 
@@ -266,7 +265,6 @@
             this.btWorkNoSave.Name = "btWorkNoSave";
             this.btWorkNoSave.Size = new System.Drawing.Size(24, 23);
             this.btWorkNoSave.TabIndex = 20;
-            this.btWorkNoSave.TabStop = false;
             this.btWorkNoSave.UseVisualStyleBackColor = true;
             this.btWorkNoSave.Click += new System.EventHandler(this.btEditWorkNoSave_Click);
             // 
@@ -302,7 +300,7 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimerDisplay_KeyPress);
             this.panTimeControl.ResumeLayout(false);
             this.panTimeControl.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panTimeControls.ResumeLayout(false);
             this.panEditName.ResumeLayout(false);
             this.panEditName.PerformLayout();
             this.ResumeLayout(false);
@@ -313,7 +311,7 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel panTimeControl;
         private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel panTimeControls;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btResume;
         private System.Windows.Forms.Button btStart;

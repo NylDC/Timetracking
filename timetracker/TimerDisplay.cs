@@ -69,6 +69,7 @@ namespace timetracker
                 selectedWork.WorkType = selectedWorkType;
                 selectedWork.Comment = comment;
                 selectedWork.Save();
+                RefreshWorks();
             }
             TimerManager.Instance.Start(selectedWork);
             SetEditControlsEnabled(false);
@@ -87,18 +88,19 @@ namespace timetracker
             RefreshWorks();
         }
 
+        /// <summary>
+        /// Reload the list of Works preserving currently selected item
+        /// </summary>
         private void RefreshWorks() {
+            int selectedId = selectedWork?.Id ?? 0;
             cbWorks.DataSource = WorkModel.ListWithBlank("--- New work ---", Auth.CurrentUser);
-            if (selectedWork != null)
+            for (int pos = 0; pos< cbWorks.Items.Count; pos++)
             {
-                int selectedId = selectedWork.Id;
-                int pos = 0;
-                foreach (Work work in cbWorks.Items)
+                if (((Work)cbWorks.Items[pos]).Id == selectedId)
                 {
-                    if (work.Id == selectedId) break;
-                    pos++;
+                    cbWorks.SelectedIndex = pos;
+                    break;
                 }
-                cbWorks.SelectedIndex = pos;
             }
         }
 
@@ -197,6 +199,7 @@ namespace timetracker
             cbProjects.Enabled = true;
             cbWorkTypes.Enabled = true;
             tbWorkName.Text = selectedWork.Comment;
+            tbWorkName.Focus();
         }
         private void EditModeSave() {
             selectedWork.Project = selectedProject;
@@ -225,12 +228,16 @@ namespace timetracker
 
         private void TimerDisplay_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (int)Keys.Escape)
+            if (e.KeyChar == (int)Keys.Escape)
             {
-                if(EditMode) EditModeCancel();
+                if (EditMode) EditModeCancel();
                 else { Visible = false; }
             }
-        }
 
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                if (EditMode) EditModeSave();
+            }
+        }
     }
 }
