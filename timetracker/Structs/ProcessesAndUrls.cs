@@ -37,8 +37,8 @@ namespace timetracker.Structs
         {
             dict["address"] = Address;
             dict["alias"] = Alias;
-            dict["isUrl"] = IsUrl ? 1 : 0;
-            dict["isAllowed"] = IsAllowed ? 1 : 0;
+            dict["isUrl"] = IsUrl ? true : false;
+            dict["isAllowed"] = IsAllowed ? true : false;
         }
 
 

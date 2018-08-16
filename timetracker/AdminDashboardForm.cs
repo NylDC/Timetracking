@@ -28,6 +28,7 @@ namespace timetracker
 			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
 			Configuration.MaxKeyboardIdleInterval = Int32.Parse(tbKBInterval.Text);
 			Configuration.MaxMouseIdleInterval = Int32.Parse(tbMouseInterval.Text);
+
 		}
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)
