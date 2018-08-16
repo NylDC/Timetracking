@@ -5,7 +5,7 @@ namespace timetracker.Services
 {
     public static class PromptDouble
     {
-        public static string ShowDialog(string text, string caption)
+        public static List<string> ShowDialog(string text, string caption)
         {
             Form promptDouble = new Form()
             {
@@ -34,12 +34,16 @@ namespace timetracker.Services
             promptDouble.Controls.Add(textLabelAddress);
             promptDouble.AcceptButton = confirmation;
 
-
             List<string> lst = new List<string>();
-            lst.Add(textBoxAlias.Text);
-            lst.Add(textBoxAddress.Text);
 
-            return promptDouble.ShowDialog() == DialogResult.OK ? lst.ToString() : null;
+            //;
+            if (promptDouble.ShowDialog() == DialogResult.OK)
+            {
+                lst.Add(textBoxAlias.Text);
+                lst.Add(textBoxAddress.Text);
+                return lst;
+            }
+            else return null;
         }
     }
 }

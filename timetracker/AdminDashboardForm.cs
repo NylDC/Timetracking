@@ -151,14 +151,35 @@ namespace timetracker
 
         private void btnAddProcess_Click(object sender, EventArgs e)
         {
-            string comment = PromptDouble.ShowDialog("process", "Add new ");
+            List<string>  comment = PromptDouble.ShowDialog("process", "Add new ");
             if (comment == null) return;
+
+            ProcessesAndUrls proc = new ProcessesAndUrls();
+            proc.Alias = comment[0];
+            proc.Address = comment[1];
+            proc.IsUrl = false;
+
+            proc.Save();
+            UpdateLists();
+            //proc.Ap
+            // proc.Alias = comment.
         }
 
         private void btnAddUrl_Click(object sender, EventArgs e)
         {
-            string comment = PromptDouble.ShowDialog("URL", "Add new ");
+            // string comment = PromptDouble.ShowDialog("URL", "Add new ");
+            // if (comment == null) return;
+
+            List<string> comment = PromptDouble.ShowDialog("URL", "Add new ");
             if (comment == null) return;
+
+            ProcessesAndUrls proc = new ProcessesAndUrls();
+            proc.Alias = comment[0];
+            proc.Address = comment[1];
+            proc.IsUrl = true;
+
+            proc.Save();
+            UpdateLists();
         }
     }
 }
