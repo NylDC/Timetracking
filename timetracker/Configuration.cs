@@ -88,7 +88,9 @@ namespace timetracker
 			key.Close();
 			return theValue;
 		}
-	}
+
+        public static float VideoFPS { get; private set; } = 2;
+    }
 	
 	
 }

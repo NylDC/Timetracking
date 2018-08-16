@@ -7,6 +7,8 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using DotImaging;
+using System.Drawing.Imaging;
 
 namespace timetracker.Services
 {
@@ -65,6 +67,7 @@ namespace timetracker.Services
             if (childThread != null &&  childThread.IsAlive)
             {
                 childThread.Abort();
+                mkVideo();
             }
         }
 
@@ -107,6 +110,37 @@ namespace timetracker.Services
         {
             string filename = @"\" + Tag + "_" + TimeStamp + ".jpeg";
             return DirectoryName + string.Format(filename);
+        }
+
+        public static void mkVideo()
+        {
+            var screenSize = ScreenSize;
+            var videoSize = new DotImaging.Primitives2D.Size(screenSize.X, screenSize.Y);
+            string videoTarget = DirectoryName + @"\" + Tag + "_" + TimeStamp + ".avi";
+            Console.WriteLine(string.Format("Writing video file: {0}", videoTarget));
+
+            ImageDirectoryCapture images = new ImageDirectoryCapture(DirectoryName, Tag + "_*.jpeg");
+            if (images.Length == 0) return;
+            ImageStreamWriter videoWriter = new VideoWriter(videoTarget, videoSize, Configuration.VideoFPS);
+            List<string> toDelete = new List<string>();
+
+            while(images.Position < images.Length){
+                string f = images.CurrentImageName;
+                Console.WriteLine(string.Format("   frame: {0}", f));
+                IImage image = images.Read();
+                videoWriter.Write(image);
+                toDelete.Add(f);
+            }
+            videoWriter.Close();
+            Console.WriteLine("END writing video");
+            Console.WriteLine("Removing frame files");
+            foreach(string f in toDelete)
+            {
+                if (f == null) continue;
+                File.Delete(f);
+                Console.WriteLine(string.Format("Deleted file: {0}", f));
+            }
+            Console.WriteLine("Done Removing frame files");
         }
     }
 }
