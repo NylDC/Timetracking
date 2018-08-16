@@ -134,6 +134,13 @@ namespace timetracker
         private void cbWorks_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedWork = (Work)cbWorks.SelectedItem;
+            _ShowCurrentWorkData();
+            
+            btStart.Enabled = selectedWork.Id == 0;
+            btResume.Enabled = selectedWork.Id != 0;
+        }
+
+        private void _ShowCurrentWorkData() {
             lbTime.Text = Services.Timer.FormatTime(selectedWork.Time);
 
             if (selectedWork.Id == 0)
@@ -141,14 +148,18 @@ namespace timetracker
                 // enable work properties if this is a new work
                 cbProjects.Enabled = true;
                 cbWorkTypes.Enabled = true;
-            } else
+                btEditWork.Enabled = false;
+            }
+            else
             {
+                // allow in-place editing of existing work
+                btEditWork.Enabled = true;
                 // if existing work - disable comboboxes and set appropriate values there 
                 // to reflect current work's settings
                 cbProjects.Enabled = false;
-                for(int i =0; i< cbProjects.Items.Count; i++)
+                for (int i = 0; i < cbProjects.Items.Count; i++)
                 {
-                    if(((Project)cbProjects.Items[i]).Id == selectedWork.ProjectId)
+                    if (((Project)cbProjects.Items[i]).Id == selectedWork.ProjectId)
                     {
                         cbProjects.SelectedIndex = i;
                         break;
@@ -164,15 +175,62 @@ namespace timetracker
                         break;
                     }
                 }
-            }
 
-            btStart.Enabled = selectedWork.Id == 0;
-            btResume.Enabled = selectedWork.Id != 0;
+            }
         }
 
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Visible = false;
         }
+
+        private bool EditMode = false;
+
+        private void btEditWork_Click(object sender, EventArgs e) => EditModeStart();
+        
+        private void EditModeStart()
+        {
+            EditMode = true;
+            panTimeControl.Enabled = false;
+            panEditName.Enabled = true;
+            panEditName.Visible = true;
+            cbProjects.Enabled = true;
+            cbWorkTypes.Enabled = true;
+            tbWorkName.Text = selectedWork.Comment;
+        }
+        private void EditModeSave() {
+            selectedWork.Project = selectedProject;
+            selectedWork.WorkType = selectedWorkType;
+            selectedWork.Comment = tbWorkName.Text;
+            selectedWork.Save();
+            _EditModeStop();
+            RefreshWorks();
+        }
+        private void EditModeCancel() => _EditModeStop();
+
+        private void _EditModeStop()
+        {
+            EditMode = false;
+            panTimeControl.Enabled = true;
+            panEditName.Enabled = false;
+            panEditName.Visible = false;
+            cbProjects.Enabled = false;
+            cbWorkTypes.Enabled = false;
+            _ShowCurrentWorkData();
+        }
+
+        private void btEditWorkSave_Click(object sender, EventArgs e) => EditModeSave();
+
+        private void btEditWorkNoSave_Click(object sender, EventArgs e) => EditModeCancel();
+
+        private void TimerDisplay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (int)Keys.Escape)
+            {
+                if(EditMode) EditModeCancel();
+                else { Visible = false; }
+            }
+        }
+
     }
 }
