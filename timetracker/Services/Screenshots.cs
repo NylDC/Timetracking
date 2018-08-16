@@ -43,10 +43,18 @@ namespace timetracker.Services
 
         public static int WaitTime => Configuration.ScreenshottingFrequency * 1000;
 
+        private static string Tag = "task";
+
+        public void Start(string tag)
+        {
+            Tag = tag;
+            Start();
+        }
         public void Start()
         {
             if (childThread == null || !childThread.IsAlive)
             {
+                Directory.CreateDirectory(DirectoryName);
                 childThread = new Thread(threadStart);
                 childThread.Start();
             }
@@ -90,16 +98,15 @@ namespace timetracker.Services
 
             // Save it!
             Console.WriteLine(string.Format("Saving the image to {0}...", targetFile));
-            memoryImage.Save(targetFile);
+            memoryImage.Save(targetFile, ImageFormat.Jpeg);
         }
 
+        private static string TimeStamp => DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+        private static string DirectoryName => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\timetracker\\" + Auth.CurrentUser.Login;
         private string getNewFileName()
         {
-            string time = DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
-            string filename = @"\" + time + ".png";
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\timetracker\\"+ Auth.CurrentUser.Login;
-            Directory.CreateDirectory(dir);
-            return dir + string.Format(filename);
+            string filename = @"\" + Tag + "_" + TimeStamp + ".jpeg";
+            return DirectoryName + string.Format(filename);
         }
     }
 }
