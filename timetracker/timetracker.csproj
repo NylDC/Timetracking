@@ -99,6 +99,7 @@
     <Compile Include="Services\Auth.cs" />
     <Compile Include="Services\DBConn.cs" />
     <Compile Include="Services\ITimerAdvisor.cs" />
+    <Compile Include="Services\PromptDoble.cs" />
     <Compile Include="Services\Prompt.cs" />
     <Compile Include="Services\Screenshots.cs" />
     <Compile Include="Advisors\TapUserInput.cs" />
@@ -145,7 +146,6 @@
     <EmbeddedResource Include="TimerDisplay.resx">
       <DependentUpon>TimerDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\timetracker.Structs.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -188,6 +188,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

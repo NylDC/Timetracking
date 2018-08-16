@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using timetracker.Models;
+using timetracker.Services;
 using timetracker.Structs;
 
 namespace timetracker
@@ -146,6 +147,18 @@ namespace timetracker
                 tsbRemoveUser.Enabled = false;
                 UpdateLists();
             }
+        }
+
+        private void btnAddProcess_Click(object sender, EventArgs e)
+        {
+            string comment = PromptDouble.ShowDialog("process", "Add new ");
+            if (comment == null) return;
+        }
+
+        private void btnAddUrl_Click(object sender, EventArgs e)
+        {
+            string comment = PromptDouble.ShowDialog("URL", "Add new ");
+            if (comment == null) return;
         }
     }
 }
