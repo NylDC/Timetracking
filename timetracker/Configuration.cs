@@ -116,6 +116,7 @@ namespace timetracker
                 return lst.ToArray();
             }
         }
+        public static float VideoFPS { get; private set; } = 2;
     }
 	
 	

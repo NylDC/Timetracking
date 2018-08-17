@@ -7,6 +7,8 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using DotImaging;
+using System.Drawing.Imaging;
 
 namespace timetracker.Services
 {
@@ -43,10 +45,18 @@ namespace timetracker.Services
 
         public static int WaitTime => Configuration.ScreenshottingFrequency * 1000;
 
+        private static string Tag = "task";
+
+        public void Start(string tag)
+        {
+            Tag = tag;
+            Start();
+        }
         public void Start()
         {
             if (childThread == null || !childThread.IsAlive)
             {
+                Directory.CreateDirectory(DirectoryName);
                 childThread = new Thread(threadStart);
                 childThread.Start();
             }
@@ -57,6 +67,7 @@ namespace timetracker.Services
             if (childThread != null &&  childThread.IsAlive)
             {
                 childThread.Abort();
+                mkVideo();
             }
         }
 
@@ -90,16 +101,46 @@ namespace timetracker.Services
 
             // Save it!
             Console.WriteLine(string.Format("Saving the image to {0}...", targetFile));
-            memoryImage.Save(targetFile);
+            memoryImage.Save(targetFile, ImageFormat.Jpeg);
         }
 
+        private static string TimeStamp => DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+        private static string DirectoryName => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\timetracker\\" + Auth.CurrentUser.Login;
         private string getNewFileName()
         {
-            string time = DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
-            string filename = @"\" + time + ".png";
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+"\\timetracker\\"+ Auth.CurrentUser.Login;
-            Directory.CreateDirectory(dir);
-            return dir + string.Format(filename);
+            string filename = @"\" + Tag + "_" + TimeStamp + ".jpeg";
+            return DirectoryName + string.Format(filename);
+        }
+
+        public static void mkVideo()
+        {
+            var screenSize = ScreenSize;
+            var videoSize = new DotImaging.Primitives2D.Size(screenSize.X, screenSize.Y);
+            string videoTarget = DirectoryName + @"\" + Tag + "_" + TimeStamp + ".avi";
+            Console.WriteLine(string.Format("Writing video file: {0}", videoTarget));
+
+            ImageDirectoryCapture images = new ImageDirectoryCapture(DirectoryName, Tag + "_*.jpeg");
+            if (images.Length == 0) return;
+            ImageStreamWriter videoWriter = new VideoWriter(videoTarget, videoSize, Configuration.VideoFPS);
+            List<string> toDelete = new List<string>();
+
+            while(images.Position < images.Length){
+                string f = images.CurrentImageName;
+                Console.WriteLine(string.Format("   frame: {0}", f));
+                IImage image = images.Read();
+                videoWriter.Write(image);
+                toDelete.Add(f);
+            }
+            videoWriter.Close();
+            Console.WriteLine("END writing video");
+            Console.WriteLine("Removing frame files");
+            foreach(string f in toDelete)
+            {
+                if (f == null) continue;
+                File.Delete(f);
+                Console.WriteLine(string.Format("Deleted file: {0}", f));
+            }
+            Console.WriteLine("Done Removing frame files");
         }
     }
 }
