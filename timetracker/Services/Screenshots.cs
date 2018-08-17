@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows;
 using DotImaging;
 using System.Drawing.Imaging;
+using timetracker.Structs;
 
 namespace timetracker.Services
 {
@@ -105,7 +106,12 @@ namespace timetracker.Services
         }
 
         private static string TimeStamp => DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
-        private static string DirectoryName => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\timetracker\\" + Auth.CurrentUser.Login;
+        private static string DirectoryName => GetDirectoryName(Auth.CurrentUser);
+
+        public static string GetDirectoryName(User user)
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\timetracker\\" + user.Login;
+        }
         private string getNewFileName()
         {
             string filename = @"\" + Tag + "_" + TimeStamp + ".jpeg";

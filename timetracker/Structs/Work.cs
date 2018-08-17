@@ -41,7 +41,7 @@ namespace timetracker.Structs
             {
                 string projectName = ProjectId != 0 ? Project.Name : "---";
                 string workTypeName = WorkTypeId != 0 ? WorkType.Name : "---";
-                return Id == 0 ? Comment : "[" + projectName + "/" + workTypeName + "] " + Comment + "(" + Time.ToString() + "s)";
+                return Id == 0 ? Comment : "[" + projectName + "/" + workTypeName + "] " + Comment + " (" + TimeFormatted + ")";
             }
         }
 
@@ -76,6 +76,8 @@ namespace timetracker.Structs
                 Save();
             }
         }
+
+        public string TimeFormatted => Services.Timer.FormatTime(Time);
 
         protected override void OnApply(DataRow row)
         {

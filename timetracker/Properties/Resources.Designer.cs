@@ -63,6 +63,16 @@ namespace timetracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap abstract_abstract_expressionism_abstract_painting_1143770 {
+            get {
+                object obj = ResourceManager.GetObject("abstract-abstract-expressionism-abstract-painting-1143770", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_grey_16x {
             get {
                 object obj = ResourceManager.GetObject("Add_grey_16x", resourceCulture);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -91,13 +92,16 @@ namespace timetracker
             gbUser.Enabled = false;
             tsbRemoveUser.Enabled = false;
             editedUser = null;
+            btOpenDir.Enabled = false;
+            btOpenStats.Enabled = false;
             if (listboxUsers.SelectedItem != null)
             {
                 try
                 {
                     editedUser = (User)listboxUsers.SelectedItem;
                     gbUser.Enabled = true;
-                    tsbRemoveUser.Enabled = true;
+                    if(editedUser.Id!= Auth.CurrentUser.Id)
+                        tsbRemoveUser.Enabled = true;
                     showEditedUserData();
                 } catch(Exception ex)
                 {
@@ -116,6 +120,11 @@ namespace timetracker
             tbUserIRDNumber.Text = editedUser.IRDNumber;
             cbUserEnabled.Checked = editedUser.Enabled;
             cbUserIsAdmin.Checked = editedUser.IsAdmin;
+            if (!editedUser.IsAdmin)
+            {
+                btOpenDir.Enabled = true;
+                btOpenStats.Enabled = true;
+            }
         }
         private void btUserSave_Click(object sender, EventArgs e)
         {
@@ -152,7 +161,7 @@ namespace timetracker
                 UpdateLists();
             }
         }
-
+        
         private void btnAddProcess_Click(object sender, EventArgs e)
         {
             List<string>  comment = PromptDouble.ShowDialog("process", "Add new ");
@@ -242,5 +251,17 @@ namespace timetracker
             itemProc.Delete();
         }
         
+        private void btOpenDir_Click(object sender, EventArgs e)
+        {
+            string userDir = Screenshots.GetDirectoryName(editedUser);
+            Process.Start("explorer.exe",userDir);
+        }
+
+        private void btOpenStats_Click(object sender, EventArgs e)
+        {
+            MyStatsForm statsForm = new MyStatsForm();
+            statsForm.SetExaminedUser(editedUser);
+            statsForm.ShowDialog();
+        }
     }
 }

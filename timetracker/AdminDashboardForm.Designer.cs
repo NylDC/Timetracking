@@ -39,6 +39,8 @@
             this.tsbRemoveUser = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.gbUser = new System.Windows.Forms.GroupBox();
+            this.btOpenStats = new System.Windows.Forms.Button();
+            this.btOpenDir = new System.Windows.Forms.Button();
             this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
@@ -229,6 +231,8 @@
             // 
             // gbUser
             // 
+            this.gbUser.Controls.Add(this.btOpenStats);
+            this.gbUser.Controls.Add(this.btOpenDir);
             this.gbUser.Controls.Add(this.tbUserIRDNumber);
             this.gbUser.Controls.Add(this.label9);
             this.gbUser.Controls.Add(this.tbUserGSTNumber);
@@ -251,6 +255,26 @@
             this.gbUser.TabIndex = 2;
             this.gbUser.TabStop = false;
             this.gbUser.Text = "User Properties";
+            // 
+            // btOpenStats
+            // 
+            this.btOpenStats.Location = new System.Drawing.Point(166, 233);
+            this.btOpenStats.Name = "btOpenStats";
+            this.btOpenStats.Size = new System.Drawing.Size(86, 23);
+            this.btOpenStats.TabIndex = 16;
+            this.btOpenStats.Text = "Statistics...";
+            this.btOpenStats.UseVisualStyleBackColor = true;
+            this.btOpenStats.Click += new System.EventHandler(this.btOpenStats_Click);
+            // 
+            // btOpenDir
+            // 
+            this.btOpenDir.Location = new System.Drawing.Point(258, 233);
+            this.btOpenDir.Name = "btOpenDir";
+            this.btOpenDir.Size = new System.Drawing.Size(86, 23);
+            this.btOpenDir.TabIndex = 15;
+            this.btOpenDir.Text = "Screenshots...";
+            this.btOpenDir.UseVisualStyleBackColor = true;
+            this.btOpenDir.Click += new System.EventHandler(this.btOpenDir_Click);
             // 
             // tbUserIRDNumber
             // 
@@ -911,5 +935,7 @@
         private System.Windows.Forms.Button btnAddProcess;
         private System.Windows.Forms.Button btnRemoveUrl;
         private System.Windows.Forms.Button btnRemoveProcess;
+        private System.Windows.Forms.Button btOpenDir;
+        private System.Windows.Forms.Button btOpenStats;
     }
 }
