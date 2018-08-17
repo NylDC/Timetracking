@@ -11,12 +11,32 @@ namespace timetracker
 	{
 		private static int _screenshottingFrequency = -1;
 		private static int _maxKeyboardIdleInterval = -1;
-		private static int _maxMouseIdleInterval = -1;
-		private const string REG_SECTION = "TimeTracker";
+        private static int _maxMouseIdleInterval = -1;
+        private static int _showSplashFor = -1;
+        private static int _videoFPS = -1;
+        private const string REG_SECTION = "TimeTracker";
 		private const string REG_SCRNSHOT = "ScreenshottingFrequency";
 		private const string REG_MAXKII = "MaxKeyboardIdleInterval";
-		private const string REG_MAXMII = "MaxMouseIdleInterval";
-		public static int ScreenshottingFrequency 
+        private const string REG_MAXMII = "MaxMouseIdleInterval";
+        private const string REG_SHOWSPLASH = "ShowSplashFor";
+        private const string REG_VIDEOFPS = "VideoFPS";
+
+        public static int ShowSplashFor
+        {
+            get
+            {
+                if (_showSplashFor < 0)
+                    _showSplashFor = (Int32)ReadRegistryValue(REG_SHOWSPLASH, 5);
+
+                return _showSplashFor;
+            }
+            set
+            {
+                if (value < 0) value = 0;
+                _showSplashFor = (Int32)SaveRegistryValue(REG_SHOWSPLASH, value);
+            }
+        }
+        public static int ScreenshottingFrequency 
 		{
 			get
 			{
@@ -88,7 +108,23 @@ namespace timetracker
 			key.Close();
 			return theValue;
 		}
-	}
+
+        public static float VideoFPS
+        {
+            get
+            {
+                if (_videoFPS < 1)
+                    _videoFPS = (Int32)ReadRegistryValue(REG_VIDEOFPS, 2);
+
+                return _videoFPS;
+            }
+            set
+            {
+                if (value < 1) value = 1;
+                _videoFPS = (Int32)SaveRegistryValue(REG_VIDEOFPS, value);
+            }
+        }
+    }
 	
 	
 }

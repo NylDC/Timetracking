@@ -117,7 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="tableAdapterManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btEditWork.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAKtJREFUOE/tjjEKwkAQReMpbC0tvEcayQ0ClhZeYm/hESwtvICQA3iCVFMIgjb2
+        8X0Z2QiJjr0PHhn+5g9T/ESyElvssMGZvwRIVuEdVzjFLTb++oVclpVnWtI954/ksr79WZe0/tcI/cKL
+        nMnS0wGGymIsf+NfzgTLE7y4tafBski2wCsu8Yw1Bssi2Qb3PmuJLgmWRbIdHvGAN9QVwbJIdkItWePc
+        0yBF8QBPWcDQ9uarwgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btEditWorkSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAALJJREFUOE9jwAa+ffv2n1gM1YIKQBLy6cv/MwTP+V+99OT//Pz8/05OThgYqwHf
+        v39PmLXzClgzf+yi/7v2H8aqGYSxGvD58+f7yLbDnIoLo/gXpBnZ9udvPqAoRsdgG9E1YLMdr/ORnaxX
+        tBar7XgNQA40GCbG7yAMNgAEkF1BjN+RMdgAkCvQJbA5Gx3DDUAHVDGAWAzVAgHYFKBjqFLsAKQAm1Nh
+        mD4GEMJQpVDAwAAAo9RKMMyJk2wAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

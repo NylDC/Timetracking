@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimerDisplay));
+            this.panTimeControl = new System.Windows.Forms.TableLayoutPanel();
             this.lbTime = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panTimeControls = new System.Windows.Forms.TableLayoutPanel();
             this.btStop = new System.Windows.Forms.Button();
             this.btResume = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -39,36 +39,34 @@
             this.cbProjects = new System.Windows.Forms.ComboBox();
             this.cbWorkTypes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbUser = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbWorks = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.lbGreeting = new System.Windows.Forms.Label();
+            this.btClose = new System.Windows.Forms.Button();
+            this.btEditWork = new System.Windows.Forms.Button();
+            this.panEditName = new System.Windows.Forms.FlowLayoutPanel();
+            this.tbWorkName = new System.Windows.Forms.TextBox();
+            this.btEditWorkSave = new System.Windows.Forms.Button();
+            this.btWorkNoSave = new System.Windows.Forms.Button();
+            this.panTimeControl.SuspendLayout();
+            this.panTimeControls.SuspendLayout();
+            this.panEditName.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // panTimeControl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.lbTime, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 205);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.41222F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.58779F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 109);
-            this.tableLayoutPanel1.TabIndex = 5;
+            this.panTimeControl.ColumnCount = 1;
+            this.panTimeControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panTimeControl.Controls.Add(this.lbTime, 0, 0);
+            this.panTimeControl.Controls.Add(this.panTimeControls, 0, 1);
+            this.panTimeControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panTimeControl.Location = new System.Drawing.Point(0, 181);
+            this.panTimeControl.Name = "panTimeControl";
+            this.panTimeControl.RowCount = 2;
+            this.panTimeControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.41222F));
+            this.panTimeControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.58779F));
+            this.panTimeControl.Size = new System.Drawing.Size(233, 109);
+            this.panTimeControl.TabIndex = 5;
             // 
             // lbTime
             // 
@@ -83,22 +81,22 @@
             this.lbTime.Text = "00:00:00";
             this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel2
+            // panTimeControls
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.btStop, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btResume, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btStart, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 75);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(227, 31);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.panTimeControls.ColumnCount = 3;
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panTimeControls.Controls.Add(this.btStop, 0, 0);
+            this.panTimeControls.Controls.Add(this.btResume, 0, 0);
+            this.panTimeControls.Controls.Add(this.btStart, 0, 0);
+            this.panTimeControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panTimeControls.Location = new System.Drawing.Point(3, 75);
+            this.panTimeControls.Name = "panTimeControls";
+            this.panTimeControls.RowCount = 1;
+            this.panTimeControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panTimeControls.Size = new System.Drawing.Size(227, 31);
+            this.panTimeControls.TabIndex = 0;
             // 
             // btStop
             // 
@@ -134,12 +132,11 @@
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
-            
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Location = new System.Drawing.Point(9, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 6;
@@ -150,9 +147,9 @@
             this.cbProjects.DisplayMember = "Name";
             this.cbProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProjects.FormattingEnabled = true;
-            this.cbProjects.Location = new System.Drawing.Point(12, 25);
+            this.cbProjects.Location = new System.Drawing.Point(6, 55);
             this.cbProjects.Name = "cbProjects";
-            this.cbProjects.Size = new System.Drawing.Size(209, 21);
+            this.cbProjects.Size = new System.Drawing.Size(221, 21);
             this.cbProjects.TabIndex = 7;
             this.cbProjects.SelectedIndexChanged += new System.EventHandler(this.cbProjects_SelectedIndexChanged);
             // 
@@ -161,40 +158,20 @@
             this.cbWorkTypes.DisplayMember = "Name";
             this.cbWorkTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkTypes.FormattingEnabled = true;
-            this.cbWorkTypes.Location = new System.Drawing.Point(12, 71);
+            this.cbWorkTypes.Location = new System.Drawing.Point(6, 101);
             this.cbWorkTypes.Name = "cbWorkTypes";
-            this.cbWorkTypes.Size = new System.Drawing.Size(209, 21);
+            this.cbWorkTypes.Size = new System.Drawing.Size(221, 21);
             this.cbWorkTypes.TabIndex = 9;
             this.cbWorkTypes.SelectedIndexChanged += new System.EventHandler(this.cbWorkTypes_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 55);
+            this.label3.Location = new System.Drawing.Point(9, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Work Type";
-            // 
-            // cbUser
-            // 
-            this.cbUser.DisplayMember = "FullName";
-            this.cbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(12, 116);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(209, 21);
-            this.cbUser.TabIndex = 11;
-            this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 100);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "User";
             // 
             // cbWorks
             // 
@@ -202,38 +179,114 @@
             this.cbWorks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorks.FormattingEnabled = true;
             this.cbWorks.ItemHeight = 13;
-            this.cbWorks.Location = new System.Drawing.Point(13, 162);
+            this.cbWorks.Location = new System.Drawing.Point(6, 146);
             this.cbWorks.Name = "cbWorks";
-            this.cbWorks.Size = new System.Drawing.Size(208, 21);
+            this.cbWorks.Size = new System.Drawing.Size(194, 21);
             this.cbWorks.TabIndex = 12;
             this.cbWorks.SelectedIndexChanged += new System.EventHandler(this.cbWorks_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 146);
+            this.label5.Location = new System.Drawing.Point(8, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Work";
             // 
+            // lbGreeting
+            // 
+            this.lbGreeting.AutoSize = true;
+            this.lbGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGreeting.Location = new System.Drawing.Point(8, 10);
+            this.lbGreeting.Name = "lbGreeting";
+            this.lbGreeting.Size = new System.Drawing.Size(52, 17);
+            this.lbGreeting.TabIndex = 14;
+            this.lbGreeting.Text = "label2";
+            // 
+            // btClose
+            // 
+            this.btClose.Image = global::timetracker.Properties.Resources.Close_16x;
+            this.btClose.Location = new System.Drawing.Point(203, 6);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(24, 23);
+            this.btClose.TabIndex = 15;
+            this.btClose.TabStop = false;
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
+            // btEditWork
+            // 
+            this.btEditWork.Image = ((System.Drawing.Image)(resources.GetObject("btEditWork.Image")));
+            this.btEditWork.Location = new System.Drawing.Point(203, 145);
+            this.btEditWork.Name = "btEditWork";
+            this.btEditWork.Size = new System.Drawing.Size(24, 23);
+            this.btEditWork.TabIndex = 16;
+            this.btEditWork.TabStop = false;
+            this.btEditWork.UseVisualStyleBackColor = true;
+            this.btEditWork.Click += new System.EventHandler(this.btEditWork_Click);
+            // 
+            // panEditName
+            // 
+            this.panEditName.Controls.Add(this.tbWorkName);
+            this.panEditName.Controls.Add(this.btEditWorkSave);
+            this.panEditName.Controls.Add(this.btWorkNoSave);
+            this.panEditName.Enabled = false;
+            this.panEditName.Location = new System.Drawing.Point(0, 142);
+            this.panEditName.Name = "panEditName";
+            this.panEditName.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.panEditName.Size = new System.Drawing.Size(233, 29);
+            this.panEditName.TabIndex = 19;
+            this.panEditName.Visible = false;
+            this.panEditName.WrapContents = false;
+            // 
+            // tbWorkName
+            // 
+            this.tbWorkName.Location = new System.Drawing.Point(6, 4);
+            this.tbWorkName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.tbWorkName.Name = "tbWorkName";
+            this.tbWorkName.Size = new System.Drawing.Size(162, 20);
+            this.tbWorkName.TabIndex = 18;
+            // 
+            // btEditWorkSave
+            // 
+            this.btEditWorkSave.Image = ((System.Drawing.Image)(resources.GetObject("btEditWorkSave.Image")));
+            this.btEditWorkSave.Location = new System.Drawing.Point(174, 3);
+            this.btEditWorkSave.Name = "btEditWorkSave";
+            this.btEditWorkSave.Size = new System.Drawing.Size(24, 23);
+            this.btEditWorkSave.TabIndex = 19;
+            this.btEditWorkSave.UseVisualStyleBackColor = true;
+            this.btEditWorkSave.Click += new System.EventHandler(this.btEditWorkSave_Click);
+            // 
+            // btWorkNoSave
+            // 
+            this.btWorkNoSave.Image = global::timetracker.Properties.Resources.Close_red_16x;
+            this.btWorkNoSave.Location = new System.Drawing.Point(204, 3);
+            this.btWorkNoSave.Name = "btWorkNoSave";
+            this.btWorkNoSave.Size = new System.Drawing.Size(24, 23);
+            this.btWorkNoSave.TabIndex = 20;
+            this.btWorkNoSave.UseVisualStyleBackColor = true;
+            this.btWorkNoSave.Click += new System.EventHandler(this.btEditWorkNoSave_Click);
+            // 
             // TimerDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 314);
+            this.ClientSize = new System.Drawing.Size(233, 290);
             this.ControlBox = false;
+            this.Controls.Add(this.panEditName);
+            this.Controls.Add(this.btEditWork);
+            this.Controls.Add(this.btClose);
+            this.Controls.Add(this.lbGreeting);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbWorks);
-            this.Controls.Add(this.cbUser);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.cbWorkTypes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbProjects);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panTimeControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TimerDisplay";
@@ -244,19 +297,21 @@
             this.Text = "TimerDisplay";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.TimerDisplay_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimerDisplay_KeyPress);
+            this.panTimeControl.ResumeLayout(false);
+            this.panTimeControl.PerformLayout();
+            this.panTimeControls.ResumeLayout(false);
+            this.panEditName.ResumeLayout(false);
+            this.panEditName.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel panTimeControl;
         private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel panTimeControls;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btResume;
         private System.Windows.Forms.Button btStart;
@@ -264,9 +319,14 @@
         private System.Windows.Forms.ComboBox cbProjects;
         private System.Windows.Forms.ComboBox cbWorkTypes;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbUser;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbWorks;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbGreeting;
+        private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.Button btEditWork;
+        private System.Windows.Forms.FlowLayoutPanel panEditName;
+        private System.Windows.Forms.TextBox tbWorkName;
+        private System.Windows.Forms.Button btEditWorkSave;
+        private System.Windows.Forms.Button btWorkNoSave;
     }
 }

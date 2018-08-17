@@ -68,7 +68,7 @@ namespace timetracker.Services
 
             if (currentProject.MakeScreenshots)
             {
-                Screenshots.Instance.Start();
+                Screenshots.Instance.Start(currentWork.Id.ToString());
             }
             if (currentProject.CheckKeyboard || currentProject.CheckMouse)
             {
