@@ -78,7 +78,6 @@
             this.lvStats.TabIndex = 1;
             this.lvStats.UseCompatibleStateImageBehavior = false;
             this.lvStats.View = System.Windows.Forms.View.Details;
-            this.lvStats.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // chWorkType
             // 

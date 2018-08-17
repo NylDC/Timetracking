@@ -38,6 +38,14 @@
             this.tsbRemoveUser = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.gbUser = new System.Windows.Forms.GroupBox();
+            this.btOpenStats = new System.Windows.Forms.Button();
+            this.btOpenDir = new System.Windows.Forms.Button();
+            this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbUserAddress = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tbUserFullName = new System.Windows.Forms.TextBox();
             this.tbUserPassword = new System.Windows.Forms.TextBox();
             this.tbUserLogin = new System.Windows.Forms.TextBox();
@@ -75,12 +83,6 @@
             this.btOK = new System.Windows.Forms.Button();
             this.tbFreq = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbUserAddress = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbUserGSTNumber = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbUserIRDNumber = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -212,6 +214,8 @@
             // 
             // gbUser
             // 
+            this.gbUser.Controls.Add(this.btOpenStats);
+            this.gbUser.Controls.Add(this.btOpenDir);
             this.gbUser.Controls.Add(this.tbUserIRDNumber);
             this.gbUser.Controls.Add(this.label9);
             this.gbUser.Controls.Add(this.tbUserGSTNumber);
@@ -234,6 +238,75 @@
             this.gbUser.TabIndex = 2;
             this.gbUser.TabStop = false;
             this.gbUser.Text = "User Properties";
+            // 
+            // btOpenStats
+            // 
+            this.btOpenStats.Location = new System.Drawing.Point(166, 233);
+            this.btOpenStats.Name = "btOpenStats";
+            this.btOpenStats.Size = new System.Drawing.Size(86, 23);
+            this.btOpenStats.TabIndex = 16;
+            this.btOpenStats.Text = "Statistics...";
+            this.btOpenStats.UseVisualStyleBackColor = true;
+            this.btOpenStats.Click += new System.EventHandler(this.btOpenStats_Click);
+            // 
+            // btOpenDir
+            // 
+            this.btOpenDir.Location = new System.Drawing.Point(258, 233);
+            this.btOpenDir.Name = "btOpenDir";
+            this.btOpenDir.Size = new System.Drawing.Size(86, 23);
+            this.btOpenDir.TabIndex = 15;
+            this.btOpenDir.Text = "Screenshots...";
+            this.btOpenDir.UseVisualStyleBackColor = true;
+            this.btOpenDir.Click += new System.EventHandler(this.btOpenDir_Click);
+            // 
+            // tbUserIRDNumber
+            // 
+            this.tbUserIRDNumber.Location = new System.Drawing.Point(92, 183);
+            this.tbUserIRDNumber.Name = "tbUserIRDNumber";
+            this.tbUserIRDNumber.Size = new System.Drawing.Size(252, 20);
+            this.tbUserIRDNumber.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 186);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "IRD Number";
+            // 
+            // tbUserGSTNumber
+            // 
+            this.tbUserGSTNumber.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
+            this.tbUserGSTNumber.Location = new System.Drawing.Point(92, 153);
+            this.tbUserGSTNumber.Name = "tbUserGSTNumber";
+            this.tbUserGSTNumber.Size = new System.Drawing.Size(252, 20);
+            this.tbUserGSTNumber.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "GST Number";
+            // 
+            // tbUserAddress
+            // 
+            this.tbUserAddress.Location = new System.Drawing.Point(92, 124);
+            this.tbUserAddress.Name = "tbUserAddress";
+            this.tbUserAddress.Size = new System.Drawing.Size(252, 20);
+            this.tbUserAddress.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Address";
             // 
             // tbUserFullName
             // 
@@ -610,55 +683,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshoting Frequency (s)";
             // 
-            // tbUserAddress
-            // 
-            this.tbUserAddress.Location = new System.Drawing.Point(92, 124);
-            this.tbUserAddress.Name = "tbUserAddress";
-            this.tbUserAddress.Size = new System.Drawing.Size(252, 20);
-            this.tbUserAddress.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 127);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Address";
-            // 
-            // tbUserGSTNumber
-            // 
-            this.tbUserGSTNumber.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.tbUserGSTNumber.Location = new System.Drawing.Point(92, 153);
-            this.tbUserGSTNumber.Name = "tbUserGSTNumber";
-            this.tbUserGSTNumber.Size = new System.Drawing.Size(252, 20);
-            this.tbUserGSTNumber.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "GST Number";
-            // 
-            // tbUserIRDNumber
-            // 
-            this.tbUserIRDNumber.Location = new System.Drawing.Point(92, 183);
-            this.tbUserIRDNumber.Name = "tbUserIRDNumber";
-            this.tbUserIRDNumber.Size = new System.Drawing.Size(252, 20);
-            this.tbUserIRDNumber.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 186);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "IRD Number";
-            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -757,5 +781,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbUserAddress;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btOpenDir;
+        private System.Windows.Forms.Button btOpenStats;
     }
 }
