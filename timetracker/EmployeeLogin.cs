@@ -36,12 +36,29 @@ namespace timetracker
 			{
 				this.Hide();
 				btLogin.Show();
-				MessageBox.Show("Hi "+ Auth.CurrentUser.FullName, "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Hi you have successfully login "+ Auth.CurrentUser.FullName, "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else
 			{
 				MessageBox.Show("Please enter a valid username and password", "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void panel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btRegister_Click(object sender, EventArgs e)
+		{
+			Registration RegForm = new Registration();
+			RegForm.Show();
+
 		}
 	}
 }
