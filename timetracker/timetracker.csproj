@@ -116,6 +116,13 @@
     <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
     <Compile Include="Services\TimerManager.cs" />
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Structs\Citation.cs" />
     <Compile Include="Structs\DBModel.cs" />
     <Compile Include="Structs\ModelType.cs" />
     <Compile Include="Structs\Project.cs" />
@@ -151,6 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimerDisplay.resx">
       <DependentUpon>TimerDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +193,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>database.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\abstract-abstract-expressionism-abstract-painting-1143770.jpg" />
     <None Include="Resources\Close_red_16x.png" />
     <None Include="Resources\Close_16x.png" />
     <None Include="Resources\ASX_Edit_blue_16x.png" />
