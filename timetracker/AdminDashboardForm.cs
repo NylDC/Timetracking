@@ -37,31 +37,34 @@ namespace timetracker
             
             UpdateLists();
         }
-
+        bool isInternalUpdate = true;
         private void UpdateLists()
         {
+            isInternalUpdate = true;
+
             listboxProjects.DataSource = ProjectModel.List();
             listboxUsers.DataSource = UserModel.List();
             listboxWorktypes.DataSource = WorkTypeModel.List();
 
             
             /* Checked Boxes Lists of Processes and Urls  START*/
-            chkLBoxProcesses.DataSource = ProcessesAndUrlsModel.List(false);
-            chkLBoxUrls.DataSource = ProcessesAndUrlsModel.List(true);
+            ChkLBoxProcesses.DataSource = ProcessesAndUrlsModel.List(false);
+            ChkLBoxUrls.DataSource = ProcessesAndUrlsModel.List(true);
 
-            for (int i = 0; i < chkLBoxProcesses.Items.Count; i++)
+            for (int i = 0; i < ChkLBoxProcesses.Items.Count; i++)
             {
-                ProcessesAndUrls a = (ProcessesAndUrls)chkLBoxProcesses.Items[i];
-                chkLBoxProcesses.SetItemChecked(i, a.IsAllowed);
+                ProcessesAndUrls a = (ProcessesAndUrls)ChkLBoxProcesses.Items[i];
+                ChkLBoxProcesses.SetItemChecked(i, a.IsAllowed);
             }
 
            
-            for (int i = 0; i<  chkLBoxUrls.Items.Count; i++)
+            for (int i = 0; i<  ChkLBoxUrls.Items.Count; i++)
             {
-                ProcessesAndUrls a = (ProcessesAndUrls)chkLBoxUrls.Items[i];
-                chkLBoxUrls.SetItemChecked(i, a.IsAllowed);
+                ProcessesAndUrls a = (ProcessesAndUrls)ChkLBoxUrls.Items[i];
+                ChkLBoxUrls.SetItemChecked(i, a.IsAllowed);
             }
             /* Checked Boxes Lists of Processes and Urls  END*/
+            isInternalUpdate = false;
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)
@@ -174,13 +177,70 @@ namespace timetracker
             List<string> comment = PromptDouble.ShowDialog("URL", "Add new ");
             if (comment == null) return;
 
-            ProcessesAndUrls proc = new ProcessesAndUrls();
-            proc.Alias = comment[0];
-            proc.Address = comment[1];
-            proc.IsUrl = true;
+            ProcessesAndUrls urls = new ProcessesAndUrls();
+            urls.Alias = comment[0];
+            urls.Address = comment[1];
+            urls.IsUrl = true;
 
-            proc.Save();
+            urls.Save();
             UpdateLists();
         }
+
+        private void btnPrcUrlTbApply_Click(object sender, EventArgs e)
+        {
+            
+            
+          //  foreach ( ProcessesAndUrls item in ChkLBoxProcesses.Items)
+           // {
+
+               // item.IsAllowed
+            //    MessageBox.Show(item.ToString());
+           // }
+            
+            // ProcessesAndUrls proc = new ProcessesAndUrls();
+
+        }
+
+
+        private void ChkLBoxProcesses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (isInternalUpdate) return;
+            else
+            {
+                ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.Items[e.Index];
+                itemProc.IsAllowed = e.NewValue == CheckState.Checked;
+                itemProc.Save();
+            }
+
+           
+        }
+
+        private void ChkLBoxUrls_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (isInternalUpdate) return;
+            else
+            {
+                ProcessesAndUrls itemUrl = (ProcessesAndUrls)ChkLBoxUrls.Items[e.Index];
+                itemUrl.IsAllowed = e.NewValue == CheckState.Checked;
+                itemUrl.Save();
+            }
+
+
+        }
+
+        private void btnRemoveProcess_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc =  (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
+            itemProc.Delete();
+        }
+
+        private void btnRemoveUrl_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxUrls.SelectedItem;
+            itemProc.Delete();
+        }
+        
     }
 }
