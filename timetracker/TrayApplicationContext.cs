@@ -9,6 +9,9 @@ using timetracker.Services;
 
 namespace timetracker
 {
+    /// <summary>
+    /// The program itself. Invoked in the Program.cs. Manages Tray Icon and access to various windows.
+    /// </summary>
     class TrayApplicationContext : ApplicationContext
     {
         private NotifyIcon trayIcon;
@@ -23,6 +26,10 @@ namespace timetracker
 		private AdminDashboardForm adminDashboardForm;
         private MyStatsForm myStatsForm;
 
+
+        /// <summary>
+        /// Singleton accessor
+        /// </summary>
         public static TrayApplicationContext Instance
         {
             get
@@ -42,6 +49,10 @@ namespace timetracker
             TraySetNoAuth();
         }
 
+        /// <summary>
+        /// User change callback. Alters current Tray Menu
+        /// </summary>
+        /// <param name="e"></param>
         void OnAuthChange(AuthEventArgs e)
         {
             if(e.User != null)
@@ -61,6 +72,9 @@ namespace timetracker
             }
         }
 
+        /// <summary>
+        /// Create Tray Menu for an admin user
+        /// </summary>
         void TraySetForAdmin()
         {
             InitTrayIcon(new List<MenuItem> {
@@ -68,6 +82,9 @@ namespace timetracker
             });
         }
 
+        /// <summary>
+        /// Create Tray Menu for a regular user
+        /// </summary>
         void TraySetForUser()
         {
             MenuItem defaultItem;
@@ -79,6 +96,9 @@ namespace timetracker
             trayIcon.DoubleClick += Icon_Click;
         }
 
+        /// <summary>
+        /// Create Tray Menu for an unauthenticated user
+        /// </summary>
         void TraySetNoAuth()
         {
             MenuItem defaultItem;
@@ -89,6 +109,11 @@ namespace timetracker
             trayIcon.DoubleClick += Login_Click;
         }
 
+        /// <summary>
+        /// Create a standard application's tray menu with @menuItems on top.
+        /// </summary>
+        /// <param name="menuItems"></param>
+        /// <returns></returns>
         NotifyIcon InitTrayIcon(List<MenuItem> menuItems) {
             if (trayIcon != null)
             {
@@ -113,6 +138,11 @@ namespace timetracker
             return trayIcon;
         }
 
+        /// <summary>
+        /// Toggle TimerDisplay form visibility. Available to a regular user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Icon_Click(object sender, EventArgs e)
         {
             if (timerDisplay == null || timerDisplay.IsDisposed)
@@ -126,11 +156,21 @@ namespace timetracker
                 timerDisplay.Visible = !timerDisplay.Visible;
         }
 
+        /// <summary>
+        /// Logout menu action handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Logout_Click(object sender, EventArgs e)
         {
             Auth.Logout();
         }
 
+        /// <summary>
+        /// Exit menu action handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Exit_Click(object sender, EventArgs e)
         {
             // Hide tray icon, otherwise it will remain shown until user mouses over it
@@ -139,10 +179,13 @@ namespace timetracker
             Application.Exit();
         }
 
+        /// <summary>
+        /// Open login form form visibility. Available to a unauthenticated user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		void Login_Click(object sender, EventArgs e)
 		{
-			// Open About window
-
 			if (employeeLogin == null || employeeLogin.IsDisposed)
 			{
 				employeeLogin = new EmployeeLogin();
@@ -151,10 +194,13 @@ namespace timetracker
             employeeLogin.Activate();
 		}
 
+        /// <summary>
+        /// Open About form. Available to a any user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		void About_Click(object sender, EventArgs e)
         {
-            // Open About window
-
             if (aboutForm == null || aboutForm.IsDisposed)
             {
                 aboutForm = new AboutForm();
@@ -163,6 +209,11 @@ namespace timetracker
             aboutForm.Activate();
         }
 
+        /// <summary>
+        /// Open Preferences form. Available to an admin user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		void Preferences_Click(object sender, EventArgs e)
 		{
 			// Open admin Dashboard window
@@ -174,6 +225,12 @@ namespace timetracker
             adminDashboardForm.Activate();
 		}
 
+
+        /// <summary>
+        /// Open Stats form. Available to a regular user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Stats_Click(object sender, EventArgs e)
         {
             // Open admin Dashboard window

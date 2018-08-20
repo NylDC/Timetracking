@@ -7,6 +7,9 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 namespace timetracker
 {
+    /// <summary>
+    /// Static class provides read/write access to some configuration values.
+    /// </summary>
 	class Configuration
 	{
 		private static int _screenshottingFrequency = -1;

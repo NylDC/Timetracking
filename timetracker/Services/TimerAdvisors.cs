@@ -30,6 +30,9 @@ namespace timetracker.Services
             return retValue;
         }
 
+        /// <summary>
+        /// Stop all attached delegates by triggering their OnTimerStop()
+        /// </summary>
         public void StopDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)
@@ -38,6 +41,9 @@ namespace timetracker.Services
             });
         }
 
+        /// <summary>
+        /// Start all attached delegates by triggering their OnTimerStart()
+        /// </summary>
         public void StartDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)
