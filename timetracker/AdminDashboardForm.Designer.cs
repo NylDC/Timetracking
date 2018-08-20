@@ -725,6 +725,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(6, 17);
             this.richTextBox1.Name = "richTextBox1";
@@ -746,6 +747,7 @@
             // 
             // btnRemoveUrl
             // 
+            this.btnRemoveUrl.Enabled = false;
             this.btnRemoveUrl.Image = global::timetracker.Properties.Resources.Remove_16x;
             this.btnRemoveUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemoveUrl.Location = new System.Drawing.Point(37, 256);
@@ -776,6 +778,7 @@
             this.ChkLBoxUrls.Size = new System.Drawing.Size(157, 229);
             this.ChkLBoxUrls.TabIndex = 12;
             this.ChkLBoxUrls.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChkLBoxUrls_ItemCheck);
+            this.ChkLBoxUrls.SelectedIndexChanged += new System.EventHandler(this.ChkLBoxUrls_SelectedIndexChanged);
             // 
             // grpBoxProcesses
             // 
@@ -791,6 +794,7 @@
             // 
             // btnRemoveProcess
             // 
+            this.btnRemoveProcess.Enabled = false;
             this.btnRemoveProcess.Image = global::timetracker.Properties.Resources.Remove_16x;
             this.btnRemoveProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemoveProcess.Location = new System.Drawing.Point(37, 256);
@@ -809,6 +813,7 @@
             this.ChkLBoxProcesses.Size = new System.Drawing.Size(157, 229);
             this.ChkLBoxProcesses.TabIndex = 11;
             this.ChkLBoxProcesses.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChkLBoxProcesses_ItemCheck);
+            this.ChkLBoxProcesses.SelectedIndexChanged += new System.EventHandler(this.ChkLBoxProcesses_SelectedIndexChanged);
             // 
             // btnAddProcess
             // 

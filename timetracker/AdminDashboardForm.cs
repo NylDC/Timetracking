@@ -243,12 +243,14 @@ namespace timetracker
         {
             ProcessesAndUrls itemProc =  (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
             itemProc.Delete();
+            UpdateLists();
         }
 
         private void btnRemoveUrl_Click(object sender, EventArgs e)
         {
             ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxUrls.SelectedItem;
             itemProc.Delete();
+            UpdateLists();
         }
         
         private void btOpenDir_Click(object sender, EventArgs e)
@@ -263,5 +265,17 @@ namespace timetracker
             statsForm.SetExaminedUser(editedUser);
             statsForm.ShowDialog();
         }
+
+        private void ChkLBoxUrls_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveUrl.Enabled = ChkLBoxUrls.SelectedIndex > -1;
+        }
+
+        private void ChkLBoxProcesses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveProcess.Enabled = ChkLBoxProcesses.SelectedIndex > -1;
+        }
+
+    
     }
 }

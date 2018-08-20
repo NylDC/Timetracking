@@ -63,9 +63,12 @@ namespace timetracker
 
         void TraySetForAdmin()
         {
+            MenuItem defaultItem;
             InitTrayIcon(new List<MenuItem> {
-                new MenuItem("Preferences", Preferences_Click),
+                (defaultItem = new MenuItem("Preferences", Preferences_Click))
             });
+            defaultItem.DefaultItem = true;
+            trayIcon.DoubleClick += Preferences_Click;
         }
 
         void TraySetForUser()
