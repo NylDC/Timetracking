@@ -8,50 +8,6 @@ using System.Threading.Tasks;
 
 namespace timetracker.Services
 {
-    class WhereCondition
-    {
-        public string Left = null;
-        public string Operator = "=";
-        public string Right = null;
-
-        public WhereCondition() { }
-
-        public WhereCondition(string left, object right)
-        {
-            Left = left;
-            Right = right.ToString();
-        }
-
-        public WhereCondition(string left, string @operator, object right)
-        {
-            Left = left;
-            Operator = @operator;
-            Right = right.ToString();
-        }
-
-        public string Build() {
-            if(Left != null && Operator != null && Right!=null) {
-                return "[" + Left + "] " + Operator + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
-            }
-            return "";
-        }
-    }
-    class WhereGroup: List<WhereCondition>
-    {
-        bool IsOR = false;
-        
-        public string Build()
-        {
-            string result = "";
-            ForEach((WhereCondition item) => {
-                string condCompiled = item.Build();
-                if (condCompiled == "") return;
-                if (result != "") result += IsOR ? " OR " : " AND ";
-                result += condCompiled;
-            });
-            return "("+ result +")";
-        }
-    }
     class DBConn
     {
         private DBConn()
