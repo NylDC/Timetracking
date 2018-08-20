@@ -9,6 +9,9 @@ using timetracker.Models;
 using timetracker.Structs;
 namespace timetracker
 {
+    /// <summary>
+    /// Static class provides read/write access to some configuration values.
+    /// </summary>
 	class Configuration
 	{
 		private static int _screenshottingFrequency = -1;

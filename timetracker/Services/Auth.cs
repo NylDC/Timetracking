@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using timetracker.Models;
 using timetracker.Structs;
 
@@ -19,8 +15,20 @@ namespace timetracker.Services
     }
     class Auth
     {
+        /// <summary>
+        /// Represents the currently logged in user
+        /// </summary>
         public static User CurrentUser { get; private set; } = null;
 
+        /// <summary>
+        /// Provides authentication. Sets CurrentUser if success. 
+        /// Triggers Auth.OnChange event to notify application about the event.
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns>
+        /// CurrentUser if success, null if case of failure.
+        /// </returns>
         public static User Authenticate(string login, string password)
         {
             User tmpUser = null;
@@ -40,6 +48,9 @@ namespace timetracker.Services
             return CurrentUser;
         }
 
+        /// <summary>
+        /// Sets CurrentUser to Null. Triggers Auth.OnChange event to notify application about the event.
+        /// </summary>
         public static void Logout()
         {
             CurrentUser = null;

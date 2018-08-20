@@ -266,6 +266,11 @@ namespace timetracker.Services
             eventDelegate(this, e);
         }
 
+        /// <summary>
+        /// Formats second value as "HH:MM:SS"
+        /// </summary>
+        /// <param name="_seconds"></param>
+        /// <returns></returns>
         public static string FormatTime(int _seconds)
         {
             int Seconds = _seconds % 60;

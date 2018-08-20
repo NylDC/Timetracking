@@ -13,6 +13,9 @@ using timetracker.Structs;
 
 namespace timetracker
 {
+    /// <summary>
+    /// Form displays work performed for ExaminedUser (default = Auth.CurrentUser)
+    /// </summary>
     public partial class MyStatsForm : Form
     {
         private User ExaminedUser;

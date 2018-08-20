@@ -8,50 +8,6 @@ using System.Threading.Tasks;
 
 namespace timetracker.Services
 {
-    class WhereCondition
-    {
-        public string Left = null;
-        public string Operator = "=";
-        public string Right = null;
-
-        public WhereCondition() { }
-
-        public WhereCondition(string left, object right)
-        {
-            Left = left;
-            Right = right.ToString();
-        }
-
-        public WhereCondition(string left, string @operator, object right)
-        {
-            Left = left;
-            Operator = @operator;
-            Right = right.ToString();
-        }
-
-        public string Build() {
-            if(Left != null && Operator != null && Right!=null) {
-                return "[" + Left + "] " + Operator + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
-            }
-            return "";
-        }
-    }
-    class WhereGroup: List<WhereCondition>
-    {
-        bool IsOR = false;
-        
-        public string Build()
-        {
-            string result = "";
-            ForEach((WhereCondition item) => {
-                string condCompiled = item.Build();
-                if (condCompiled == "") return;
-                if (result != "") result += IsOR ? " OR " : " AND ";
-                result += condCompiled;
-            });
-            return "("+ result +")";
-        }
-    }
     class DBConn
     {
         private DBConn()
@@ -75,11 +31,21 @@ namespace timetracker.Services
         private SqlCommand cmd;
         private SqlDataReader rdr;
 
+        /// <summary>
+        /// Helper function for new SqlCommand(string).
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public SqlCommand MkSqlCommand(string str)
         {
             cmd = new SqlCommand(str, conn);
             return cmd;
         }
+
+        /// <summary>
+        /// Helper function for new SqlCommand().
+        /// </summary>
+        /// <returns></returns>
         public SqlCommand MkSqlCommand()
         {
             cmd = new SqlCommand();
@@ -87,6 +53,11 @@ namespace timetracker.Services
             return cmd;
         }
 
+        /// <summary>
+        /// Create DataTable and fill it with the command's result.
+        /// </summary>
+        /// <param name="_cmd"></param>
+        /// <returns></returns>
         public DataTable DumpCommandData(SqlCommand _cmd)
         {
             DataTable dt = new DataTable();
@@ -97,6 +68,11 @@ namespace timetracker.Services
             return dt;
         }
 
+        /// <summary>
+        /// Return DataRow filled it with the command result's first row.
+        /// </summary>
+        /// <param name="_cmd"></param>
+        /// <returns></returns>
         public DataRow DumpFirstRow(SqlCommand _cmd)
         {
             DataTable dt = new DataTable();
@@ -113,6 +89,15 @@ namespace timetracker.Services
         }
 
 
+        /// <summary>
+        /// Deletes record in the @table represented by a "@pkname=@id" condition
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="pkname"></param>
+        /// <param name="id"></param>
+        /// <returns>
+        /// True on success, false if row was not found.
+        /// </returns>
         public bool Delete(string table, string pkname, int id)
         {
             cmd.CommandText = "DELETE FROM [" + table + "] WHERE [" + pkname + "]=" + id.ToString();
@@ -120,6 +105,13 @@ namespace timetracker.Services
             return (cmd.ExecuteNonQuery() == 1);
         }
 
+        /// <summary>
+        /// Executes a SQL UPDATE query on the @table.  
+        /// </summary>
+        /// <param name="table">Table to execute UPDATE on.</param>
+        /// <param name="pkname">Name of the privvate key field in the @dict</param>
+        /// <param name="dict">List of fields to alter. Must contain key mentioned in @dict</param>
+        /// <returns></returns>
         public bool Update(string table, string pkname, Dictionary<string, object> dict)
         {
             string setters = "";
@@ -138,6 +130,12 @@ namespace timetracker.Services
             return (cmd.ExecuteNonQuery() == 1);
         }
 
+        /// <summary>
+        /// Executes SQL INSERT statement on the @table.
+        /// </summary>
+        /// <param name="table">Table to execute UPDATE on.</param>
+        /// <param name="dict">List of fields to insert.</param>
+        /// <returns>ID of the newly inserted row.</returns>
         public int Insert(string table, Dictionary<string, object> dict)
         {
             string keyList = "";
@@ -160,8 +158,19 @@ namespace timetracker.Services
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
+        /// <summary>
+        /// Fetch all records from @table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public DataTable GetAllFromTable(string table) => GetAllFromTable(table, null);
 
+        /// <summary>
+        /// Fetch all records filtered with @whereConditions
+        /// </summary>
+        /// <param name="table">Table to execute SELECT on.</param>
+        /// <param name="whereConditions">WhereGroup or null</param>
+        /// <returns></returns>
         public DataTable GetAllFromTable(string table, WhereGroup whereConditions)
         {
             string sql = "SELECT * FROM " + table;
@@ -174,6 +183,13 @@ namespace timetracker.Services
             return DumpCommandData(cmd);
         }
 
+        /// <summary>
+        /// Fetch one row from @table that matches @keyName=@key condition.
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="keyName"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public DataRow GetOneFromTable(string table, string keyName, int key)
         {
             cmd = MkSqlCommand("SELECT * FROM [" + table + "] WHERE [" + keyName + "]=" + key.ToString());
@@ -181,6 +197,12 @@ namespace timetracker.Services
             return DumpFirstRow(cmd);
         }
 
+        /// <summary>
+        /// Fetch one row from @table that matches @whereConditions
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="whereConditions">WhereGroup or null</param>
+        /// <returns></returns>
         public DataRow GetOneFromTable(string table, WhereGroup whereConditions)
         {
             string sql = "SELECT * FROM [" + table + "]";
@@ -193,12 +215,18 @@ namespace timetracker.Services
             return DumpFirstRow(cmd);
         }
 
+        /// <summary>
+        /// Perform database connection
+        /// </summary>
         private void Connect()
         {
             conn = new SqlConnection(connstr);
             conn.Open();
         }
 
+        /// <summary>
+        /// Disconnect from the database
+        /// </summary>
         private void Disconnect()
         {
             try
@@ -208,6 +236,11 @@ namespace timetracker.Services
             catch (Exception e) { }
         }
 
+        /// <summary>
+        /// Helper function to SqlCommand.ExecuteScalar()
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <returns></returns>
         public static int GetIntResult(SqlCommand cmd)
         {
             try
