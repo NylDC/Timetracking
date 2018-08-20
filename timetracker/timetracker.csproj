@@ -116,6 +116,8 @@
     <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
     <Compile Include="Services\TimerManager.cs" />
+    <Compile Include="Services\WhereCondition.cs" />
+    <Compile Include="Services\WhereGroup.cs" />
     <Compile Include="SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
