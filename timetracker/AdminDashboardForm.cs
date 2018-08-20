@@ -22,6 +22,7 @@ namespace timetracker
 			tbFreq.Text = Configuration.ScreenshottingFrequency.ToString();
 			tbKBInterval.Text = Configuration.MaxKeyboardIdleInterval.ToString();
 			tbMouseInterval.Text = Configuration.MaxMouseIdleInterval.ToString();
+            tbVideoFrequency.Text = Configuration.VideoFPS.ToString();
 		}
 
 		private void btOK_Click(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace timetracker
 			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
 			Configuration.MaxKeyboardIdleInterval = Int32.Parse(tbKBInterval.Text);
 			Configuration.MaxMouseIdleInterval = Int32.Parse(tbMouseInterval.Text);
-
+            Configuration.VideoFPS = Int32.Parse(tbVideoFrequency.Text);
 		}
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)

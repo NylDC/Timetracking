@@ -95,6 +95,8 @@
             this.btnRemoveProcess = new System.Windows.Forms.Button();
             this.ChkLBoxProcesses = new System.Windows.Forms.CheckedListBox();
             this.btnAddProcess = new System.Windows.Forms.Button();
+            this.tbVideoFrequency = new System.Windows.Forms.TextBox();
+            this.lblFrequency = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -605,6 +607,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tbVideoFrequency);
+            this.tabPage3.Controls.Add(this.lblFrequency);
             this.tabPage3.Controls.Add(this.tbMouseInterval);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.tbKBInterval);
@@ -827,6 +831,23 @@
             this.btnAddProcess.UseVisualStyleBackColor = true;
             this.btnAddProcess.Click += new System.EventHandler(this.btnAddProcess_Click);
             // 
+            // tbVideoFrequency
+            // 
+            this.tbVideoFrequency.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.tbVideoFrequency.Location = new System.Drawing.Point(161, 119);
+            this.tbVideoFrequency.Name = "tbVideoFrequency";
+            this.tbVideoFrequency.Size = new System.Drawing.Size(100, 20);
+            this.tbVideoFrequency.TabIndex = 10;
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.AutoSize = true;
+            this.lblFrequency.Location = new System.Drawing.Point(8, 122);
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(87, 13);
+            this.lblFrequency.TabIndex = 9;
+            this.lblFrequency.Text = "Video Frequency";
+            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,5 +963,7 @@
         private System.Windows.Forms.Button btnRemoveProcess;
         private System.Windows.Forms.Button btOpenDir;
         private System.Windows.Forms.Button btOpenStats;
+        private System.Windows.Forms.TextBox tbVideoFrequency;
+        private System.Windows.Forms.Label lblFrequency;
     }
 }
