@@ -39,7 +39,9 @@ namespace timetracker
             
             UpdateLists();
         }
+
         bool isInternalUpdate = true;
+        User editedUser = null;
         private void UpdateLists()
         {
             isInternalUpdate = true;
@@ -87,7 +89,7 @@ namespace timetracker
             UpdateLists();
         }
 
-        User editedUser = null;
+        
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             gbUser.Enabled = false;
@@ -277,6 +279,41 @@ namespace timetracker
             btnRemoveProcess.Enabled = ChkLBoxProcesses.SelectedIndex > -1;
         }
 
-    
+        public void btnEditUrl_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxUrls.SelectedItem;
+            List<string> lst = new List<string>();
+            lst.Add(itemProc.Alias);
+            lst.Add(itemProc.Address);
+
+
+
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+
+            if (comment == null) return;
+            itemProc.Alias = comment[0];
+            itemProc.Address = comment[1];
+            itemProc.Save();
+            UpdateLists();
+        }
+
+        private void btnEditProcess_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
+            List<string> lst = new List<string>();
+            lst.Add(itemProc.Alias);
+            lst.Add(itemProc.Address);
+
+
+
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+
+            if (comment == null) return;
+            itemProc.Alias = comment[0];
+            itemProc.Address = comment[1];
+            itemProc.Save();
+            UpdateLists();
+
+        }
     }
 }

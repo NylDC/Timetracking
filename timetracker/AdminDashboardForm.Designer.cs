@@ -75,6 +75,8 @@
             this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
             this.gbWorkType = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tbVideoFrequency = new System.Windows.Forms.TextBox();
+            this.lblFrequency = new System.Windows.Forms.Label();
             this.tbMouseInterval = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbKBInterval = new System.Windows.Forms.TextBox();
@@ -95,8 +97,8 @@
             this.btnRemoveProcess = new System.Windows.Forms.Button();
             this.ChkLBoxProcesses = new System.Windows.Forms.CheckedListBox();
             this.btnAddProcess = new System.Windows.Forms.Button();
-            this.tbVideoFrequency = new System.Windows.Forms.TextBox();
-            this.lblFrequency = new System.Windows.Forms.Label();
+            this.btnEditUrl = new System.Windows.Forms.Button();
+            this.btnEditProcess = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -624,6 +626,23 @@
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tbVideoFrequency
+            // 
+            this.tbVideoFrequency.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.tbVideoFrequency.Location = new System.Drawing.Point(161, 119);
+            this.tbVideoFrequency.Name = "tbVideoFrequency";
+            this.tbVideoFrequency.Size = new System.Drawing.Size(100, 20);
+            this.tbVideoFrequency.TabIndex = 10;
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.AutoSize = true;
+            this.lblFrequency.Location = new System.Drawing.Point(8, 122);
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(87, 13);
+            this.lblFrequency.TabIndex = 9;
+            this.lblFrequency.Text = "Video Frequency";
+            // 
             // tbMouseInterval
             // 
             this.tbMouseInterval.ImeMode = System.Windows.Forms.ImeMode.Alpha;
@@ -739,6 +758,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEditUrl);
             this.groupBox1.Controls.Add(this.btnRemoveUrl);
             this.groupBox1.Controls.Add(this.btnAddUrl);
             this.groupBox1.Controls.Add(this.ChkLBoxUrls);
@@ -786,6 +806,7 @@
             // 
             // grpBoxProcesses
             // 
+            this.grpBoxProcesses.Controls.Add(this.btnEditProcess);
             this.grpBoxProcesses.Controls.Add(this.btnRemoveProcess);
             this.grpBoxProcesses.Controls.Add(this.ChkLBoxProcesses);
             this.grpBoxProcesses.Controls.Add(this.btnAddProcess);
@@ -831,22 +852,29 @@
             this.btnAddProcess.UseVisualStyleBackColor = true;
             this.btnAddProcess.Click += new System.EventHandler(this.btnAddProcess_Click);
             // 
-            // tbVideoFrequency
+            // btnEditUrl
             // 
-            this.tbVideoFrequency.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.tbVideoFrequency.Location = new System.Drawing.Point(161, 119);
-            this.tbVideoFrequency.Name = "tbVideoFrequency";
-            this.tbVideoFrequency.Size = new System.Drawing.Size(100, 20);
-            this.tbVideoFrequency.TabIndex = 10;
+            this.btnEditUrl.Image = global::timetracker.Properties.Resources.ASX_Edit_blue_16x;
+            this.btnEditUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditUrl.Location = new System.Drawing.Point(68, 256);
+            this.btnEditUrl.Name = "btnEditUrl";
+            this.btnEditUrl.Size = new System.Drawing.Size(25, 23);
+            this.btnEditUrl.TabIndex = 16;
+            this.btnEditUrl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditUrl.UseVisualStyleBackColor = true;
+            this.btnEditUrl.Click += new System.EventHandler(this.btnEditUrl_Click);
             // 
-            // lblFrequency
+            // btnEditProcess
             // 
-            this.lblFrequency.AutoSize = true;
-            this.lblFrequency.Location = new System.Drawing.Point(8, 122);
-            this.lblFrequency.Name = "lblFrequency";
-            this.lblFrequency.Size = new System.Drawing.Size(87, 13);
-            this.lblFrequency.TabIndex = 9;
-            this.lblFrequency.Text = "Video Frequency";
+            this.btnEditProcess.Image = global::timetracker.Properties.Resources.ASX_Edit_blue_16x;
+            this.btnEditProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditProcess.Location = new System.Drawing.Point(68, 256);
+            this.btnEditProcess.Name = "btnEditProcess";
+            this.btnEditProcess.Size = new System.Drawing.Size(25, 23);
+            this.btnEditProcess.TabIndex = 17;
+            this.btnEditProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditProcess.UseVisualStyleBackColor = true;
+            this.btnEditProcess.Click += new System.EventHandler(this.btnEditProcess_Click);
             // 
             // AdminDashboardForm
             // 
@@ -965,5 +993,7 @@
         private System.Windows.Forms.Button btOpenStats;
         private System.Windows.Forms.TextBox tbVideoFrequency;
         private System.Windows.Forms.Label lblFrequency;
+        private System.Windows.Forms.Button btnEditUrl;
+        private System.Windows.Forms.Button btnEditProcess;
     }
 }
