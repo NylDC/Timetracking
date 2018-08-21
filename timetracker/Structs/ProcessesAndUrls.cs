@@ -4,7 +4,7 @@ using timetracker.Models;
 
 namespace timetracker.Structs
 {
-    class ProcessesAndUrls:ModelType
+    internal class ProcessesAndUrls:ModelType
     {
         public override string Table() => "ProcessesAndUrls";
         public override string PK() => "Id";

@@ -288,7 +288,7 @@ namespace timetracker
 
 
 
-            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", itemProc);
 
             if (comment == null) return;
             itemProc.Alias = comment[0];
@@ -300,20 +300,13 @@ namespace timetracker
         private void btnEditProcess_Click(object sender, EventArgs e)
         {
             ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
-            List<string> lst = new List<string>();
-            lst.Add(itemProc.Alias);
-            lst.Add(itemProc.Address);
-
-
-
-            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", itemProc);
 
             if (comment == null) return;
             itemProc.Alias = comment[0];
             itemProc.Address = comment[1];
             itemProc.Save();
             UpdateLists();
-
         }
     }
 }
