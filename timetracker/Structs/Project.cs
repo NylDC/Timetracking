@@ -3,7 +3,7 @@ using System.Data;
 
 namespace timetracker.Structs
 {
-    class Project : ModelType
+    public class Project : ModelType
     {
         public override string Table() => "Projects";
         public override string PK() => "Id";

@@ -9,7 +9,7 @@ namespace timetracker.Structs
     /// Abstract class that represents an arbitrary database record.
     /// To be implemented in other Structs.
     /// </summary>
-    abstract class ModelType
+    public abstract class ModelType
     {
         public int Id { get; private set; } = 0;
 

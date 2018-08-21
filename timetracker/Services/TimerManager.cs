@@ -11,7 +11,7 @@ namespace timetracker.Services
     /// <summary>
     /// Singleton class to be used to control the Timer.
     /// </summary>
-    class TimerManager
+    public class TimerManager
     {
         private static TimerManager _instance = null;
 

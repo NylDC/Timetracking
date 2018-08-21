@@ -5,7 +5,7 @@ using timetracker.Structs;
 
 namespace timetracker.Services
 {
-    class AuthEventArgs: EventArgs
+    public class AuthEventArgs : EventArgs
     {
         public AuthEventArgs(User user)
         {
@@ -13,7 +13,7 @@ namespace timetracker.Services
         }
         public User User = null;
     }
-    class Auth
+    public class Auth
     {
         /// <summary>
         /// Represents the currently logged in user

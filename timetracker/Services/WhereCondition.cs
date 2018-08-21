@@ -4,7 +4,7 @@ namespace timetracker.Services
     /// <summary>
     /// Represents a single WHERE SQL condition
     /// </summary>
-    class WhereCondition
+    public class WhereCondition
     {
         public string Left = null;
         public string Operator = "=";
