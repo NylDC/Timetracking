@@ -6,13 +6,20 @@ using timetracker.Structs;
 namespace tttests
 {
     [TestClass]
-    public class UsersTest
+    public class AuthTest
     {
         const string AuthUserName = "user";
         const string AuthUserPass = "123456";
 
         const string AuthAdminName = "admin";
         const string AuthAdminPass = "123456";
+
+        public void LogoutWithNoUser()
+        {
+            Auth.Logout();
+            Assert.IsNull(Auth.CurrentUser);
+            Auth.Logout();
+        }
 
         [TestMethod]
         public void LoginUserWithCorrectCredentials()
