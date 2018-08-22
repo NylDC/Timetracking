@@ -7,7 +7,6 @@ namespace timetracker.Structs
     {
         public override string Table() => "Projects";
         public override string PK() => "Id";
-        
         public string Name { get; set; } = "Test project";
 
         public bool CheckKeyboard = true;

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using timetracker.Models;
 
 namespace timetracker.Structs
 {
@@ -44,11 +43,7 @@ namespace timetracker.Structs
 
         public override void SetName(string alias)
         {
-           // Alias = alias;
+           Alias = alias;
         }
-
-
-
-
     }
 }
