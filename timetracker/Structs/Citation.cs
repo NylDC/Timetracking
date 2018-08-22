@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace timetracker.Structs
+﻿namespace timetracker.Structs
 {
-    class Citation
+    public class Citation
     {
         public string Author;
         public string Words;

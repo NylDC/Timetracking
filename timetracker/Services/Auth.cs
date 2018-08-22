@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using timetracker.Models;
 using timetracker.Structs;
 
 namespace timetracker.Services
 {
-    class AuthEventArgs: EventArgs
+    public class AuthEventArgs : EventArgs
     {
         public AuthEventArgs(User user)
         {
@@ -17,10 +13,22 @@ namespace timetracker.Services
         }
         public User User = null;
     }
-    class Auth
+    public class Auth
     {
+        /// <summary>
+        /// Represents the currently logged in user
+        /// </summary>
         public static User CurrentUser { get; private set; } = null;
 
+        /// <summary>
+        /// Provides authentication. Sets CurrentUser if success. 
+        /// Triggers Auth.OnChange event to notify application about the event.
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns>
+        /// CurrentUser if success, null if case of failure.
+        /// </returns>
         public static User Authenticate(string login, string password)
         {
             User tmpUser = null;
@@ -40,6 +48,9 @@ namespace timetracker.Services
             return CurrentUser;
         }
 
+        /// <summary>
+        /// Sets CurrentUser to Null. Triggers Auth.OnChange event to notify application about the event.
+        /// </summary>
         public static void Logout()
         {
             CurrentUser = null;
@@ -63,7 +74,7 @@ namespace timetracker.Services
         /// <param name="e"></param>
         public delegate void AuthEventHandler(AuthEventArgs e);
 
-        public static event AuthEventHandler CounterChange
+        public static event AuthEventHandler UserChanged
         {
             // Add the input delegate to the collection.
             add
@@ -92,6 +103,7 @@ namespace timetracker.Services
         {
             AuthEventHandler eventDelegate =
                 (AuthEventHandler)listEventDelegates[DelegateType];
+            if (eventDelegate == null) return;
             eventDelegate(e);
         }
     }

@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Advisors\TapProcesses.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Models\ProcessesAndUrlsModel.cs" />
     <Compile Include="EmployeeLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +121,7 @@
     <Compile Include="Services\Auth.cs" />
     <Compile Include="Services\DBConn.cs" />
     <Compile Include="Services\ITimerAdvisor.cs" />
+    <Compile Include="Services\PromptDoble.cs" />
     <Compile Include="Services\Prompt.cs" />
     <Compile Include="Services\Screenshots.cs" />
     <Compile Include="Advisors\TapUserInput.cs" />
@@ -127,6 +129,8 @@
     <Compile Include="Services\TimerAdvisors.cs" />
     <Compile Include="Services\TimerEventArgs.cs" />
     <Compile Include="Services\TimerManager.cs" />
+    <Compile Include="Services\WhereCondition.cs" />
+    <Compile Include="Services\WhereGroup.cs" />
     <Compile Include="SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +140,7 @@
     <Compile Include="Structs\Citation.cs" />
     <Compile Include="Structs\DBModel.cs" />
     <Compile Include="Structs\ModelType.cs" />
+    <Compile Include="Structs\ProcessesAndUrls.cs" />
     <Compile Include="Structs\Project.cs" />
     <Compile Include="Structs\User.cs" />
     <Compile Include="Structs\Work.cs" />

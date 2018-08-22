@@ -5,7 +5,7 @@ using timetracker.Models;
 
 namespace timetracker.Structs
 {
-    class Work : ModelType
+    public class Work : ModelType
     {
         public override string Table() => "Works";
         public override string PK() => "Id";

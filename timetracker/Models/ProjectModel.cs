@@ -2,7 +2,7 @@
 
 namespace timetracker.Models
 {
-    class ProjectModel : DBModel<Project>
+    public class ProjectModel : DBModel<Project>
     {
     }
 }

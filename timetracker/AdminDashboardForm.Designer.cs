@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboardForm));
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -74,6 +75,8 @@
             this.tsbRemoveWorktype = new System.Windows.Forms.ToolStripButton();
             this.gbWorkType = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tbVideoFrequency = new System.Windows.Forms.TextBox();
+            this.lblFrequency = new System.Windows.Forms.Label();
             this.tbMouseInterval = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbKBInterval = new System.Windows.Forms.TextBox();
@@ -83,6 +86,19 @@
             this.btOK = new System.Windows.Forms.Button();
             this.tbFreq = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveUrl = new System.Windows.Forms.Button();
+            this.btnAddUrl = new System.Windows.Forms.Button();
+            this.ChkLBoxUrls = new System.Windows.Forms.CheckedListBox();
+            this.grpBoxProcesses = new System.Windows.Forms.GroupBox();
+            this.btnRemoveProcess = new System.Windows.Forms.Button();
+            this.ChkLBoxProcesses = new System.Windows.Forms.CheckedListBox();
+            this.btnAddProcess = new System.Windows.Forms.Button();
+            this.btnEditUrl = new System.Windows.Forms.Button();
+            this.btnEditProcess = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -101,6 +117,10 @@
             this.toolStrip3.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panBottomStrip.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grpBoxProcesses.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabs
@@ -110,11 +130,12 @@
             this.tabs.Controls.Add(this.tabPage2);
             this.tabs.Controls.Add(this.tabPage1);
             this.tabs.Controls.Add(this.tabPage3);
+            this.tabs.Controls.Add(this.tabPage4);
             this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(613, 359);
+            this.tabs.Size = new System.Drawing.Size(630, 325);
             this.tabs.TabIndex = 0;
             // 
             // tabUsers
@@ -123,7 +144,7 @@
             this.tabUsers.Location = new System.Drawing.Point(4, 22);
             this.tabUsers.Name = "tabUsers";
             this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUsers.Size = new System.Drawing.Size(605, 333);
+            this.tabUsers.Size = new System.Drawing.Size(622, 299);
             this.tabUsers.TabIndex = 0;
             this.tabUsers.Text = "User Management";
             this.tabUsers.UseVisualStyleBackColor = true;
@@ -140,7 +161,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(599, 327);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 293);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -150,7 +171,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 321);
+            this.panel1.Size = new System.Drawing.Size(232, 287);
             this.panel1.TabIndex = 0;
             // 
             // listboxUsers
@@ -160,7 +181,7 @@
             this.listboxUsers.FormattingEnabled = true;
             this.listboxUsers.Location = new System.Drawing.Point(0, 25);
             this.listboxUsers.Name = "listboxUsers";
-            this.listboxUsers.Size = new System.Drawing.Size(225, 296);
+            this.listboxUsers.Size = new System.Drawing.Size(232, 262);
             this.listboxUsers.TabIndex = 1;
             this.listboxUsers.ValueMember = "Id";
             this.listboxUsers.SelectedIndexChanged += new System.EventHandler(this.listboxUsers_SelectedIndexChanged);
@@ -173,7 +194,7 @@
             this.tsbRemoveUser});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(225, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(232, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -204,12 +225,12 @@
             this.tableLayoutPanel4.Controls.Add(this.gbUser, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(234, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(241, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(362, 321);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(372, 287);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // gbUser
@@ -234,7 +255,7 @@
             this.gbUser.Enabled = false;
             this.gbUser.Location = new System.Drawing.Point(3, 3);
             this.gbUser.Name = "gbUser";
-            this.gbUser.Size = new System.Drawing.Size(356, 269);
+            this.gbUser.Size = new System.Drawing.Size(366, 235);
             this.gbUser.TabIndex = 2;
             this.gbUser.TabStop = false;
             this.gbUser.Text = "User Properties";
@@ -383,16 +404,16 @@
             this.flowLayoutPanel1.Controls.Add(this.btUserCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 275);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 241);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(8, 8, 0, 8);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(362, 46);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(372, 46);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // btUserSave
             // 
-            this.btUserSave.Location = new System.Drawing.Point(276, 11);
+            this.btUserSave.Location = new System.Drawing.Point(286, 11);
             this.btUserSave.Name = "btUserSave";
             this.btUserSave.Size = new System.Drawing.Size(75, 23);
             this.btUserSave.TabIndex = 14;
@@ -402,7 +423,7 @@
             // 
             // btUserCancel
             // 
-            this.btUserCancel.Location = new System.Drawing.Point(195, 11);
+            this.btUserCancel.Location = new System.Drawing.Point(205, 11);
             this.btUserCancel.Name = "btUserCancel";
             this.btUserCancel.Size = new System.Drawing.Size(75, 23);
             this.btUserCancel.TabIndex = 13;
@@ -416,7 +437,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(605, 333);
+            this.tabPage2.Size = new System.Drawing.Size(622, 299);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Project Management";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -433,7 +454,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(599, 327);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(616, 293);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel2
@@ -443,7 +464,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(225, 321);
+            this.panel2.Size = new System.Drawing.Size(232, 287);
             this.panel2.TabIndex = 0;
             // 
             // listboxProjects
@@ -453,7 +474,7 @@
             this.listboxProjects.FormattingEnabled = true;
             this.listboxProjects.Location = new System.Drawing.Point(0, 25);
             this.listboxProjects.Name = "listboxProjects";
-            this.listboxProjects.Size = new System.Drawing.Size(225, 296);
+            this.listboxProjects.Size = new System.Drawing.Size(232, 262);
             this.listboxProjects.TabIndex = 1;
             this.listboxProjects.ValueMember = "Id";
             // 
@@ -465,7 +486,7 @@
             this.tsbRemoveProject});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(225, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(232, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -491,9 +512,9 @@
             // gbProject
             // 
             this.gbProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbProject.Location = new System.Drawing.Point(234, 3);
+            this.gbProject.Location = new System.Drawing.Point(241, 3);
             this.gbProject.Name = "gbProject";
-            this.gbProject.Size = new System.Drawing.Size(362, 321);
+            this.gbProject.Size = new System.Drawing.Size(372, 287);
             this.gbProject.TabIndex = 1;
             this.gbProject.TabStop = false;
             this.gbProject.Text = "Project Properties";
@@ -504,7 +525,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(605, 333);
+            this.tabPage1.Size = new System.Drawing.Size(622, 299);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Work types Management";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -521,7 +542,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(599, 327);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(616, 293);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel3
@@ -531,7 +552,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(225, 321);
+            this.panel3.Size = new System.Drawing.Size(232, 287);
             this.panel3.TabIndex = 0;
             // 
             // listboxWorktypes
@@ -541,7 +562,7 @@
             this.listboxWorktypes.FormattingEnabled = true;
             this.listboxWorktypes.Location = new System.Drawing.Point(0, 25);
             this.listboxWorktypes.Name = "listboxWorktypes";
-            this.listboxWorktypes.Size = new System.Drawing.Size(225, 296);
+            this.listboxWorktypes.Size = new System.Drawing.Size(232, 262);
             this.listboxWorktypes.TabIndex = 1;
             this.listboxWorktypes.ValueMember = "Id";
             // 
@@ -553,7 +574,7 @@
             this.tsbRemoveWorktype});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(225, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(232, 25);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -579,15 +600,17 @@
             // gbWorkType
             // 
             this.gbWorkType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbWorkType.Location = new System.Drawing.Point(234, 3);
+            this.gbWorkType.Location = new System.Drawing.Point(241, 3);
             this.gbWorkType.Name = "gbWorkType";
-            this.gbWorkType.Size = new System.Drawing.Size(362, 321);
+            this.gbWorkType.Size = new System.Drawing.Size(372, 287);
             this.gbWorkType.TabIndex = 1;
             this.gbWorkType.TabStop = false;
             this.gbWorkType.Text = "Work Type Properties";
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tbVideoFrequency);
+            this.tabPage3.Controls.Add(this.lblFrequency);
             this.tabPage3.Controls.Add(this.tbMouseInterval);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.tbKBInterval);
@@ -598,10 +621,27 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(605, 333);
+            this.tabPage3.Size = new System.Drawing.Size(622, 299);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tbVideoFrequency
+            // 
+            this.tbVideoFrequency.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.tbVideoFrequency.Location = new System.Drawing.Point(161, 119);
+            this.tbVideoFrequency.Name = "tbVideoFrequency";
+            this.tbVideoFrequency.Size = new System.Drawing.Size(100, 20);
+            this.tbVideoFrequency.TabIndex = 10;
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.AutoSize = true;
+            this.lblFrequency.Location = new System.Drawing.Point(8, 122);
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(87, 13);
+            this.lblFrequency.TabIndex = 9;
+            this.lblFrequency.Text = "Video Frequency";
             // 
             // tbMouseInterval
             // 
@@ -642,27 +682,27 @@
             this.panBottomStrip.Controls.Add(this.btCancel);
             this.panBottomStrip.Controls.Add(this.btOK);
             this.panBottomStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panBottomStrip.Location = new System.Drawing.Point(3, 261);
+            this.panBottomStrip.Location = new System.Drawing.Point(3, 266);
             this.panBottomStrip.Name = "panBottomStrip";
-            this.panBottomStrip.Size = new System.Drawing.Size(599, 69);
+            this.panBottomStrip.Size = new System.Drawing.Size(616, 30);
             this.panBottomStrip.TabIndex = 4;
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(373, 25);
+            this.btCancel.Location = new System.Drawing.Point(3, 4);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 1;
-            this.btCancel.Text = "Cancel";
+            this.btCancel.Text = "Dismis";
             this.btCancel.UseVisualStyleBackColor = true;
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(497, 25);
+            this.btOK.Location = new System.Drawing.Point(84, 4);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(75, 23);
             this.btOK.TabIndex = 0;
-            this.btOK.Text = "OK";
+            this.btOK.Text = "Apply";
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
             // 
@@ -683,11 +723,164 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Screenshoting Frequency (s)";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox2);
+            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Controls.Add(this.grpBoxProcesses);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(622, 299);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "Alowed processes and URLS";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.richTextBox1);
+            this.groupBox2.Location = new System.Drawing.Point(357, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(259, 285);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "FAQ";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Location = new System.Drawing.Point(6, 17);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(247, 262);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnEditUrl);
+            this.groupBox1.Controls.Add(this.btnRemoveUrl);
+            this.groupBox1.Controls.Add(this.btnAddUrl);
+            this.groupBox1.Controls.Add(this.ChkLBoxUrls);
+            this.groupBox1.Location = new System.Drawing.Point(182, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(169, 285);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Urls";
+            // 
+            // btnRemoveUrl
+            // 
+            this.btnRemoveUrl.Enabled = false;
+            this.btnRemoveUrl.Image = global::timetracker.Properties.Resources.Remove_16x;
+            this.btnRemoveUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoveUrl.Location = new System.Drawing.Point(37, 256);
+            this.btnRemoveUrl.Name = "btnRemoveUrl";
+            this.btnRemoveUrl.Size = new System.Drawing.Size(25, 23);
+            this.btnRemoveUrl.TabIndex = 15;
+            this.btnRemoveUrl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemoveUrl.UseVisualStyleBackColor = true;
+            this.btnRemoveUrl.Click += new System.EventHandler(this.btnRemoveUrl_Click);
+            // 
+            // btnAddUrl
+            // 
+            this.btnAddUrl.Image = global::timetracker.Properties.Resources.Add_grey_16x;
+            this.btnAddUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddUrl.Location = new System.Drawing.Point(6, 256);
+            this.btnAddUrl.Name = "btnAddUrl";
+            this.btnAddUrl.Size = new System.Drawing.Size(25, 23);
+            this.btnAddUrl.TabIndex = 13;
+            this.btnAddUrl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddUrl.UseVisualStyleBackColor = true;
+            this.btnAddUrl.Click += new System.EventHandler(this.btnAddUrl_Click);
+            // 
+            // ChkLBoxUrls
+            // 
+            this.ChkLBoxUrls.FormattingEnabled = true;
+            this.ChkLBoxUrls.Location = new System.Drawing.Point(6, 17);
+            this.ChkLBoxUrls.Name = "ChkLBoxUrls";
+            this.ChkLBoxUrls.Size = new System.Drawing.Size(157, 229);
+            this.ChkLBoxUrls.TabIndex = 12;
+            this.ChkLBoxUrls.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChkLBoxUrls_ItemCheck);
+            this.ChkLBoxUrls.SelectedIndexChanged += new System.EventHandler(this.ChkLBoxUrls_SelectedIndexChanged);
+            // 
+            // grpBoxProcesses
+            // 
+            this.grpBoxProcesses.Controls.Add(this.btnEditProcess);
+            this.grpBoxProcesses.Controls.Add(this.btnRemoveProcess);
+            this.grpBoxProcesses.Controls.Add(this.ChkLBoxProcesses);
+            this.grpBoxProcesses.Controls.Add(this.btnAddProcess);
+            this.grpBoxProcesses.Location = new System.Drawing.Point(5, 8);
+            this.grpBoxProcesses.Name = "grpBoxProcesses";
+            this.grpBoxProcesses.Size = new System.Drawing.Size(169, 285);
+            this.grpBoxProcesses.TabIndex = 17;
+            this.grpBoxProcesses.TabStop = false;
+            this.grpBoxProcesses.Text = "Processes";
+            // 
+            // btnRemoveProcess
+            // 
+            this.btnRemoveProcess.Enabled = false;
+            this.btnRemoveProcess.Image = global::timetracker.Properties.Resources.Remove_16x;
+            this.btnRemoveProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoveProcess.Location = new System.Drawing.Point(37, 256);
+            this.btnRemoveProcess.Name = "btnRemoveProcess";
+            this.btnRemoveProcess.Size = new System.Drawing.Size(25, 23);
+            this.btnRemoveProcess.TabIndex = 14;
+            this.btnRemoveProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemoveProcess.UseVisualStyleBackColor = true;
+            this.btnRemoveProcess.Click += new System.EventHandler(this.btnRemoveProcess_Click);
+            // 
+            // ChkLBoxProcesses
+            // 
+            this.ChkLBoxProcesses.FormattingEnabled = true;
+            this.ChkLBoxProcesses.Location = new System.Drawing.Point(6, 17);
+            this.ChkLBoxProcesses.Name = "ChkLBoxProcesses";
+            this.ChkLBoxProcesses.Size = new System.Drawing.Size(157, 229);
+            this.ChkLBoxProcesses.TabIndex = 11;
+            this.ChkLBoxProcesses.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ChkLBoxProcesses_ItemCheck);
+            this.ChkLBoxProcesses.SelectedIndexChanged += new System.EventHandler(this.ChkLBoxProcesses_SelectedIndexChanged);
+            // 
+            // btnAddProcess
+            // 
+            this.btnAddProcess.Image = global::timetracker.Properties.Resources.Add_grey_16x;
+            this.btnAddProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddProcess.Location = new System.Drawing.Point(6, 256);
+            this.btnAddProcess.Name = "btnAddProcess";
+            this.btnAddProcess.Size = new System.Drawing.Size(25, 23);
+            this.btnAddProcess.TabIndex = 13;
+            this.btnAddProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddProcess.UseVisualStyleBackColor = true;
+            this.btnAddProcess.Click += new System.EventHandler(this.btnAddProcess_Click);
+            // 
+            // btnEditUrl
+            // 
+            this.btnEditUrl.Image = global::timetracker.Properties.Resources.ASX_Edit_blue_16x;
+            this.btnEditUrl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditUrl.Location = new System.Drawing.Point(68, 256);
+            this.btnEditUrl.Name = "btnEditUrl";
+            this.btnEditUrl.Size = new System.Drawing.Size(25, 23);
+            this.btnEditUrl.TabIndex = 16;
+            this.btnEditUrl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditUrl.UseVisualStyleBackColor = true;
+            this.btnEditUrl.Click += new System.EventHandler(this.btnEditUrl_Click);
+            // 
+            // btnEditProcess
+            // 
+            this.btnEditProcess.Image = global::timetracker.Properties.Resources.ASX_Edit_blue_16x;
+            this.btnEditProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditProcess.Location = new System.Drawing.Point(68, 256);
+            this.btnEditProcess.Name = "btnEditProcess";
+            this.btnEditProcess.Size = new System.Drawing.Size(25, 23);
+            this.btnEditProcess.TabIndex = 17;
+            this.btnEditProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditProcess.UseVisualStyleBackColor = true;
+            this.btnEditProcess.Click += new System.EventHandler(this.btnEditProcess_Click);
+            // 
             // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 359);
+            this.ClientSize = new System.Drawing.Size(630, 325);
             this.Controls.Add(this.tabs);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -722,6 +915,10 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panBottomStrip.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.grpBoxProcesses.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -781,7 +978,22 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbUserAddress;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAddUrl;
+        private System.Windows.Forms.CheckedListBox ChkLBoxUrls;
+        private System.Windows.Forms.GroupBox grpBoxProcesses;
+        private System.Windows.Forms.CheckedListBox ChkLBoxProcesses;
+        private System.Windows.Forms.Button btnAddProcess;
+        private System.Windows.Forms.Button btnRemoveUrl;
+        private System.Windows.Forms.Button btnRemoveProcess;
         private System.Windows.Forms.Button btOpenDir;
         private System.Windows.Forms.Button btOpenStats;
+        private System.Windows.Forms.TextBox tbVideoFrequency;
+        private System.Windows.Forms.Label lblFrequency;
+        private System.Windows.Forms.Button btnEditUrl;
+        private System.Windows.Forms.Button btnEditProcess;
     }
 }

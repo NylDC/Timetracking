@@ -135,6 +135,11 @@
   <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 56</value>
   </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>In the leftside boxes you can see aliases for the processes and urls.  \n To add new process or url - click on the "+" buttom below anf fill "Alias" and "Address" (which is the name of process or address of url). 
+To eliminate the process or the url press the "-" butoon and choose processes or urls as many as you want to eliminate.
+Cheked processes and urls means that the process or the url is alowed to use and time won't be stopped when worker will use them.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>101</value>
   </metadata>

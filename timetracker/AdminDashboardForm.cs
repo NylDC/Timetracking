@@ -22,6 +22,7 @@ namespace timetracker
 			tbFreq.Text = Configuration.ScreenshottingFrequency.ToString();
 			tbKBInterval.Text = Configuration.MaxKeyboardIdleInterval.ToString();
 			tbMouseInterval.Text = Configuration.MaxMouseIdleInterval.ToString();
+            tbVideoFrequency.Text = Configuration.VideoFPS.ToString();
 		}
 
 		private void btOK_Click(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace timetracker
 			Configuration.ScreenshottingFrequency = Int32.Parse(tbFreq.Text);
 			Configuration.MaxKeyboardIdleInterval = Int32.Parse(tbKBInterval.Text);
 			Configuration.MaxMouseIdleInterval = Int32.Parse(tbMouseInterval.Text);
+            Configuration.VideoFPS = Int32.Parse(tbVideoFrequency.Text);
 		}
 
         private void AdminDashboardForm_Load(object sender, EventArgs e)
@@ -38,11 +40,35 @@ namespace timetracker
             UpdateLists();
         }
 
+        bool isInternalUpdate = true;
+        User editedUser = null;
         private void UpdateLists()
         {
+            isInternalUpdate = true;
+
             listboxProjects.DataSource = ProjectModel.List();
             listboxUsers.DataSource = UserModel.List();
             listboxWorktypes.DataSource = WorkTypeModel.List();
+
+            
+            /* Checked Boxes Lists of Processes and Urls  START*/
+            ChkLBoxProcesses.DataSource = ProcessesAndUrlsModel.List(false);
+            ChkLBoxUrls.DataSource = ProcessesAndUrlsModel.List(true);
+
+            for (int i = 0; i < ChkLBoxProcesses.Items.Count; i++)
+            {
+                ProcessesAndUrls a = (ProcessesAndUrls)ChkLBoxProcesses.Items[i];
+                ChkLBoxProcesses.SetItemChecked(i, a.IsAllowed);
+            }
+
+           
+            for (int i = 0; i<  ChkLBoxUrls.Items.Count; i++)
+            {
+                ProcessesAndUrls a = (ProcessesAndUrls)ChkLBoxUrls.Items[i];
+                ChkLBoxUrls.SetItemChecked(i, a.IsAllowed);
+            }
+            /* Checked Boxes Lists of Processes and Urls  END*/
+            isInternalUpdate = false;
         }
 
         private void tsbAddUser_Click(object sender, EventArgs e)
@@ -63,7 +89,7 @@ namespace timetracker
             UpdateLists();
         }
 
-        User editedUser = null;
+        
         private void listboxUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             gbUser.Enabled = false;
@@ -138,7 +164,98 @@ namespace timetracker
                 UpdateLists();
             }
         }
+        
+        private void btnAddProcess_Click(object sender, EventArgs e)
+        {
+            List<string>  comment = PromptDouble.ShowDialog("process", "Add new ");
+            if (comment == null) return;
 
+            ProcessesAndUrls proc = new ProcessesAndUrls();
+            proc.Alias = comment[0];
+            proc.Address = comment[1];
+            proc.IsUrl = false;
+
+            proc.Save();
+            UpdateLists();
+            //proc.Ap
+            // proc.Alias = comment.
+        }
+
+        private void btnAddUrl_Click(object sender, EventArgs e)
+        {
+            // string comment = PromptDouble.ShowDialog("URL", "Add new ");
+            // if (comment == null) return;
+
+            List<string> comment = PromptDouble.ShowDialog("URL", "Add new ");
+            if (comment == null) return;
+
+            ProcessesAndUrls urls = new ProcessesAndUrls();
+            urls.Alias = comment[0];
+            urls.Address = comment[1];
+            urls.IsUrl = true;
+
+            urls.Save();
+            UpdateLists();
+        }
+
+        private void btnPrcUrlTbApply_Click(object sender, EventArgs e)
+        {
+            
+            
+          //  foreach ( ProcessesAndUrls item in ChkLBoxProcesses.Items)
+           // {
+
+               // item.IsAllowed
+            //    MessageBox.Show(item.ToString());
+           // }
+            
+            // ProcessesAndUrls proc = new ProcessesAndUrls();
+
+        }
+
+
+        private void ChkLBoxProcesses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (isInternalUpdate) return;
+            else
+            {
+                ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.Items[e.Index];
+                itemProc.IsAllowed = e.NewValue == CheckState.Checked;
+                itemProc.Save();
+            }
+
+           
+        }
+
+        private void ChkLBoxUrls_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+            if (isInternalUpdate) return;
+            else
+            {
+                ProcessesAndUrls itemUrl = (ProcessesAndUrls)ChkLBoxUrls.Items[e.Index];
+                itemUrl.IsAllowed = e.NewValue == CheckState.Checked;
+                itemUrl.Save();
+            }
+
+
+        }
+
+        private void btnRemoveProcess_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc =  (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
+            itemProc.Delete();
+            UpdateLists();
+        }
+
+        private void btnRemoveUrl_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxUrls.SelectedItem;
+            itemProc.Delete();
+            UpdateLists();
+        }
+        
         private void btOpenDir_Click(object sender, EventArgs e)
         {
             string userDir = Screenshots.GetDirectoryName(editedUser);
@@ -150,6 +267,53 @@ namespace timetracker
             MyStatsForm statsForm = new MyStatsForm();
             statsForm.SetExaminedUser(editedUser);
             statsForm.ShowDialog();
+        }
+
+        private void ChkLBoxUrls_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveUrl.Enabled = ChkLBoxUrls.SelectedIndex > -1;
+        }
+
+        private void ChkLBoxProcesses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveProcess.Enabled = ChkLBoxProcesses.SelectedIndex > -1;
+        }
+
+        public void btnEditUrl_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxUrls.SelectedItem;
+            List<string> lst = new List<string>();
+            lst.Add(itemProc.Alias);
+            lst.Add(itemProc.Address);
+
+
+
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+
+            if (comment == null) return;
+            itemProc.Alias = comment[0];
+            itemProc.Address = comment[1];
+            itemProc.Save();
+            UpdateLists();
+        }
+
+        private void btnEditProcess_Click(object sender, EventArgs e)
+        {
+            ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
+            List<string> lst = new List<string>();
+            lst.Add(itemProc.Alias);
+            lst.Add(itemProc.Address);
+
+
+
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+
+            if (comment == null) return;
+            itemProc.Alias = comment[0];
+            itemProc.Address = comment[1];
+            itemProc.Save();
+            UpdateLists();
+
         }
     }
 }

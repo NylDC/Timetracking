@@ -10,9 +10,9 @@ namespace timetracker.Services
 {
     /// <summary>
     /// Singleton class provides separate thread to count seconds.
-    /// Attach events to CounterChange Event to react to changes.
+    /// Attach events to UserChanged Event to react to changes.
     /// </summary>
-    class Timer
+    public class Timer
     {
         private static Timer _instance = null;
 
@@ -231,7 +231,7 @@ namespace timetracker.Services
         }
 
         /// <summary>
-        /// Trigger CounterChange handlers
+        /// Trigger UserChanged handlers
         /// </summary>
         /// <param name="e"></param>
         private void OnCount(TimerEventArgs e) => _runDelegateByType(e, countEventKey);
@@ -263,14 +263,20 @@ namespace timetracker.Services
         {
             CountEventHandler eventDelegate =
                 (CountEventHandler)listEventDelegates[DelegateType];
+            if (eventDelegate == null) return;
             eventDelegate(this, e);
         }
 
+        /// <summary>
+        /// Formats second value as "HH:MM:SS"
+        /// </summary>
+        /// <param name="_seconds"></param>
+        /// <returns></returns>
         public static string FormatTime(int _seconds)
         {
             int Seconds = _seconds % 60;
             int Minutes = (_seconds / 60) % 60;
-            int Hours = (_seconds / 3600) % 24;
+            int Hours = (_seconds / 3600);
             
             return String.Format("{0:00}:{1:00}:{2:00}", Hours, Minutes, Seconds);
         }

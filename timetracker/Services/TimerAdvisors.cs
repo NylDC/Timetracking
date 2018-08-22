@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace timetracker.Services
 {
@@ -10,7 +6,7 @@ namespace timetracker.Services
     /// Extension to a List&lt;ITimerAdvisor&gt; class 
     /// with special QueryDelegates() method to query all included delegates.
     /// </summary>
-    class TimerAdvisors : List<ITimerAdvisor>
+    public class TimerAdvisors : List<ITimerAdvisor>
     {
         /// <summary>
         /// Queries all attached instances of ITimerAdvisor calling their AdviseIfCanCount() and
@@ -30,6 +26,9 @@ namespace timetracker.Services
             return retValue;
         }
 
+        /// <summary>
+        /// Stop all attached delegates by triggering their OnTimerStop()
+        /// </summary>
         public void StopDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)
@@ -38,6 +37,9 @@ namespace timetracker.Services
             });
         }
 
+        /// <summary>
+        /// Start all attached delegates by triggering their OnTimerStart()
+        /// </summary>
         public void StartDelegates()
         {
             ForEach(delegate (ITimerAdvisor advisor)

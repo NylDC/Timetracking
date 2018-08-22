@@ -2,7 +2,7 @@
 
 namespace timetracker.Models
 {
-    class UserModel : DBModel<User>
+    public class UserModel : DBModel<User>
     {
     }
 }

@@ -10,7 +10,7 @@ using timetracker.Services;
 
 namespace timetracker.Advisors
 {
-    class TapUserInput : ITimerAdvisor
+    public class TapUserInput : ITimerAdvisor
     {
         private const int WH_KEYBOARD_LL = 13;
         private const int WH_MOUSE_LL = 14;
@@ -37,7 +37,7 @@ namespace timetracker.Advisors
         private bool TapKeyboard = false;
 
         private int MaxKeyboardIdleInterval => Configuration.MaxKeyboardIdleInterval;
-        private int MaxMouseIdleInterval = Configuration.MaxMouseIdleInterval;
+        private int MaxMouseIdleInterval => Configuration.MaxMouseIdleInterval;
 
         public TapUserInput(bool tapKeyboard, bool tapMouse)
         {

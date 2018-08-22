@@ -2,8 +2,17 @@
 
 namespace timetracker.Services
 {
+    /// <summary>
+    /// Helper static class to display a Prompt Dialog 
+    /// </summary>
     public static class Prompt
     {
+        /// <summary>
+        /// Create a prompt dialog
+        /// </summary>
+        /// <param name="text">Prompt text</param>
+        /// <param name="caption">Window caption</param>
+        /// <returns>User Input if user clicks "OK" or null if input cancelled.</returns>
         public static string ShowDialog(string text, string caption)
         {
             Form prompt = new Form()

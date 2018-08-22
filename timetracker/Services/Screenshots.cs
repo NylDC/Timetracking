@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -13,12 +10,24 @@ using timetracker.Structs;
 
 namespace timetracker.Services
 {
-    class Screenshots
+    /// <summary>
+    /// Singleton class that manages screenshots
+    /// </summary>
+    public class Screenshots
     {
+        /// <summary>
+        /// Singleton instance
+        /// </summary>
         private static Screenshots _instance = null;
+        /// <summary>
+        /// Containers for a separate thread that performs the action.
+        /// </summary>
         private ThreadStart threadStart;
         private Thread childThread;
 
+        /// <summary>
+        /// Screenshotting simgleton accessor
+        /// </summary>
         public static Screenshots Instance
         {
             get
@@ -41,18 +50,36 @@ namespace timetracker.Services
             Stop();
         }
 
+        /// <summary>
+        /// Helper value provides information about the width/height of the current active screen
+        /// </summary>
         public static Point ScreenSize => new Point(
                     (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
 
+        /// <summary>
+        /// Helper value provides wait interval
+        /// </summary>
         public static int WaitTime => Configuration.ScreenshottingFrequency * 1000;
 
+        /// <summary>
+        /// Tag is used in file names
+        /// </summary>
         private static string Tag = "task";
 
+        /// <summary>
+        /// Stat screenshotting with a custom tag
+        /// </summary>
+        /// <param name="tag"></param>
         public void Start(string tag)
         {
             Tag = tag;
             Start();
         }
+
+        /// <summary>
+        /// Start screenshotting with a default or previously defined tag.
+        /// Creates target directory.
+        /// </summary>
         public void Start()
         {
             if (childThread == null || !childThread.IsAlive)
@@ -63,6 +90,9 @@ namespace timetracker.Services
             }
         }
 
+        /// <summary>
+        /// Stops screenshotting. Creates a video file out of images that were taken for the current Tag.
+        /// </summary>
         public void Stop()
         {
             if (childThread != null &&  childThread.IsAlive)
@@ -73,6 +103,9 @@ namespace timetracker.Services
         }
 
 
+        /// <summary>
+        /// Main loop for the Thread
+        /// </summary>
         private void Loop()
         {
             while (true)
@@ -81,6 +114,11 @@ namespace timetracker.Services
                 Thread.Sleep(WaitTime);
             }
         }
+
+        /// <summary>
+        /// Main action of the Thread loop. 
+        /// Creates screenshot of an active screen and puts it on the disk.
+        /// </summary>
         private void Shoot()
         {
             Point screenSize = ScreenSize;
@@ -118,6 +156,9 @@ namespace timetracker.Services
             return DirectoryName + string.Format(filename);
         }
 
+        /// <summary>
+        /// Creates video out of the latest screenshots made for the current Tag.
+        /// </summary>
         public static void mkVideo()
         {
             var screenSize = ScreenSize;
