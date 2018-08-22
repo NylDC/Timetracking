@@ -263,6 +263,7 @@ namespace timetracker.Services
         {
             CountEventHandler eventDelegate =
                 (CountEventHandler)listEventDelegates[DelegateType];
+            if (eventDelegate == null) return;
             eventDelegate(this, e);
         }
 

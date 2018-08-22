@@ -103,6 +103,7 @@ namespace timetracker.Services
         {
             AuthEventHandler eventDelegate =
                 (AuthEventHandler)listEventDelegates[DelegateType];
+            if (eventDelegate == null) return;
             eventDelegate(e);
         }
     }
