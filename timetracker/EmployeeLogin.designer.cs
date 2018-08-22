@@ -157,7 +157,6 @@
 			this.label3.Size = new System.Drawing.Size(109, 16);
 			this.label3.TabIndex = 10;
 			this.label3.Text = "MEMBER LOGIN";
-			this.label3.Click += new System.EventHandler(this.label3_Click_1);
 			// 
 			// EmployeeLogin
 			// 
@@ -170,7 +169,6 @@
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "EmployeeLogin";
-			this.Load += new System.EventHandler(this.EmployeeLogin_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
