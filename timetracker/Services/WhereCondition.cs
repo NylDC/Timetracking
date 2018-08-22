@@ -44,7 +44,7 @@ namespace timetracker.Services
         {
             if (Left != null && Operator != null && Right != null)
             {
-                return "[" + Left + "] " + Operator + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
+                return "[" + Left + "] " + Operator + " " + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
             }
             return "";
         }
