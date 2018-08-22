@@ -8,8 +8,14 @@ namespace timetracker.Services
     /// </summary>
     class WhereGroup : List<WhereCondition>
     {
-        bool IsOR = false;
+        public bool IsOR = false;
 
+        public WhereGroup(bool isOr)
+        {
+            IsOR = isOr;
+        }
+
+        public WhereGroup() { }
         /// <summary>
         /// Build a string of conditions
         /// </summary>
