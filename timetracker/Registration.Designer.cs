@@ -35,179 +35,197 @@
 			this.tbGstNum = new System.Windows.Forms.TextBox();
 			this.tbAddress = new System.Windows.Forms.TextBox();
 			this.tbIrdNum = new System.Windows.Forms.TextBox();
-			this.cbEnabled = new System.Windows.Forms.ComboBox();
-			this.cbIsAdmin = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
+			this.Login = new System.Windows.Forms.Label();
+			this.Password = new System.Windows.Forms.Label();
+			this.Fullname = new System.Windows.Forms.Label();
+			this.Address = new System.Windows.Forms.Label();
+			this.tbIRDNumber = new System.Windows.Forms.Label();
+			this.GSTnumber = new System.Windows.Forms.Label();
+			this.btRegExit = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btRegSubmit
 			// 
-			this.btRegSubmit.Location = new System.Drawing.Point(607, 255);
+			this.btRegSubmit.BackColor = System.Drawing.Color.Silver;
+			this.btRegSubmit.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.btRegSubmit.Location = new System.Drawing.Point(138, 245);
 			this.btRegSubmit.Name = "btRegSubmit";
 			this.btRegSubmit.Size = new System.Drawing.Size(75, 23);
 			this.btRegSubmit.TabIndex = 0;
 			this.btRegSubmit.Text = "Submit";
-			this.btRegSubmit.UseVisualStyleBackColor = true;
+			this.btRegSubmit.UseVisualStyleBackColor = false;
+			this.btRegSubmit.UseWaitCursor = true;
 			this.btRegSubmit.Click += new System.EventHandler(this.btRegSubmit_Click);
 			// 
 			// tbLogin
 			// 
-			this.tbLogin.Location = new System.Drawing.Point(340, 58);
+			this.tbLogin.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbLogin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbLogin.Location = new System.Drawing.Point(138, 35);
 			this.tbLogin.Name = "tbLogin";
-			this.tbLogin.Size = new System.Drawing.Size(100, 20);
+			this.tbLogin.Size = new System.Drawing.Size(172, 20);
 			this.tbLogin.TabIndex = 1;
+			this.tbLogin.UseWaitCursor = true;
 			// 
 			// tbPassword
 			// 
-			this.tbPassword.Location = new System.Drawing.Point(340, 84);
+			this.tbPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbPassword.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbPassword.Location = new System.Drawing.Point(136, 68);
 			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.Size = new System.Drawing.Size(100, 20);
+			this.tbPassword.Size = new System.Drawing.Size(172, 20);
 			this.tbPassword.TabIndex = 2;
+			this.tbPassword.UseWaitCursor = true;
 			// 
 			// tbFullname
 			// 
-			this.tbFullname.Location = new System.Drawing.Point(340, 110);
+			this.tbFullname.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbFullname.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbFullname.Location = new System.Drawing.Point(136, 102);
 			this.tbFullname.Name = "tbFullname";
-			this.tbFullname.Size = new System.Drawing.Size(100, 20);
+			this.tbFullname.Size = new System.Drawing.Size(172, 20);
 			this.tbFullname.TabIndex = 3;
+			this.tbFullname.UseWaitCursor = true;
 			// 
 			// tbGstNum
 			// 
-			this.tbGstNum.Location = new System.Drawing.Point(340, 190);
+			this.tbGstNum.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbGstNum.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbGstNum.Location = new System.Drawing.Point(136, 135);
 			this.tbGstNum.Name = "tbGstNum";
-			this.tbGstNum.Size = new System.Drawing.Size(100, 20);
+			this.tbGstNum.Size = new System.Drawing.Size(172, 20);
 			this.tbGstNum.TabIndex = 4;
+			this.tbGstNum.UseWaitCursor = true;
 			// 
 			// tbAddress
 			// 
-			this.tbAddress.Location = new System.Drawing.Point(340, 215);
+			this.tbAddress.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbAddress.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbAddress.Location = new System.Drawing.Point(136, 170);
 			this.tbAddress.Name = "tbAddress";
-			this.tbAddress.Size = new System.Drawing.Size(100, 20);
+			this.tbAddress.Size = new System.Drawing.Size(172, 20);
 			this.tbAddress.TabIndex = 5;
+			this.tbAddress.UseWaitCursor = true;
 			// 
 			// tbIrdNum
 			// 
-			this.tbIrdNum.Location = new System.Drawing.Point(340, 241);
+			this.tbIrdNum.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.tbIrdNum.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.tbIrdNum.Location = new System.Drawing.Point(136, 202);
 			this.tbIrdNum.Name = "tbIrdNum";
-			this.tbIrdNum.Size = new System.Drawing.Size(100, 20);
+			this.tbIrdNum.Size = new System.Drawing.Size(172, 20);
 			this.tbIrdNum.TabIndex = 6;
+			this.tbIrdNum.UseWaitCursor = true;
 			// 
-			// cbEnabled
+			// Login
 			// 
-			this.cbEnabled.FormattingEnabled = true;
-			this.cbEnabled.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-			this.cbEnabled.Location = new System.Drawing.Point(340, 136);
-			this.cbEnabled.Name = "cbEnabled";
-			this.cbEnabled.Size = new System.Drawing.Size(121, 21);
-			this.cbEnabled.TabIndex = 7;
+			this.Login.AutoSize = true;
+			this.Login.BackColor = System.Drawing.Color.Black;
+			this.Login.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Login.ForeColor = System.Drawing.Color.Transparent;
+			this.Login.Location = new System.Drawing.Point(41, 40);
+			this.Login.Name = "Login";
+			this.Login.Size = new System.Drawing.Size(74, 15);
+			this.Login.TabIndex = 9;
+			this.Login.Text = "Username";
+			this.Login.UseWaitCursor = true;
 			// 
-			// cbIsAdmin
+			// Password
 			// 
-			this.cbIsAdmin.FormattingEnabled = true;
-			this.cbIsAdmin.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-			this.cbIsAdmin.Location = new System.Drawing.Point(340, 163);
-			this.cbIsAdmin.Name = "cbIsAdmin";
-			this.cbIsAdmin.Size = new System.Drawing.Size(121, 21);
-			this.cbIsAdmin.TabIndex = 8;
+			this.Password.AutoSize = true;
+			this.Password.BackColor = System.Drawing.Color.Black;
+			this.Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Password.ForeColor = System.Drawing.Color.Transparent;
+			this.Password.Location = new System.Drawing.Point(41, 74);
+			this.Password.Name = "Password";
+			this.Password.Size = new System.Drawing.Size(71, 15);
+			this.Password.TabIndex = 10;
+			this.Password.Text = "Password";
+			this.Password.UseWaitCursor = true;
 			// 
-			// label1
+			// Fullname
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(167, 65);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(35, 13);
-			this.label1.TabIndex = 9;
-			this.label1.Text = "label1";
+			this.Fullname.AutoSize = true;
+			this.Fullname.BackColor = System.Drawing.Color.Black;
+			this.Fullname.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Fullname.ForeColor = System.Drawing.Color.Transparent;
+			this.Fullname.Location = new System.Drawing.Point(41, 108);
+			this.Fullname.Name = "Fullname";
+			this.Fullname.Size = new System.Drawing.Size(67, 15);
+			this.Fullname.TabIndex = 11;
+			this.Fullname.Text = "Fullname";
+			this.Fullname.UseWaitCursor = true;
 			// 
-			// label2
+			// Address
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(167, 91);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(35, 13);
-			this.label2.TabIndex = 10;
-			this.label2.Text = "label2";
+			this.Address.AutoSize = true;
+			this.Address.BackColor = System.Drawing.Color.Black;
+			this.Address.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Address.ForeColor = System.Drawing.Color.Transparent;
+			this.Address.Location = new System.Drawing.Point(41, 172);
+			this.Address.Name = "Address";
+			this.Address.Size = new System.Drawing.Size(60, 15);
+			this.Address.TabIndex = 13;
+			this.Address.Text = "Address";
+			this.Address.UseWaitCursor = true;
 			// 
-			// label3
+			// tbIRDNumber
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(167, 117);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(35, 13);
-			this.label3.TabIndex = 11;
-			this.label3.Text = "label3";
+			this.tbIRDNumber.AutoSize = true;
+			this.tbIRDNumber.BackColor = System.Drawing.Color.Black;
+			this.tbIRDNumber.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbIRDNumber.ForeColor = System.Drawing.Color.Transparent;
+			this.tbIRDNumber.Location = new System.Drawing.Point(41, 208);
+			this.tbIRDNumber.Name = "tbIRDNumber";
+			this.tbIRDNumber.Size = new System.Drawing.Size(82, 15);
+			this.tbIRDNumber.TabIndex = 14;
+			this.tbIRDNumber.Text = "IRDNumber";
+			this.tbIRDNumber.UseWaitCursor = true;
 			// 
-			// label4
+			// GSTnumber
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(167, 144);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(35, 13);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "label4";
+			this.GSTnumber.AutoSize = true;
+			this.GSTnumber.BackColor = System.Drawing.Color.Black;
+			this.GSTnumber.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.GSTnumber.ForeColor = System.Drawing.Color.Transparent;
+			this.GSTnumber.Location = new System.Drawing.Point(39, 141);
+			this.GSTnumber.Name = "GSTnumber";
+			this.GSTnumber.Size = new System.Drawing.Size(86, 15);
+			this.GSTnumber.TabIndex = 12;
+			this.GSTnumber.Text = "GSTNumber";
+			this.GSTnumber.UseWaitCursor = true;
 			// 
-			// label5
+			// btRegExit
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(167, 171);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(35, 13);
-			this.label5.TabIndex = 13;
-			this.label5.Text = "label5";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(167, 190);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(35, 13);
-			this.label6.TabIndex = 14;
-			this.label6.Text = "label6";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(167, 222);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(35, 13);
-			this.label7.TabIndex = 15;
-			this.label7.Text = "label7";
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(167, 248);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(35, 13);
-			this.label8.TabIndex = 16;
-			this.label8.Text = "label8";
+			this.btRegExit.BackColor = System.Drawing.Color.Silver;
+			this.btRegExit.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+			this.btRegExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btRegExit.Location = new System.Drawing.Point(235, 245);
+			this.btRegExit.Name = "btRegExit";
+			this.btRegExit.Size = new System.Drawing.Size(75, 23);
+			this.btRegExit.TabIndex = 15;
+			this.btRegExit.Text = "Exit";
+			this.btRegExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.btRegExit.UseVisualStyleBackColor = false;
+			this.btRegExit.UseWaitCursor = true;
+			this.btRegExit.Click += new System.EventHandler(this.btRegExit_Click);
 			// 
 			// Registration
 			// 
+			this.AcceptButton = this.btRegSubmit;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.cbIsAdmin);
-			this.Controls.Add(this.cbEnabled);
+			this.BackColor = System.Drawing.Color.Black;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.CancelButton = this.btRegExit;
+			this.ClientSize = new System.Drawing.Size(387, 301);
+			this.Controls.Add(this.btRegExit);
+			this.Controls.Add(this.tbIRDNumber);
+			this.Controls.Add(this.Address);
+			this.Controls.Add(this.GSTnumber);
+			this.Controls.Add(this.Fullname);
+			this.Controls.Add(this.Password);
+			this.Controls.Add(this.Login);
 			this.Controls.Add(this.tbIrdNum);
 			this.Controls.Add(this.tbAddress);
 			this.Controls.Add(this.tbGstNum);
@@ -215,8 +233,13 @@
 			this.Controls.Add(this.tbPassword);
 			this.Controls.Add(this.tbLogin);
 			this.Controls.Add(this.btRegSubmit);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "Registration";
 			this.Text = "Registration";
+			this.UseWaitCursor = true;
+			this.Load += new System.EventHandler(this.Registration_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -231,15 +254,12 @@
 		private System.Windows.Forms.TextBox tbGstNum;
 		private System.Windows.Forms.TextBox tbAddress;
 		private System.Windows.Forms.TextBox tbIrdNum;
-		private System.Windows.Forms.ComboBox cbEnabled;
-		private System.Windows.Forms.ComboBox cbIsAdmin;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label Login;
+		private System.Windows.Forms.Label Password;
+		private System.Windows.Forms.Label Fullname;
+		private System.Windows.Forms.Label Address;
+		private System.Windows.Forms.Label tbIRDNumber;
+		private System.Windows.Forms.Label GSTnumber;
+		private System.Windows.Forms.Button btRegExit;
 	}
 }
