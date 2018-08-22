@@ -16,7 +16,7 @@ namespace timetracker.Services
     /// <summary>
     /// Singleton class that manages screenshots
     /// </summary>
-    class Screenshots
+    public class Screenshots
     {
         /// <summary>
         /// Singleton instance

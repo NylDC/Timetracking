@@ -12,7 +12,7 @@ namespace timetracker.Services
     /// Singleton class provides separate thread to count seconds.
     /// Attach events to CounterChange Event to react to changes.
     /// </summary>
-    class Timer
+    public class Timer
     {
         private static Timer _instance = null;
 

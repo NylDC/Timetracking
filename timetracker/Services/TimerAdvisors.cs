@@ -10,7 +10,7 @@ namespace timetracker.Services
     /// Extension to a List&lt;ITimerAdvisor&gt; class 
     /// with special QueryDelegates() method to query all included delegates.
     /// </summary>
-    class TimerAdvisors : List<ITimerAdvisor>
+    public class TimerAdvisors : List<ITimerAdvisor>
     {
         /// <summary>
         /// Queries all attached instances of ITimerAdvisor calling their AdviseIfCanCount() and

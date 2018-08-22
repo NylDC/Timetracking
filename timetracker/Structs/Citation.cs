@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace timetracker.Structs
 {
-    class Citation
+    public class Citation
     {
         public string Author;
         public string Words;

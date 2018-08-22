@@ -4,7 +4,7 @@ using timetracker.Models;
 
 namespace timetracker.Structs
 {
-    class User : ModelType
+    public class User : ModelType
     {
         public override string Table() => "Users";
         public override string PK() => "Id";

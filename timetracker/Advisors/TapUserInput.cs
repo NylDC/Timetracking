@@ -10,7 +10,7 @@ using timetracker.Services;
 
 namespace timetracker.Advisors
 {
-    class TapUserInput : ITimerAdvisor
+    public class TapUserInput : ITimerAdvisor
     {
         private const int WH_KEYBOARD_LL = 13;
         private const int WH_MOUSE_LL = 14;
