@@ -10,7 +10,7 @@ namespace timetracker.Services
 {
     /// <summary>
     /// Singleton class provides separate thread to count seconds.
-    /// Attach events to CounterChange Event to react to changes.
+    /// Attach events to UserChanged Event to react to changes.
     /// </summary>
     public class Timer
     {
@@ -231,7 +231,7 @@ namespace timetracker.Services
         }
 
         /// <summary>
-        /// Trigger CounterChange handlers
+        /// Trigger UserChanged handlers
         /// </summary>
         /// <param name="e"></param>
         private void OnCount(TimerEventArgs e) => _runDelegateByType(e, countEventKey);

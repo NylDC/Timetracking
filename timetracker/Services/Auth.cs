@@ -74,7 +74,7 @@ namespace timetracker.Services
         /// <param name="e"></param>
         public delegate void AuthEventHandler(AuthEventArgs e);
 
-        public static event AuthEventHandler CounterChange
+        public static event AuthEventHandler UserChanged
         {
             // Add the input delegate to the collection.
             add
