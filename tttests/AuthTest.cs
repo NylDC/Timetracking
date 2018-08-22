@@ -14,6 +14,7 @@ namespace tttests
         const string AuthAdminName = "admin";
         const string AuthAdminPass = "123456";
 
+        [TestMethod]
         public void LogoutWithNoUser()
         {
             Auth.Logout();

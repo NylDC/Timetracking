@@ -15,7 +15,7 @@ namespace tttests
                 Right = "B",
                 Operator = ">"
             };
-            string correctValue = "[A] >'B'";
+            string correctValue = "[A] > 'B'";
             string testValue = wc.Build();
             MyAssert.Equals(correctValue, testValue);
         }
@@ -28,7 +28,7 @@ namespace tttests
                 Left = "A",
                 Right = "B"
             };
-            string correctValue = "[A] ='B'";
+            string correctValue = "[A] = 'B'";
             string testValue = wc.Build();
             MyAssert.Equals(correctValue, testValue);
         }
@@ -69,7 +69,7 @@ namespace tttests
                 new WhereCondition("C","D"),
             };
            
-            string correctValue = "([A] ='B' AND [C] ='D')";
+            string correctValue = "([A] = 'B' AND [C] = 'D')";
             string testValue = wg.Build();
             MyAssert.Equals(correctValue, testValue);
         }
@@ -77,12 +77,12 @@ namespace tttests
         [TestMethod]
         public void WhereGroup_2OR()
         {
-            WhereGroup wg = new WhereGroup() {
+            WhereGroup wg = new WhereGroup(true) {
                 new WhereCondition("A","B"),
                 new WhereCondition("C","D"),
             };
 
-            string correctValue = "[A] ='B' OR [C] ='D'";
+            string correctValue = "([A] = 'B' OR [C] = 'D')";
             string testValue = wg.Build();
             MyAssert.Equals(correctValue, testValue);
         }
