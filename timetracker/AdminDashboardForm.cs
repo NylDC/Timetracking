@@ -42,6 +42,9 @@ namespace timetracker
 
         bool isInternalUpdate = true;
         User editedUser = null;
+        Project editedProject = null;
+        WorkType editedWorkType = null;
+
         private void UpdateLists()
         {
             isInternalUpdate = true;
@@ -151,7 +154,7 @@ namespace timetracker
 
         private void btUserCancel_Click(object sender, EventArgs e)
         {
-            showEditedUserData(); //reset
+            showEditedUserData();
         }
 
         private void tsbRemoveUser_Click(object sender, EventArgs e)
@@ -164,7 +167,36 @@ namespace timetracker
                 UpdateLists();
             }
         }
-        
+
+
+        private void listboxProjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listboxProjects.SelectedItem != null)
+            {
+                try
+                {
+                    editedProject = (Project)listboxProjects.SelectedItem;
+                    
+                    showEditedProjectData();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+        private void showEditedProjectData()
+        {
+            if (editedProject == null) return;
+            tbProjectName.Text = editedProject.Name;
+            cbMakeScreenshots.Checked = editedProject.MakeScreenshots;
+            cbCheckApplications.Checked = editedProject.CheckApps;
+            cbCheckKeyboard.Checked = editedProject.CheckKeyboard;
+            cbCheckMouse.Checked = editedProject.CheckMouse;
+            cbIsActive.Checked = editedProject.Active;
+        }
+
         private void btnAddProcess_Click(object sender, EventArgs e)
         {
             List<string>  comment = PromptDouble.ShowDialog("process", "Add new ");
@@ -177,15 +209,10 @@ namespace timetracker
 
             proc.Save();
             UpdateLists();
-            //proc.Ap
-            // proc.Alias = comment.
         }
 
         private void btnAddUrl_Click(object sender, EventArgs e)
         {
-            // string comment = PromptDouble.ShowDialog("URL", "Add new ");
-            // if (comment == null) return;
-
             List<string> comment = PromptDouble.ShowDialog("URL", "Add new ");
             if (comment == null) return;
 
@@ -197,22 +224,6 @@ namespace timetracker
             urls.Save();
             UpdateLists();
         }
-
-        private void btnPrcUrlTbApply_Click(object sender, EventArgs e)
-        {
-            
-            
-          //  foreach ( ProcessesAndUrls item in ChkLBoxProcesses.Items)
-           // {
-
-               // item.IsAllowed
-            //    MessageBox.Show(item.ToString());
-           // }
-            
-            // ProcessesAndUrls proc = new ProcessesAndUrls();
-
-        }
-
 
         private void ChkLBoxProcesses_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -288,7 +299,7 @@ namespace timetracker
 
 
 
-            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", itemProc);
 
             if (comment == null) return;
             itemProc.Alias = comment[0];
@@ -300,20 +311,85 @@ namespace timetracker
         private void btnEditProcess_Click(object sender, EventArgs e)
         {
             ProcessesAndUrls itemProc = (ProcessesAndUrls)ChkLBoxProcesses.SelectedItem;
-            List<string> lst = new List<string>();
-            lst.Add(itemProc.Alias);
-            lst.Add(itemProc.Address);
-
-
-
-            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", lst);
+            List<string> comment = PromptDouble.ShowEditDialog("URL", "Edit", itemProc);
 
             if (comment == null) return;
             itemProc.Alias = comment[0];
             itemProc.Address = comment[1];
             itemProc.Save();
             UpdateLists();
+        }
 
+        private void btnProjectSave_Click(object sender, EventArgs e)
+        {
+            if(tbProjectName.Text == "" || tbProjectName.Text == null)
+            {
+                MessageBox.Show("Name of the project can not be empty!");
+                return;
+            }
+            editedProject.Name = tbProjectName.Text;
+            editedProject.MakeScreenshots = cbMakeScreenshots.Checked;
+            editedProject.CheckApps = cbCheckApplications.Checked;
+            editedProject.CheckBrowsers = cbCheckUrls.Checked;
+            editedProject.CheckKeyboard = cbCheckKeyboard.Checked;
+            editedProject.CheckMouse = cbCheckMouse.Checked;
+
+            editedProject.Save();
+            UpdateLists();
+            MessageBox.Show("Project saved");
+        }
+
+        private void btnProjectCancel_Click(object sender, EventArgs e)
+        {
+            showEditedProjectData();
+        }
+
+        private void tsbRemoveProject_Click(object sender, EventArgs e)
+        {
+            if (editedProject != null)
+            {
+                editedProject.Delete();
+                editedProject = null;
+                tsbRemoveProject.Enabled = false;
+                UpdateLists();
+            }
+        }
+
+        private void listboxWorktypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            editedWorkType = (WorkType)listboxWorktypes.SelectedItem;
+            tbWorktypesName.Text = editedWorkType.Name;
+        }
+
+        private void btnWorkypeSave_Click(object sender, EventArgs e)
+        {
+            if( tbWorktypesName.Text == "" || tbWorktypesName.Text == null)
+            {
+                MessageBox.Show("Work type's name couldn't be empty!");
+                return;
+            }
+            editedWorkType.Name = tbWorktypesName.Text;
+            editedWorkType.Save();
+            UpdateLists();
+
+        }
+
+        private void btnWorkypeCancel_Click(object sender, EventArgs e)
+        {
+            if (editedWorkType == null) return;
+            tbWorktypesName.Text = editedWorkType.Name;
+
+        }
+
+        private void tsbRemoveWorktype_Click(object sender, EventArgs e)
+        {
+            if (editedWorkType != null)
+            {
+                editedWorkType.Delete();
+                editedWorkType = null;
+                tsbRemoveWorktype.Enabled = false;
+                UpdateLists();
+            }
         }
     }
 }
