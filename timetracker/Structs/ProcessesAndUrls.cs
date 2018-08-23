@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using timetracker.Models;
 
 namespace timetracker.Structs
 {
-    internal class ProcessesAndUrls:ModelType
+    public class ProcessesAndUrls:ModelType
     {
         public override string Table() => "ProcessesAndUrls";
         public override string PK() => "Id";
@@ -44,11 +43,7 @@ namespace timetracker.Structs
 
         public override void SetName(string alias)
         {
-           // Alias = alias;
+           Alias = alias;
         }
-
-
-
-
     }
 }

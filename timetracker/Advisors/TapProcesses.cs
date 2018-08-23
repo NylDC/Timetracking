@@ -16,7 +16,7 @@ using System.Text.RegularExpressions;
 
 namespace timetracker.Advisors
 {
-    class TapProcesses : ITimerAdvisor
+    public class TapProcesses : ITimerAdvisor
     {
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern IntPtr GetForegroundWindow();

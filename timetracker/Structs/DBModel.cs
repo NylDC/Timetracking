@@ -9,7 +9,7 @@ namespace timetracker.Structs
     /// Template class that wraps a T:ModelType with helper routines that make queries easy.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class DBModel<T> where T : ModelType, new()
+    public class DBModel<T> where T : ModelType, new()
     {
 
         /// <summary>

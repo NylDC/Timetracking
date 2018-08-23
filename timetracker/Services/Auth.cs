@@ -5,7 +5,7 @@ using timetracker.Structs;
 
 namespace timetracker.Services
 {
-    class AuthEventArgs: EventArgs
+    public class AuthEventArgs : EventArgs
     {
         public AuthEventArgs(User user)
         {
@@ -13,7 +13,7 @@ namespace timetracker.Services
         }
         public User User = null;
     }
-    class Auth
+    public class Auth
     {
         /// <summary>
         /// Represents the currently logged in user
@@ -74,7 +74,7 @@ namespace timetracker.Services
         /// <param name="e"></param>
         public delegate void AuthEventHandler(AuthEventArgs e);
 
-        public static event AuthEventHandler CounterChange
+        public static event AuthEventHandler UserChanged
         {
             // Add the input delegate to the collection.
             add
@@ -103,6 +103,7 @@ namespace timetracker.Services
         {
             AuthEventHandler eventDelegate =
                 (AuthEventHandler)listEventDelegates[DelegateType];
+            if (eventDelegate == null) return;
             eventDelegate(e);
         }
     }

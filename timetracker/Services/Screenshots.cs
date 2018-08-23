@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -16,7 +13,7 @@ namespace timetracker.Services
     /// <summary>
     /// Singleton class that manages screenshots
     /// </summary>
-    class Screenshots
+    public class Screenshots
     {
         /// <summary>
         /// Singleton instance

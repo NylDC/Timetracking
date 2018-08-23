@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace timetracker.Services
 {
-    class DBConn
+    public class DBConn
     {
         private DBConn()
         {

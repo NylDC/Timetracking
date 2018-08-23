@@ -45,7 +45,7 @@ namespace timetracker
         public TrayApplicationContext()
         {
             (new SplashForm()).Show();
-            Auth.CounterChange += OnAuthChange;
+            Auth.UserChanged += OnAuthChange;
             TraySetNoAuth();
         }
 

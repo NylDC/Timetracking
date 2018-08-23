@@ -2,7 +2,7 @@
 
 namespace timetracker.Models
 {
-    class WorkTypeModel : DBModel<WorkType>
+    public class WorkTypeModel : DBModel<WorkType>
     {
     }
 }

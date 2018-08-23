@@ -4,7 +4,7 @@ namespace timetracker.Services
     /// <summary>
     /// Represents a single WHERE SQL condition
     /// </summary>
-    class WhereCondition
+    public class WhereCondition
     {
         public string Left = null;
         public string Operator = "=";
@@ -44,7 +44,7 @@ namespace timetracker.Services
         {
             if (Left != null && Operator != null && Right != null)
             {
-                return "[" + Left + "] " + Operator + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
+                return "[" + Left + "] " + Operator + " " + (Right.ToUpper() == "NULL" ? Right : "'" + Right + "'");
             }
             return "";
         }

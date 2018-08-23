@@ -5,7 +5,7 @@ using timetracker.Services;
 
 namespace timetracker.Models
 {
-    class WorkModel : DBModel<Work>
+    public class WorkModel : DBModel<Work>
     {
         public static List<Work> List(User user) => List(new WhereGroup { new WhereCondition("UserId",user.Id) });
 

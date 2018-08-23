@@ -6,10 +6,16 @@ namespace timetracker.Services
     /// <summary>
     /// represents a group of WHERE SQL conditions to be later combined through AND/OR condition 
     /// </summary>
-    class WhereGroup : List<WhereCondition>
+    public class WhereGroup : List<WhereCondition>
     {
-        bool IsOR = false;
+        public bool IsOR = false;
 
+        public WhereGroup(bool isOr)
+        {
+            IsOR = isOr;
+        }
+
+        public WhereGroup() { }
         /// <summary>
         /// Build a string of conditions
         /// </summary>
