@@ -32,11 +32,8 @@ namespace timetracker.Advisors
 
         private Process activeProcess = null;
         private Process CurProcess = null;
-
-        //private bool inWhiteList = true;
-        //private bool inBlackList = false;
+        
         private bool allovdedProcess = true;
-
 
         private static TapProcesses _instance = null;
         private ThreadStart threadStart;
@@ -88,7 +85,9 @@ namespace timetracker.Advisors
             }
         }
 
-
+        /// <summary>
+        ///  
+        /// </summary>
         private void Loop()
         {
             activeProcess = GetActiveProcess();

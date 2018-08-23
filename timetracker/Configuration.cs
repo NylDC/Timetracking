@@ -89,7 +89,23 @@ namespace timetracker
 			}
 		}
 
-		private static object ReadRegistryValue(string keyName, object defaultValue)
+        public static int VideoFPS
+        {
+            get
+            {
+                if (_videoFPS < 1)
+                    _videoFPS = (Int32)ReadRegistryValue(REG_VIDEOFPS, 2);
+
+                return _videoFPS;
+            }
+            set
+            {
+                if (value < 1) value = 1;
+                _videoFPS = (Int32)SaveRegistryValue(REG_VIDEOFPS, value);
+            }
+        }
+
+        private static object ReadRegistryValue(string keyName, object defaultValue)
 		{
 			object o = defaultValue;
 			try
@@ -140,21 +156,7 @@ namespace timetracker
             }
         }
 
-        public static float VideoFPS
-        {
-            get
-            {
-                if (_videoFPS < 1)
-                    _videoFPS = (Int32)ReadRegistryValue(REG_VIDEOFPS, 2);
-
-                return _videoFPS;
-            }
-            set
-            {
-                if (value < 1) value = 1;
-                _videoFPS = (Int32)SaveRegistryValue(REG_VIDEOFPS, value);
-            }
-        }
+        
     }
 	
 	
