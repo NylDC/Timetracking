@@ -18,6 +18,7 @@ namespace timetracker.Advisors
 {
     public class TapProcesses : ITimerAdvisor
     {
+        string[] forbiddenProcs = Configuration.ForbiddenProcesses;
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern IntPtr GetForegroundWindow();
 
@@ -204,7 +205,7 @@ namespace timetracker.Advisors
             // Console.WriteLine(CurProcess.ProcessName);
             allovdedProcess = true;
 
-            foreach (string proc in Configuration.ForbiddenProcesses)
+            foreach (string proc in forbiddenProcs)
             {
                 if (activeProcess.ProcessName == proc)
                 {
