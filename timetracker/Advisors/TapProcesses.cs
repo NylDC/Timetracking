@@ -19,6 +19,10 @@ namespace timetracker.Advisors
     public class TapProcesses : ITimerAdvisor
     {
         string[] forbiddenProcs = Configuration.ForbiddenProcesses;
+        /// <summary>
+        /// Importing objects and methods from Microsoft Windows' DLL for working with processes and windows 
+        /// </summary>
+        /// <returns></returns>
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern IntPtr GetForegroundWindow();
 
@@ -31,28 +35,23 @@ namespace timetracker.Advisors
         [DllImport("kernel32.dll")]
         static extern int GetProcessId(IntPtr handle);
 
+        /// <summary>
+        /// Definition of the active in this particular time process
+        /// </summary>
         private Process activeProcess = null;
+
+        /// <summary>
+        /// Definition of the already getted process
+        /// </summary>
         private Process CurProcess = null;
         
+        /// <summary>
+        /// Definition of the variable which shows is process or url is allowed or not
+        /// </summary>
         private bool allovdedProcess = true;
 
-        private static TapProcesses _instance = null;
         private ThreadStart threadStart;
         private Thread childThread;
-
- /*       public static TapProcesses Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new TapProcesses(bool allovdedProcess);
-                }
-                return _instance;
-            }
-        }
-*/
-
 
         public TapProcesses(bool allovdedProcess)
         {
@@ -86,9 +85,7 @@ namespace timetracker.Advisors
             }
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
+        
         private void Loop()
         {
             activeProcess = GetActiveProcess();
@@ -101,6 +98,10 @@ namespace timetracker.Advisors
             }
         }
 
+        /// <summary>
+        /// Getting current active process
+        /// </summary>
+        /// <returns></returns>
         private Process GetActiveProcess()
         {
             int pid = 0;
@@ -111,24 +112,24 @@ namespace timetracker.Advisors
             
         }
 
+        /// <summary>
+        /// Checking if active process is web browser
+        /// </summary>
+        /// <param name="activeProcess"></param>
         private void GetActiveBrowser(Process activeProcess)
         {
             CurProcess = GetActiveProcess();
             Dictionary<string, string> BrowserUrlFieldPropertyNames = new Dictionary<string, string>();
             BrowserUrlFieldPropertyNames.Add("chrome", "Address and search bar"); //chrome
-            //BrowserUrlFieldPropertyNames.Add("firefox", "Search or enter address"); //FireFox
+            //BrowserUrlFieldPropertyNames.Add("firefox", "Search or enter address"); //FireFox   //not finded yet
             BrowserUrlFieldPropertyNames.Add("iexplore", "Address and search using Bing"); //IE
             BrowserUrlFieldPropertyNames.Add("ApplicationFrameHost", "Search or enter web address"); //EDGE
             BrowserUrlFieldPropertyNames.Add("opera", "Address field"); //opera
 
-
             AutomationElement UrlBarElement = null;
             AutomationElement mainWindowElement = null;
             AutomationElement rootElement = null;
-
-            // Console.WriteLine(BrowserUrlFieldPropertyNames.Count);
-
-
+        
             foreach (var browser in BrowserUrlFieldPropertyNames)
             {
                 if (browser.Key != activeProcess.ProcessName) continue;
@@ -145,17 +146,20 @@ namespace timetracker.Advisors
                     if (elmUrlBar != null)
                     {
                        
-                        CheckUrl(((ValuePattern)elmUrlBar.GetCurrentPattern(ValuePattern.Pattern)).Current.Value);// as string;
+                        CheckUrl(((ValuePattern)elmUrlBar.GetCurrentPattern(ValuePattern.Pattern)).Current.Value);
                      
                     }
                    
                 }
             }
 
-            
-            GetActiveWindow(CurProcess);
+            CheckProcess(CurProcess);
         }
 
+        /// <summary>
+        /// Checking if URL is alowed or not
+        /// </summary>
+        /// <param name="Url"></param>
         private void CheckUrl(string Url)
         {
             CurProcess = activeProcess;
@@ -192,17 +196,13 @@ namespace timetracker.Advisors
             
 
         }
-        
 
-        private void GetActiveWindow(Process activeProcess)
+        /// <summary>
+        /// Checking if active process is alowed or not
+        /// </summary>
+        /// <param name="activeProcess"></param>
+        private void CheckProcess(Process activeProcess)
         {
-            const int nChars = 256;
-            StringBuilder Buff = new StringBuilder(nChars);
-
-
-            // CurProcess = activeProcess;
-            // Console.WriteLine(activeProcess.ProcessName);
-            // Console.WriteLine(CurProcess.ProcessName);
             allovdedProcess = true;
 
             foreach (string proc in forbiddenProcs)
@@ -213,20 +213,6 @@ namespace timetracker.Advisors
                     break;
                 }
             }
-            //if (activeProcess.ProcessName == "firefox") allovdedProcess = false;
-
-            /*
-                        //getting active window handle
-                        if (GetWindowText(activeProcess.MainWindowHandle, Buff, nChars) > 0)
-                        {
-                            if (Buff.ToString() == "firefox") { return false; }
-                            else {
-                                // name = Buff.ToString();
-
-                              //  Console.WriteLine(Buff.ToString());
-                                return true;
-                            }
-                        }*/
            
         }
         

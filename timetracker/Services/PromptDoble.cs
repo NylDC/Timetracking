@@ -4,13 +4,22 @@ using timetracker.Structs;
 
 namespace timetracker.Services
 {
+    /// <summary>
+    /// Helper static class to display a Prompt Dialog with two textboxes 
+    /// </summary>
     public static class PromptDouble
     {
         public static List<string> ShowDialog(string text, string caption) => ShowEditDialog( text,  caption, null);
 
+        /// <summary>
+        /// Create a prompt dialog
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="caption"></param>
+        /// <param name="itemProc">for editing process or url</param>
+        /// <returns></returns>
         internal static List<string> ShowEditDialog(string text, string caption, ProcessesAndUrls itemProc)
         {
-
             Form promptDouble = new Form()
             {
                 Width = 460,
@@ -42,15 +51,10 @@ namespace timetracker.Services
             {
                 textBoxAlias.Text = itemProc.Alias;
                 textBoxAddress.Text = itemProc.Address;
-
             }
 
-
             List<string> lst = new List<string>();
-
-           
-
-            //;
+            
             if (promptDouble.ShowDialog() == DialogResult.OK)
             {
                 lst.Add(textBoxAlias.Text);

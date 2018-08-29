@@ -26,7 +26,7 @@ namespace timetracker.Services
         private Thread childThread;
 
         /// <summary>
-        /// Screenshotting simgleton accessor
+        /// Screenshotting singleton accessor
         /// </summary>
         public static Screenshots Instance
         {
