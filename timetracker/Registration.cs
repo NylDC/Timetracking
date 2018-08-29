@@ -20,12 +20,15 @@ namespace timetracker
 		{
 			InitializeComponent();
 		}
-
-		User AddUser=null;
+		/// <summary>
+		/// This gives ability to the user to register themselves and it will be recorded 
+		/// to the admin dashboard form.
+		/// </summary>
 		private void btRegSubmit_Click(object sender, EventArgs e)
 		{
 			//TO DO: USERS MUST HAVE THE ABILITY TO REGISTER THEMSELVES AND THE SYSTEM MUST BE ABLE TO RECOGNISE
-
+			//TO DO: SYSTEM MUST RECOGNISE IF USER IS DUPLICATED
+			
 			User AddUser = new User();
 			AddUser.Login = tbLogin.Text;
 			AddUser.FullName = tbFullname.Text;
@@ -37,24 +40,38 @@ namespace timetracker
 				AddUser.SetPassword(tbPassword.Text);
 			}
 
-			//AddUser.Enabled = cbUserEnabled.Checked;
-			//AddUser.IsAdmin = cbUserIsAdmin.Checked;
-
 			AddUser.Save();
-			//UpdateLists();
+
 			MessageBox.Show("You have successfuly registered");
+		}
 
+		/// <summary>
+		/// Recognise if the user entered a duplicate username and return the value
+		/// </summary>
+		/// <returns></returns>
+		private bool CheckIsUserExist()
+		{
+			try
+			{
+				User tmpUser = UserModel.FindOne(new WhereGroup { new WhereCondition("Login", (tbLogin.Text)) });
 
-		} 
-
+				MessageBox.Show("User exist, please use a different user!!!!");
+				btRegSubmit.Enabled = false;
+				return false;
+			}
+			catch (Exception){ return true; }	
+		}
 		private void btRegExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
-
 		private void Registration_Load(object sender, EventArgs e)
 		{
-	
+			btRegSubmit.Enabled = false;
+		}
+		private void tbLogin_TextChanged(object sender, EventArgs e)
+		{
+			btRegSubmit.Enabled = CheckIsUserExist();
 		}
 	}
 }
