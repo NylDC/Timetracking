@@ -28,165 +28,108 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeLogin));
+			this.label3 = new System.Windows.Forms.Label();
+			this.btRegister = new System.Windows.Forms.Button();
 			this.tbLogin = new System.Windows.Forms.TextBox();
 			this.tbPassword = new System.Windows.Forms.TextBox();
 			this.btLogin = new System.Windows.Forms.Button();
-			this.btExit = new System.Windows.Forms.Button();
-			this.btRegister = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.BackColor = System.Drawing.Color.Transparent;
+			this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.label3.Location = new System.Drawing.Point(135, 25);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(135, 19);
+			this.label3.TabIndex = 18;
+			this.label3.Text = "MEMBER LOGIN";
+			// 
+			// btRegister
+			// 
+			this.btRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btRegister.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btRegister.Location = new System.Drawing.Point(204, 180);
+			this.btRegister.Name = "btRegister";
+			this.btRegister.Size = new System.Drawing.Size(75, 33);
+			this.btRegister.TabIndex = 17;
+			this.btRegister.Text = "Register";
+			this.btRegister.UseVisualStyleBackColor = true;
+			this.btRegister.Click += new System.EventHandler(this.btRegister_Click_1);
 			// 
 			// tbLogin
 			// 
 			this.tbLogin.BackColor = System.Drawing.SystemColors.MenuBar;
 			this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.tbLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
-			this.tbLogin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbLogin.Location = new System.Drawing.Point(70, 74);
+			this.tbLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbLogin.Location = new System.Drawing.Point(95, 61);
 			this.tbLogin.Multiline = true;
 			this.tbLogin.Name = "tbLogin";
-			this.tbLogin.Size = new System.Drawing.Size(208, 28);
-			this.tbLogin.TabIndex = 0;
-			this.tbLogin.Text = "USERNAME";
+			this.tbLogin.Size = new System.Drawing.Size(220, 27);
+			this.tbLogin.TabIndex = 13;
+			this.tbLogin.Text = "Username";
+			this.tbLogin.Click += new System.EventHandler(this.tbLogin_Click);
+			this.tbLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLogin_KeyPress);
 			// 
 			// tbPassword
 			// 
 			this.tbPassword.BackColor = System.Drawing.SystemColors.MenuBar;
 			this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.tbPassword.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-			this.tbPassword.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbPassword.Location = new System.Drawing.Point(70, 159);
+			this.tbPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbPassword.Location = new System.Drawing.Point(95, 130);
 			this.tbPassword.Multiline = true;
 			this.tbPassword.Name = "tbPassword";
-			this.tbPassword.PasswordChar = '*';
-			this.tbPassword.Size = new System.Drawing.Size(208, 26);
-			this.tbPassword.TabIndex = 1;
+			this.tbPassword.Size = new System.Drawing.Size(220, 27);
+			this.tbPassword.TabIndex = 14;
 			this.tbPassword.Tag = "";
-			this.tbPassword.Text = "PASSWORD";
+			this.tbPassword.Text = "Password";
 			this.tbPassword.UseWaitCursor = true;
 			this.tbPassword.WordWrap = false;
+			this.tbPassword.Click += new System.EventHandler(this.tbPassword_Click);
 			// 
 			// btLogin
 			// 
 			this.btLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btLogin.Location = new System.Drawing.Point(6, 213);
+			this.btLogin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btLogin.Location = new System.Drawing.Point(106, 180);
 			this.btLogin.Name = "btLogin";
-			this.btLogin.Size = new System.Drawing.Size(82, 26);
-			this.btLogin.TabIndex = 2;
+			this.btLogin.Size = new System.Drawing.Size(82, 33);
+			this.btLogin.TabIndex = 15;
 			this.btLogin.Text = "Login";
 			this.btLogin.UseVisualStyleBackColor = true;
-			this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
-			// 
-			// btExit
-			// 
-			this.btExit.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btExit.Location = new System.Drawing.Point(196, 213);
-			this.btExit.Name = "btExit";
-			this.btExit.Size = new System.Drawing.Size(82, 26);
-			this.btExit.TabIndex = 7;
-			this.btExit.Text = "Exit";
-			this.btExit.UseVisualStyleBackColor = true;
-			this.btExit.Click += new System.EventHandler(this.btExit_Click);
-			// 
-			// btRegister
-			// 
-			this.btRegister.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btRegister.Location = new System.Drawing.Point(104, 213);
-			this.btRegister.Name = "btRegister";
-			this.btRegister.Size = new System.Drawing.Size(75, 26);
-			this.btRegister.TabIndex = 9;
-			this.btRegister.Text = "Register";
-			this.btRegister.UseVisualStyleBackColor = true;
-			this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
-			// 
-			// panel1
-			// 
-			this.panel1.BackColor = System.Drawing.Color.Black;
-			this.panel1.Controls.Add(this.pictureBox2);
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Controls.Add(this.label3);
-			this.panel1.Controls.Add(this.btRegister);
-			this.panel1.Controls.Add(this.tbLogin);
-			this.panel1.Controls.Add(this.tbPassword);
-			this.panel1.Controls.Add(this.btExit);
-			this.panel1.Controls.Add(this.btLogin);
-			this.panel1.Location = new System.Drawing.Point(43, 38);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(308, 275);
-			this.panel1.TabIndex = 10;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.BackColor = System.Drawing.Color.LightGray;
-			this.pictureBox2.ErrorImage = null;
-			this.pictureBox2.Location = new System.Drawing.Point(35, 74);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(39, 28);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox2.TabIndex = 13;
-			this.pictureBox2.TabStop = false;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
-			this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-			this.pictureBox1.ErrorImage = null;
-			this.pictureBox1.Location = new System.Drawing.Point(35, 159);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(39, 26);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 12;
-			this.pictureBox1.TabStop = false;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.BackColor = System.Drawing.Color.Transparent;
-			this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.label3.Location = new System.Drawing.Point(101, 18);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(109, 16);
-			this.label3.TabIndex = 10;
-			this.label3.Text = "MEMBER LOGIN";
+			this.btLogin.Click += new System.EventHandler(this.btLogin_Click_1);
 			// 
 			// EmployeeLogin
 			// 
 			this.AcceptButton = this.btLogin;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.HighlightText;
-			this.CancelButton = this.btExit;
-			this.ClientSize = new System.Drawing.Size(392, 344);
-			this.Controls.Add(this.panel1);
+			this.BackColor = System.Drawing.Color.DarkSlateGray;
+			this.BackgroundImage = global::timetracker.Properties.Resources.abstract_abstract_expressionism_abstract_painting_1143770;
+			this.ClientSize = new System.Drawing.Size(398, 239);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.btRegister);
+			this.Controls.Add(this.tbLogin);
+			this.Controls.Add(this.tbPassword);
+			this.Controls.Add(this.btLogin);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "EmployeeLogin";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Load += new System.EventHandler(this.EmployeeLogin_Load);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
-
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button btRegister;
 		private System.Windows.Forms.TextBox tbLogin;
 		private System.Windows.Forms.TextBox tbPassword;
 		private System.Windows.Forms.Button btLogin;
-		private System.Windows.Forms.Button btExit;
-		private System.Windows.Forms.Button btRegister;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }
