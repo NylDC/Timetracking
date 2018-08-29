@@ -68,6 +68,12 @@ namespace timetracker
             }
             else
             {
+                if(timerDisplay != null && !timerDisplay.IsDisposed)
+                {
+                    timerDisplay.Hide();
+                    timerDisplay.Dispose();
+                    timerDisplay = null;
+                }
                 TraySetNoAuth();
             }
         }
